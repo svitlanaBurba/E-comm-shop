@@ -46,7 +46,7 @@ module.exports = {
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
         filename: '[name].[contenthash].css',
-        chunkFilename: '[name].[id].[contenthash].css',
+        // chunkFilename: '[name].[id].[contenthash].css',
       })
     ],
     module: {
@@ -63,12 +63,32 @@ module.exports = {
             'sass-loader'],
         },
         {
-          test: /\.(png|jpe?g|svg|gif)$/i,
-          use: ['file-loader'],
-        },
-        {
-          test: /\.(ttf|woff|woff2|eot)$/i,
-          use: ['file-loader'],
+          test: /\.(gif|png|jpe?g|svg)$/i,
+          use: [
+            {
+              loader: 'image-webpack-loader',
+              options: {
+                mozjpeg: {
+                  progressive: true,
+                },
+                // optipng.enabled: false will disable optipng
+                optipng: {
+                  enabled: false,
+                },
+                pngquant: {
+                  quality: [0.65, 0.90],
+                  speed: 4
+                },
+                gifsicle: {
+                  interlaced: false,
+                },
+                // the webp option will enable WEBP
+                webp: {
+                  quality: 75
+                }
+              }
+            },
+          ],
         },
         {
           test: /\.js$/,
