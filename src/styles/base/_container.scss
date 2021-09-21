@@ -1,0 +1,26 @@
+.main-container {
+    width: 100vw;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    padding: 0 15px;
+    margin: 0 auto;
+    max-width: 1170px;
+  
+    // @media screen and (min-width: 360px) {
+    //   width: 360px;
+    // }
+  
+    // @media screen and (min-width: 768px) {
+    //   padding: 0 15px;
+    //   width: 730px;
+    // }
+  
+    // @media screen and (min-width: 1280px) {
+    //   width: 1080px;
+    // }
+  }
+
+  

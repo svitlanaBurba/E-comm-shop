@@ -57,7 +57,8 @@ module.exports = {
         },
         {
           test: /\.scss$/,
-          use: [  MiniCssExtractPlugin.loader,
+          use: [  
+          MiniCssExtractPlugin.loader,
             'css-loader',
             'postcss-loader',
             'sass-loader'],
@@ -96,7 +97,11 @@ module.exports = {
           use: {loader:'babel-loader', options: {
             presets: ['@babel/preset-env']
           }},
-        }
+        },
+        {
+          test: /\.(html)$/,
+          use: ['html-loader']
+       }
       ]
     },
     devServer: {

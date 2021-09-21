@@ -1,0 +1,88 @@
+.instagram{
+    position: relative;
+    padding: 75px 0 75px;
+}
+
+.instagram__container{
+    display: flex;
+    align-items: center;
+    @media (max-width: 992px) {
+    display: block;
+    }
+}
+
+.instagram__left-column{
+    display: flex;
+    flex: 0 1 30%;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 30px;
+    align-items: flex-end;
+}  
+
+.instagramt__left-column-wrapper{
+    width: 100%;
+    max-width: 550px;
+    @media (max-width: 992px) {
+        max-width: none;
+        text-align: center;
+        }
+}  
+
+.instagram__left-column-heading{
+    margin: 0 auto 60px 0;
+    text-align: left;
+    max-width: 460px;
+    @media (max-width: 992px) {
+        text-align: center;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 30px;
+        }
+}
+
+.about__right-column{
+    min-height: 700px;  
+    flex: 0 1 70%;
+    @media (max-width: 992px) {
+        min-height: 0;
+        padding-bottom: 70%;
+        position: relative;
+        }
+}
+
+.about__video{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    @media (max-width: 992px) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        }
+}   
+
+.about__video-player{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about__video-btn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;  
+}
+
+.about__icon-video-btn{
+    fill: #fff; 
+}

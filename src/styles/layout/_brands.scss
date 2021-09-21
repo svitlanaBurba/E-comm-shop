@@ -1,0 +1,18 @@
+.brands {
+    padding: 50px 0;
+    margin: 95px 0 90px;
+}
+
+.brands__list{
+    display: flex;
+    gap:5%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.brands__item{
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
