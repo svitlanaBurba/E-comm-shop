@@ -1,9 +1,14 @@
 .testimonials{
+    position: relative; 
     padding: 75px 0 75px;  
+    background: url("../assets/testimonials/petals-test.png") no-repeat;
+    background-position: 5% 20%;
 }
 
 .testimonials__wrapper{
     position: relative; 
+    width: 70%;
+    margin: 0 auto;
 }
 
 .testimonials__item{
@@ -75,3 +80,53 @@
        @media (max-width: 767px){
         font-size: 16px;}
 }   
+
+.testimonials__next{
+    position: absolute;
+    top: 65%;
+    right: 5%;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px 10px 30px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.7;
+    text-transform: uppercase;
+    color: $titles-color;
+    cursor: pointer;
+
+    &::after{
+        content: '';
+        width: 30px;
+        padding-bottom: 35%;
+        background: url(../assets/icons/arrow-next.svg) center no-repeat;  
+    }
+}
+
+.testimonials__prev{
+    position: absolute;
+    top: 65%;
+    left: 5%;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px 10px 30px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.7;
+    text-transform: uppercase;
+    color: $titles-color;
+    cursor: pointer;
+
+    &::before{
+        content: '';
+        width: 30px;
+        padding-bottom: 35%;
+        background: url(../assets/icons/arrow-prev.svg) center no-repeat;  
+    }
+}
+
+.testimonials__btn{
+    @media (max-width: 991px){
+        display: none;
+            } 
+}

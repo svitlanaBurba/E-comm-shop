@@ -141,5 +141,6 @@ fill:white;
 &--bag {
         @extend .overlay__icon;
         background:$main-color;  
+        fill:white;
     }
 }
