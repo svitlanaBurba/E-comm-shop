@@ -1,43 +1,20 @@
-// @import "~normalize.css";
-// html {
-//     box-sizing: border-box;
-//     background-image: url('../assets/free.png');
-//   }
-  
-//   *,
-//   *::before,
-//   *::after {
-//     box-sizing: inherit;
-//   }
-  
-//   button {
-//     padding: 10px 20px;
-//     background-color: #fff;
-//     border: 2px solid #0078aa;
-//     outline: none;
-//     border-radius: 10px;
-//     cursor: pointer;
-//     color: #0078aa;
-//     font-weight: 800;
-//   }
-  
-//   button:hover,
-//   button:focus {
-//     background-color: rgba(0, 120, 170, 0.6);
-//     border: 2px solid transparent;
-//     border-radius: 10px;
-//     cursor: pointer;
-//     color: #fff;
-//     font-weight: 800;
-//   }
-  
-//   button:active,
-//   button:disabled {
-//     background-color: #0078aa;
-//     border: 2px solid transparent;
-//     border-radius: 10px;
-//     cursor: pointer;
-//     color: #fff;
-//     font-weight: 800;
-//   }
- 
+@import "~normalize.css";
+@import './utils/variables';
+
+@import './base/common';
+@import './base/container';
+@import './base/section';
+
+@import './layout/hero-header';
+@import './layout/brands';
+@import './layout/categories';
+@import './layout/products';
+@import './layout/about';
+@import './layout/advantages';
+@import './layout/gift';
+@import './layout/blog';
+@import './layout/testimonials';
+@import './layout/instagram';
+@import './layout/footer';
+
+@import './utils/visually-hidden';

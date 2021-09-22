@@ -1,15 +1,1172 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-commerce Shop</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Sulphur+Point:wght@300;400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-     
-    
- </body>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Sulphur+Point:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"
+    />
+  </head>
+  <body>
+    <div class="main-container">
+      <!-- -------------- HEADER  -------------->
+      <header class="header">
+        <div class="header__container">
+          <div class="header__secondary">
+            <div>
+              <strong>30% off</strong> on all products enter code: joolie2020
+            </div>
+            <div>
+              Call us:
+              <a href="tel:18004527887"><strong>+1 800 452 78 87</strong></a>
+            </div>
+          </div>
+          <div class="header__primary">
+            <!-- MOBILE MENU -->
+            <button type="button" class="burger-button" data-menu-button="">
+              <svg class="burger-button-icon" width="24" height="24">
+                <use href="./assets/sprite.svg#icon-menu-burger"></use>
+              </svg>
+            </button>
+
+            <div class="mobile-menu" data-menu>
+              <button class="mobile-menu__button-close" data-menu-close="">
+                <svg
+                  class="mobile-menu__button-close-icon"
+                  width="24"
+                  height="24"
+                >
+                  <use href="./assets/sprite.svg#icon-menu-close"></use>
+                </svg>
+              </button>
+
+              <ul class="header__nav-list nav-menu">
+                <li class="header__nav-item">
+                  <a href="#" class="header__nav-link"> Categories </a>
+                  <!-- <ul class="header__nav-sublist">
+                              <li>
+                                  <a href="#" class="header__nav-sublink">Sublink1</a>
+                              </li>
+                              <li>
+                                <a href="#" class="header__nav-sublink">Sublink2</a>
+                              </li>
+                              <li>
+                                <a href="#" class="header__nav-sublink">Sublink3</a>
+                              </li>
+                              </ul> -->
+                </li>
+                <li class="header__nav-item">
+                  <a href="#" class="header__nav-link"> Pages </a>
+                  <!-- <ul class="header__nav-sublist">
+                             <li>
+                                <a href="#" class="header__nav-sublink">Sublink1</a>
+                            </li>
+                            <li>
+                              <a href="#" class="header__nav-sublink">Sublink2</a>
+                            </li>
+                            <li>
+                              <a href="#" class="header__nav-sublink">Sublink3</a>
+                            </li>
+                             </ul> -->
+                </li>
+                <li class="header__nav-item">
+                  <a href="#" class="header__nav-link"> Shop </a>
+                  <!-- <ul class="header__nav-sublist">
+                             <li>
+                                <a href="#" class="header__nav-sublink">Sublink1</a>
+                            </li>
+                            <li>
+                              <a href="#" class="header__nav-sublink">Sublink2</a>
+                            </li>
+                            <li>
+                              <a href="#" class="header__nav-sublink">Sublink3</a>
+                            </li>
+                           </ul> -->
+                </li>
+                <li class="header__nav-item">
+                  <a href="#" class="header__nav-link"> Blog </a>
+                  <!-- <ul class="header__nav-sublist">
+                             <li>
+                                <a href="#" class="header__nav-sublink">Sublink1</a>
+                            </li>
+                            <li>
+                              <a href="#" class="header__nav-sublink">Sublink2</a>
+                            </li>
+                            <li>
+                              <a href="#" class="header__nav-sublink">Sublink3</a>
+                            </li>
+                           </ul> -->
+                </li>
+              </ul>
+            </div>
+
+            <!-- MOBILE MENU -->
+
+            <nav class="header__nav">
+              <ul class="header__nav-list">
+                <li class="header__nav-item">
+                  <a href="#" class="header__nav-link"> Categories </a>
+                  <!-- <ul class="header__nav-sublist">
+                            <li>
+                                <a href="#" class="header__nav-sublink">Sublink1</a>
+                            </li>
+                            <li>
+                              <a href="#" class="header__nav-sublink">Sublink2</a>
+                            </li>
+                            <li>
+                              <a href="#" class="header__nav-sublink">Sublink3</a>
+                            </li>
+                            </ul> -->
+                </li>
+                <li class="header__nav-item">
+                  <a href="#" class="header__nav-link"> Pages </a>
+                  <!-- <ul class="header__nav-sublist">
+                           <li>
+                              <a href="#" class="header__nav-sublink">Sublink1</a>
+                          </li>
+                          <li>
+                            <a href="#" class="header__nav-sublink">Sublink2</a>
+                          </li>
+                          <li>
+                            <a href="#" class="header__nav-sublink">Sublink3</a>
+                          </li>
+                           </ul> -->
+                </li>
+                <li class="header__nav-item">
+                  <a href="#" class="header__nav-link"> Shop </a>
+                  <!-- <ul class="header__nav-sublist">
+                           <li>
+                              <a href="#" class="header__nav-sublink">Sublink1</a>
+                          </li>
+                          <li>
+                            <a href="#" class="header__nav-sublink">Sublink2</a>
+                          </li>
+                          <li>
+                            <a href="#" class="header__nav-sublink">Sublink3</a>
+                          </li>
+                         </ul> -->
+                </li>
+                <li class="header__nav-item">
+                  <a href="#" class="header__nav-link"> Blog </a>
+                  <!-- <ul class="header__nav-sublist">
+                           <li>
+                              <a href="#" class="header__nav-sublink">Sublink1</a>
+                          </li>
+                          <li>
+                            <a href="#" class="header__nav-sublink">Sublink2</a>
+                          </li>
+                          <li>
+                            <a href="#" class="header__nav-sublink">Sublink3</a>
+                          </li>
+                         </ul> -->
+                </li>
+              </ul>
+            </nav>
+            <div class="header__logo">
+              <a href="index.html">
+                <img src="./assets/header/logo.png" alt="logo" />
+              </a>
+            </div>
+            <div class="header__user-menu">
+              <ul class="header__user-menu-list">
+                <li class="header__user-menu-item">
+                  <button type="submit" class="search-button">
+                    <svg class="header__user-menu-icon" width="20" height="20">
+                      <use href="./assets/sprite.svg#icon-search"></use>
+                    </svg>
+                  </button>
+                </li>
+                <li class="header__user-menu-item">
+                  <a href="#" class="header__user-menu-link">
+                    <svg class="header__user-menu-icon" width="20" height="20">
+                      <use href="./assets/sprite.svg#icon-user"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="header__user-menu-item">
+                  <a href="#" class="header__user-menu-link">
+                    <svg class="header__user-menu-icon" width="20" height="20">
+                      <use href="./assets/sprite.svg#icon-heart"></use>
+                    </svg>
+                    <span class="header__user-menu-count">0</span>
+                  </a>
+                </li>
+                <li class="header__user-menu-item">
+                  <a href="#" class="header__user-menu-link">
+                    <svg class="header__user-menu-icon" width="20" height="20">
+                      <use href="./assets/sprite.svg#icon-shopping-bag"></use>
+                    </svg>
+                    <span class="header__user-menu-count">0</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- -------------- HEADER  -------------->
+      <main>
+        <!-- -------------- HERO  -------------->
+        <section class="promo">
+          <div class="promo__container">
+            <div class="promo__slide">
+              <img src="assets/hero/wedding_landing1.jpg" />
+            </div>
+            <div class="promo__slide">
+              <img src="assets/hero/wedding_landing2.jpg" />
+            </div>
+            <div class="promo__slide">
+              <img src="assets/hero/wedding_landing3.jpg" />
+            </div>
+          </div>
+        </section>
+
+        <section class="hero">
+          <div class="hero__container">
+            <div class="hero__slide">
+              <p class="hero__accent-title">get your chance</p>
+              <h1 class="hero__title">
+                be charming <br />
+                more than ever
+              </h1>
+              <p class="hero__subtitle">
+                <strong>50% off</strong> on every product here.
+              </p>
+              <a href="#" class="btn-main"> Shop now </a>
+            </div>
+            <div class="hero__slide">
+              <p class="hero__accent-title">get your chance</p>
+              <h1 class="hero__title">
+                be charming <br />
+                more and more
+              </h1>
+              <p class="hero__subtitle">
+                <strong>50% off</strong> on every product here.
+              </p>
+              <a href="#" class="btn-main"> Shop now </a>
+            </div>
+
+            <div class="hero__slide">
+              <p class="hero__accent-title">get your chance</p>
+              <h1 class="hero__title">
+                is better to <br />
+                be smart
+              </h1>
+              <p class="hero__subtitle">
+                <strong>30% off</strong> on every product here.
+              </p>
+              <a href="#" class="btn-main"> Shop now </a>
+            </div>
+          </div>
+          <div class="hero__ctrls">
+            <div class="hero__dots"></div>
+            <div class="hero__btns">
+              <div class="hero__btn__prev">prev</div>
+              <div class="hero__btn__next">next</div>
+            </div>
+          </div>
+        </section>
+        <!-- -------------- HERO  -------------->
+
+        <!-- -------------- BRANDS SECTION  -------------->
+        <section class="brands">
+          <div class="container">
+            <ul class="brands__list">
+              <li class="brands__item">
+                <a class="brands__link" href="#">
+                  <svg width="90" height="100">
+                    <use href="./assets/sprite.svg#icon-brand1"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a class="brands__link" href="#">
+                  <svg width="157" height="100">
+                    <use href="./assets/sprite.svg#icon-brand2"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a class="brands__link" href="#">
+                  <svg width="135" height="100">
+                    <use href="./assets/sprite.svg#icon-brand3"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a class="brands__link" href="#">
+                  <svg width="93" height="100">
+                    <use href="./assets/sprite.svg#icon-brand4"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="brands__item">
+                <a class="brands__link" href="#">
+                  <svg width="93" height="100">
+                    <use href="./assets/sprite.svg#icon-brand5"></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <!-- -------------- BRANDS SECTION  -------------->
+
+        <!-- -------------- CATEGORIES SECTION  -------------->
+        <section class="categories section">
+          <div class="container">
+            <div class="section__heading">
+              <div class="section__accent-title">
+                get your
+                <svg class="section__rings" width="30" height="20">
+                  <use href="./assets/sprite.svg#icon-rings"></use>
+                </svg>
+                chance
+              </div>
+              <h2 class="section__title">Explore our collections</h2>
+              <p class="section__text">
+                Cupidatat ad in qui est aliqua consectetur incididunt irure.
+                Nostrud magna anim officia ad labore.
+              </p>
+            </div>
+          </div>
+          <ul class="categories-galery">
+            <li class="categories-galery__item">
+              <a href="#" class="categories-galery__link">
+                <div class="categories-galery__wrapper">
+                  <img src="./assets/categories/accessories.jpg" alt="img" />
+                  <div class="categories-galery__heading">
+                    <svg class="section__rings" width="30" height="20">
+                      <use href="./assets/sprite.svg#icon-rings"></use>
+                    </svg>
+                    <h3 class="categories-galery__title">accessories</h3>
+                    <a href="#" class="btn-main invisible"> view products </a>
+                  </div>
+                </div>
+              </a>
+            </li>
+
+            <li class="categories-galery__item">
+              <a href="#" class="categories-galery__link">
+                <div class="categories-galery__wrapper">
+                  <img src="./assets/categories/dresses.jpg" alt="img" />
+                  <div class="categories-galery__heading">
+                    <svg class="section__rings" width="30" height="20">
+                      <use href="./assets/sprite.svg#icon-rings"></use>
+                    </svg>
+                    <h3 class="categories-galery__title">wedding dresses</h3>
+                    <a href="#" class="btn-main invisible"> view products </a>
+                  </div>
+                </div>
+              </a>
+            </li>
+
+            <li class="categories-galery__item">
+              <a href="#" class="categories-galery__link">
+                <div class="categories-galery__wrapper">
+                  <img src="./assets/categories/decorations.jpg" alt="img" />
+                  <div class="categories-galery__heading">
+                    <svg class="section__rings" width="30" height="20">
+                      <use href="./assets/sprite.svg#icon-rings"></use>
+                    </svg>
+                    <h3 class="categories-galery__title">decorations</h3>
+                    <a href="#" class="btn-main invisible"> view products </a>
+                  </div>
+                </div>
+              </a>
+            </li>
+
+            <li class="categories-galery__item">
+              <a href="#" class="categories-galery__link">
+                <div class="categories-galery__wrapper">
+                  <img src="./assets/categories/wedding-suits.jpg" alt="img" />
+                  <div class="categories-galery__heading">
+                    <svg class="section__rings" width="30" height="20">
+                      <use href="./assets/sprite.svg#icon-rings"></use>
+                    </svg>
+                    <h3 class="categories-galery__title">wedding suits</h3>
+                    <a href="#" class="btn-main invisible"> view products </a>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </section>
+        <!-- -------------- CATEGORIES SECTION  -------------->
+
+        <!-- -------------- POPULAR PRODUCTS SECTION  -------------->
+        <section class="products section">
+          <div class="container">
+            <div class="section__heading">
+              <div class="section__accent-title">
+                look
+                <svg class="section__rings" width="30" height="20">
+                  <use href="./assets/sprite.svg#icon-rings"></use>
+                </svg>
+                here
+              </div>
+              <h2 class="section__title">Popular products</h2>
+            </div>
+
+            <ul class="products-nav">
+              <li>
+                <a href="#" class="products-nav__link active">all</a>
+              </li>
+              <li>
+                <a href="#" class="products-nav__link">Wedding dresses</a>
+              </li>
+              <li>
+                <a href="#" class="products-nav__link">Wedding Suits</a>
+              </li>
+              <li>
+                <a href="#" class="products-nav__link">Wedding shoes</a>
+              </li>
+              <li>
+                <a href="#" class="products-nav__link">accessories</a>
+              </li>
+              <li>
+                <a href="#" class="products-nav__link">Decorations</a>
+              </li>
+              <li>
+                <a href="#" class="products-nav__link">Jewelry</a>
+              </li>
+            </ul>
+
+            <ul class="products__list">
+              <li class="card">
+                <a class="card__link" href="#">
+                  <div class="card__thumb">
+                    <img
+                      src="./assets/products/white-dress.jpg"
+                      width="360"
+                      height="500"
+                      alt="img"
+                    />
+                    <div class="card__label-wrapper">
+                      <div class="card__label--sale">Sale</div>
+                      <div class="card__label--new">New</div>
+                    </div>
+                    <p class="overlay">
+                      <svg class="overlay__icon--eye" width="20" height="20">
+                        <use href="./assets/sprite.svg#icon-eye"></use>
+                      </svg>
+                      <svg class="overlay__icon--bag" width="20" height="20">
+                        <use
+                          href="./assets/sprite.svg#icon-shopping-bag-white"
+                        ></use>
+                      </svg>
+                    </p>
+                  </div>
+                  <div class="card__content">
+                    <h3 class="card__title">White Long Dress With Train</h3>
+                    <p class="card__price">$2,285</p>
+                    <a href="#" class="card__like">
+                      <svg width="20" height="20">
+                        <use href="./assets/sprite.svg#icon-heart"></use>
+                      </svg>
+                    </a>
+                  </div>
+                </a>
+              </li>
+
+              <li class="card">
+                <a class="card__link" href="#">
+                  <div class="card__thumb">
+                    <img
+                      src="./assets/products/black-wedding-suit.jpg"
+                      alt="img"
+                    />
+                    <div class="card__label-wrapper">
+                      <div class="card__label--sale">Sale</div>
+                      <div class="card__label--new">New</div>
+                    </div>
+                    <p class="overlay">
+                      <svg class="overlay__icon--eye" width="20" height="20">
+                        <use href="./assets/sprite.svg#icon-eye"></use>
+                      </svg>
+                      <svg class="overlay__icon--bag" width="20" height="20">
+                        <use
+                          href="./assets/sprite.svg#icon-shopping-bag-white"
+                        ></use>
+                      </svg>
+                    </p>
+                  </div>
+                  <div class="card__content">
+                    <h3 class="card__title">Black Classic Suit</h3>
+                    <p class="card__price">$1,855</p>
+                    <a href="#" class="card__like">
+                      <svg width="20" height="20">
+                        <use href="./assets/sprite.svg#icon-heart"></use>
+                      </svg>
+                    </a>
+                  </div>
+                </a>
+              </li>
+
+              <li class="card">
+                <a class="card__link" href="#">
+                  <div class="card__thumb">
+                    <img
+                      src="./assets/products/wedding-glasses.jpg"
+                      alt="img"
+                    />
+                    <div class="card__label-wrapper">
+                      <div class="card__label--sale">Sale</div>
+                      <div class="card__label--new">New</div>
+                    </div>
+                    <p class="overlay">
+                      <svg class="overlay__icon--eye" width="20" height="20">
+                        <use href="./assets/sprite.svg#icon-eye"></use>
+                      </svg>
+                      <svg class="overlay__icon--bag" width="20" height="20">
+                        <use
+                          href="./assets/sprite.svg#icon-shopping-bag-white"
+                        ></use>
+                      </svg>
+                    </p>
+                  </div>
+                  <div class="card__content">
+                    <h3 class="card__title">Beautiful Glasses For Newlyweds</h3>
+                    <p class="card__price">$168</p>
+                    <a href="#" class="card__like">
+                      <svg width="20" height="20">
+                        <use href="./assets/sprite.svg#icon-heart"></use>
+                      </svg>
+                    </a>
+                  </div>
+                </a>
+              </li>
+
+              <li class="card">
+                <a class="card__link" href="#">
+                  <div class="card__thumb">
+                    <img
+                      src="./assets/products/wedding-candles.jpg"
+                      alt="img"
+                    />
+                    <div class="card__label-wrapper">
+                      <div class="card__label--sale">Sale</div>
+                      <div class="card__label--new">New</div>
+                    </div>
+                    <p class="overlay">
+                      <svg class="overlay__icon--eye" width="20" height="20">
+                        <use href="./assets/sprite.svg#icon-eye"></use>
+                      </svg>
+                      <svg class="overlay__icon--bag" width="20" height="20">
+                        <use
+                          href="./assets/sprite.svg#icon-shopping-bag-white"
+                        ></use>
+                      </svg>
+                    </p>
+                  </div>
+                  <div class="card__content">
+                    <h3 class="card__title">Candles For The Ceremony</h3>
+                    <p class="card__price">$69</p>
+                    <a href="#" class="card__like">
+                      <svg width="20" height="20">
+                        <use href="./assets/sprite.svg#icon-heart"></use>
+                      </svg>
+                    </a>
+                  </div>
+                </a>
+              </li>
+
+              <li class="card">
+                <a class="card__link" href="#">
+                  <div class="card__thumb">
+                    <img
+                      src="./assets/products/white-dress-train.jpg"
+                      alt="img"
+                    />
+                    <div class="card__label-wrapper">
+                      <div class="card__label--sale">Sale</div>
+                      <div class="card__label--new">New</div>
+                    </div>
+                    <p class="overlay">
+                      <svg class="overlay__icon--eye" width="20" height="20">
+                        <use href="./assets/sprite.svg#icon-eye"></use>
+                      </svg>
+                      <svg class="overlay__icon--bag" width="20" height="20">
+                        <use
+                          href="./assets/sprite.svg#icon-shopping-bag-white"
+                        ></use>
+                      </svg>
+                    </p>
+                  </div>
+                  <div class="card__content">
+                    <h3 class="card__title">White Long Dress With Train</h3>
+                    <p class="card__price">$2,795</p>
+                    <a href="#" class="card__like">
+                      <svg width="20" height="20">
+                        <use href="./assets/sprite.svg#icon-heart"></use>
+                      </svg>
+                    </a>
+                  </div>
+                </a>
+              </li>
+
+              <li class="card">
+                <a class="card__link" href="#">
+                  <div class="card__thumb">
+                    <img src="./assets/products/navy-suit.jfif" alt="img" />
+                    <div class="card__label-wrapper">
+                      <div class="card__label--sale">Sale</div>
+                      <div class="card__label--new">New</div>
+                    </div>
+                    <p class="overlay">
+                      <svg class="overlay__icon--eye" width="20" height="20">
+                        <use href="./assets/sprite.svg#icon-eye"></use>
+                      </svg>
+                      <svg class="overlay__icon--bag" width="20" height="20">
+                        <use
+                          href="./assets/sprite.svg#icon-shopping-bag-white"
+                        ></use>
+                      </svg>
+                    </p>
+                  </div>
+                  <div class="card__content">
+                    <h3 class="card__title">Navy Classic Suit</h3>
+                    <p class="card__price">$1,318</p>
+                    <a href="#" class="card__like">
+                      <svg width="20" height="20">
+                        <use href="./assets/sprite.svg#icon-heart"></use>
+                      </svg>
+                    </a>
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <a href="#" class="btn-main--products"> view all products </a>
+          </div>
+        </section>
+        <!-- -------------- POPULAR PRODUCTS SECTION  -------------->
+
+        <!-- -------------- ABOUT SECTION (with video)  -------------->
+
+        <section class="about">
+          <div class="about__container">
+            <div class="about__left-column">
+              <div class="about__left-column-wrapper">
+                <div class="about__left-column-heading">
+                  <div class="section__accent-title--left">
+                    <svg class="section__rings" width="30" height="20">
+                      <use href="./assets/sprite.svg#icon-rings"></use>
+                    </svg>
+                    find your beauty
+                  </div>
+                  <h2 class="section__title">
+                    we work hard for your happy moment
+                  </h2>
+                  <p class="section__subtitle">
+                    We know that this is the best day of your life and it should
+                    be unforgettable.
+                  </p>
+                  <p class="section__text">
+                    We are a professional team with many years of experience and
+                    we know how to do everything in the best way. Wel prepare
+                    the perfect version of your holiday for you. Let this day be
+                    just the beginning ...
+                  </p>
+                </div>
+                <a href="#" class="btn-main"> read more </a>
+              </div>
+            </div>
+            <div class="about__right-column">
+              <div class="about__video">
+                <video
+                  id="player"
+                  class="about__video-player"
+                  poster="./assets/about/video.png"
+                >
+                  <source src="#" type="video/mp4" />
+                </video>
+                <div class="about__video-btn">
+                  <svg class="about__icon-video-btn" width="150" height="150">
+                    <use href="./assets/sprite.svg#icon-play2"></use>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- -------------- ABOUT SECTION (with video)  -------------->
+
+        <!-- -------------- ADVANTAGES SECTION  -------------->
+        <section class="advantages">
+          <div class="container">
+            <ul class="advantages__list">
+              <li class="advantages__item">
+                <div class="advantages__icon">
+                  <svg width="40" height="40">
+                    <use href="./assets/sprite.svg#icon-advant1"></use>
+                  </svg>
+                </div>
+                <h4 class="advantages__title">wide selection</h4>
+                <div class="advantages__text text">
+                  А huge number of products for your celebration day.
+                </div>
+              </li>
+
+              <li class="advantages__item">
+                <div class="advantages__icon">
+                  <svg width="40" height="40">
+                    <use href="./assets/sprite.svg#icon-advant2"></use>
+                  </svg>
+                </div>
+                <h4 class="advantages__title">fast Delivery</h4>
+                <div class="advantages__text text">
+                  We deliver the next day after the order, as you wish.
+                </div>
+              </li>
+
+              <li class="advantages__item">
+                <div class="advantages__icon">
+                  <svg width="40" height="40">
+                    <use href="./assets/sprite.svg#icon-advant3"></use>
+                  </svg>
+                </div>
+                <h4 class="advantages__title">individual approach</h4>
+                <div class="advantages__text text">
+                  We discuss all the little things you need and want.
+                </div>
+              </li>
+
+              <li class="advantages__item">
+                <div class="advantages__icon">
+                  <svg width="40" height="40">
+                    <use href="./assets/sprite.svg#icon-advant4"></use>
+                  </svg>
+                </div>
+                <h4 class="advantages__title">Creative ideas</h4>
+                <div class="advantages__text">
+                  Our designers are full of new creative ideas for you.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <!-- -------------- ADVANTAGES SECTION  -------------->
+
+        <!-- -------------- GIFT SECTION  -------------->
+        <section class="gift">
+          <div class="gift__content">
+            <p class="hero__accent-title">mega sale 2020</p>
+            <h1 class="hero__title">
+              hurry up to <br />
+              get your gift
+            </h1>
+            <div class="time">
+              <div class="time__item">
+                <span class="time__units--black">10</span>
+                <span class="time__name">days</span>
+              </div>
+              <div class="time__item">
+                <span class="time__units--black">04</span>
+                <span class="time__name">hours</span>
+              </div>
+              <div class="time__item">
+                <span class="time__units--pink">38</span>
+                <span class="time__name">mins</span>
+              </div>
+              <div class="time__item">
+                <span class="time__units--pink">15</span>
+                <span class="time__name">sec</span>
+              </div>
+            </div>
+            <a href="#" class="btn-main--gift"> find a gift </a>
+          </div>
+        </section>
+        <!-- -------------- GIFT SECTION  -------------->
+
+        <!-- -------------- BLOG SECTION  -------------->
+        <section class="blog">
+          <div class="container">
+            <div class="section__heading">
+              <div class="section__accent-title">
+                our
+                <svg class="section__rings" width="30" height="20">
+                  <use href="./assets/sprite.svg#icon-rings"></use>
+                </svg>
+                blog
+              </div>
+              <h2 class="section__title">The latest in joolie</h2>
+              <p class="section__text">
+                Cupidatat ad in qui est aliqua consectetur incididunt irure.
+                Nostrud magna anim officia ad labore.
+              </p>
+            </div>
+
+            <ul class="blog__list">
+              <li class="blog__item">
+                <div class="blog__img-wrapper">
+                  <a href="#">
+                    <img class="" src="./assets/blog/blog1.jpg" alt="img" />
+                  </a>
+                </div>
+
+                <div class="blog__heading-wrapper">
+                  <div class="blog__photo">
+                    <img src="./assets/testimonials/photo1.png" alt="photo" />
+                  </div>
+                  <div class="blog__blogger">Mary Lanoris</div>
+                  <div class="blog__date">Sep 22, 2020</div>
+                  <a href="#" class="blog__share">
+                    <svg width="16" height="16">
+                      <use href="./assets/sprite.svg#icon-share"></use>
+                    </svg>
+                  </a>
+                </div>
+
+                <h4 class="blog__title">
+                  <a href="#"
+                    >Modern and trading decorations for wedding 2020</a
+                  >
+                </h4>
+              </li>
+
+              <li class="blog__item">
+                <div class="blog__img-wrapper">
+                  <a href="#">
+                    <img class="" src="./assets/blog/blog1.jpg" alt="img" />
+                  </a>
+                </div>
+
+                <div class="blog__heading-wrapper">
+                  <div class="blog__photo">
+                    <img src="./assets/testimonials/photo1.png" alt="photo" />
+                  </div>
+                  <div class="blog__blogger">Mary Lanoris</div>
+                  <div class="blog__date">Sep 22, 2020</div>
+                  <a href="#" class="blog__share">
+                    <svg width="16" height="16">
+                      <use href="./assets/sprite.svg#icon-share"></use>
+                    </svg>
+                  </a>
+                </div>
+
+                <h4 class="blog__title">
+                  <a href="#"
+                    >Modern and trading decorations for wedding 2020</a
+                  >
+                </h4>
+              </li>
+
+              <li class="blog__item">
+                <div class="blog__img-wrapper">
+                  <a href="#">
+                    <img class="" src="./assets/blog/blog1.jpg" alt="img" />
+                  </a>
+                </div>
+
+                <div class="blog__heading-wrapper">
+                  <div class="blog__photo">
+                    <img src="./assets/testimonials/photo1.png" alt="photo" />
+                  </div>
+                  <div class="blog__blogger">Mary Lanoris</div>
+                  <div class="blog__date">Sep 22, 2020</div>
+                  <a href="#" class="blog__share">
+                    <svg width="16" height="16">
+                      <use href="./assets/sprite.svg#icon-share"></use>
+                    </svg>
+                  </a>
+                </div>
+
+                <h4 class="blog__title">
+                  <a href="#"
+                    >Modern and trading decorations for wedding 2020</a
+                  >
+                </h4>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <!-- -------------- BLOG SECTION  -------------->
+
+        <!-- -------------- TESTIMONIALS SECTION  -------------->
+        <section class="testimonials">
+          <div class="container">
+            <div class="section__heading">
+              <div class="section__accent-title">
+                they
+                <svg class="section__rings" width="30" height="20">
+                  <use href="./assets/sprite.svg#icon-rings"></use>
+                </svg>
+                say
+              </div>
+              <h2 class="section__title">Testimonials</h2>
+            </div>
+            <div class="testimonials__wrapper">
+              <div class="testimonials__item">
+                <div class="testimonials__photo-wrapper">
+                  <span class="testimonials__photo">
+                    <img src="./assets/testimonials/photo1.png" alt="phtoto" />
+                  </span>
+                </div>
+                <div class="testimonials__title">Milena Purcle</div>
+                <div class="testimonials__text">
+                  I had the best wedding I have ever seen. Everything was very
+                  beautiful: the flowers, the accsessories, the decorations.
+                  Also everyone was affected with my amazing dress. Thank you so
+                  much!
+                </div>
+              </div>
+
+              <div class="testimonials__item">
+                <div class="testimonials__photo-wrapper">
+                  <span class="testimonials__photo">
+                    <img src="./assets/testimonials/photo2.png" alt="phtoto" />
+                  </span>
+                </div>
+                <div class="testimonials__title">Milena Purcle</div>
+                <div class="testimonials__text">
+                  I had the best wedding I have ever seen. Everything was very
+                  beautiful: the flowers, the accsessories, the decorations.
+                  Also everyone was affected with my amazing dress. Thank you so
+                  much!
+                </div>
+              </div>
+
+              <div class="testimonials__item">
+                <div class="testimonials__photo-wrapper">
+                  <span class="testimonials__photo">
+                    <img src="./assets/testimonials/photo3.png" alt="phtoto" />
+                  </span>
+                </div>
+                <div class="testimonials__title">Milena Purcle</div>
+                <div class="testimonials__text">
+                  I had the best wedding I have ever seen. Everything was very
+                  beautiful: the flowers, the accsessories, the decorations.
+                  Also everyone was affected with my amazing dress. Thank you so
+                  much!
+                </div>
+              </div>
+            </div>
+            <div class="testimonials__btn">
+              <div class="testimonials__prev">prev</div>
+              <div class="testimonials__next">next</div>
+            </div>
+          </div>
+        </section>
+        <!-- -------------- TESTIMONIALS SECTION  -------------->
+        <!-- -------------- INSTAGRAM SECTION  -------------->
+
+        <section class="instagram">
+          <!-- <div class="instagram__container"> -->
+          <div class="instagram__left-column">
+            <div class="instagram__left-column-wrapper">
+              <div class="instagram__left-column-heading">
+                <div class="section__accent-title--left">
+                  <svg class="section__rings" width="30" height="20">
+                    <use href="./assets/sprite.svg#icon-rings"></use>
+                  </svg>
+                  our instagram
+                </div>
+                <h2 class="section__title">be closer</h2>
+                <p class="section__text">
+                  More actions and bonuses you can find in our Instagram.
+                </p>
+              </div>
+              <a href="#" class="instagram__btn"> follow us </a>
+            </div>
+          </div>
+          <div class="instagram__right-column">
+            <ul class="instagram-list">
+              <li class="instagram-list__item">
+                <a href="#" class="instagram-list__link">
+                  <img class="" src="./assets/instagram/inst1.jpeg" alt="img" />
+                </a>
+              </li>
+              <li class="instagram-list__item">
+                <a href="#" class="instagram-list__link">
+                  <img class="" src="./assets/instagram/inst2.jfif" alt="img" />
+                </a>
+              </li>
+              <li class="instagram-list__item">
+                <a href="#" class="instagram-list__link">
+                  <img class="" src="./assets/instagram/inst3.jpeg" alt="img" />
+                </a>
+              </li>
+              <li class="instagram-list__item">
+                <a href="#" class="instagram-list__link">
+                  <img class="" src="./assets/instagram/inst4.jpg" alt="img" />
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- </div> -->
+        </section>
+        <!-- -------------- INSTAGRAM SECTION  -------------->
+      </main>
+      <!-- -------------- FOOTER  -------------->
+      <footer class="footer">
+        <div class="footer__container">
+          <div class="footer__logo-wrapper">
+            <div class="footer__logo">
+              <a href="index.html">
+                <img src="./assets/header/logo.png" alt="logo" />
+              </a>
+            </div>
+          </div>
+          <div class="footer-main">
+            <div class="footer-main__section-1">
+              <form class="footer-main__form">
+                <h4 class="footer-main__form-title">Newsletter</h4>
+                <p class="footer-main__form-text">
+                  Don't miss our significant news and season sales. Subscribe!
+                </p>
+                <div class="footer-main__input-wrapper">
+                  <input
+                    class="footer-main__form-input"
+                    type="email"
+                    placeholder="Enter your email"
+                  />
+                  <button class="footer-main__form-btn" type="submit">
+                    <svg class="send-icon" width="24" height="24">
+                      <use href="./assets/sprite.svg#icon-send"></use>
+                    </svg>
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="footer-main__section-2">
+              <h5 class="footer-main__title">Hit us up:</h5>
+              <strong
+                ><a class="footer-main__contact" href="tel:18004527887"
+                  >+1 800 452 78 87</a
+                ></strong
+              >
+              <a class="footer-main__contact" href="mailto:info@sitename.com"
+                >info@sitename.com</a
+              >
+              <p>27 Division St, New York, NY 10002, USA</p>
+            </div>
+            <div class="footer-main__section-3">
+              <h5 class="footer-main__title">Find us:</h5>
+              <ul>
+                <li class="socials__item">
+                  <a class="socials__link" href="#">- Facebook</a>
+                </li>
+                <li class="socials__item">
+                  <a class="socials__link" href="#">- Twitter</a>
+                </li>
+                <li>
+                  <a class="socials__link" href="#">- Instagram</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="footer-copyright__left">
+              All right reserved. Joolie 2020
+            </div>
+            <div class="footer-copyright__right">
+              <a href="#">Privacy policy</a> -
+              <a href="#">Terms and Conditions </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- -------------- FOOTER  -------------->
+    </div>
+
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-migrate-1.2.1.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+    ></script>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $(".testimonials__wrapper").slick({
+          infinite: true,
+          speed: 300,
+          slidesToShow: 1,
+          dots: true,
+          nextArrow: ".testimonials__next",
+          prevArrow: ".testimonials__prev",
+        });
+      });
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $(".promo__container").slick({
+          infinite: true,
+          speed: 300,
+          slidesToShow: 1,
+          arrows: false,
+          swipe: false,
+          fade: true,
+        });
+
+        $(".hero__container").slick({
+          infinite: true,
+          speed: 300,
+          slidesToShow: 1,
+          dots: true,
+          appendDots: ".hero__dots",
+          arrows: true,
+          nextArrow: ".hero__btn__next",
+          prevArrow: ".hero__btn__prev",
+        });
+
+        $(".hero__container").on(
+          "afterChange",
+          function (event, slick, currentSlide, nextSlide) {
+            $(".promo__container").slick("slickGoTo", currentSlide);
+          }
+        );
+      });
+    </script>
+
+    <script type="text/javascript">
+      // toggle header transparent/opaque on scroll
+      let header = document.querySelector(".header");
+
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 10) {
+          header.classList.add("background__white");
+        } else if (window.pageYOffset <= 10) {
+          header.classList.remove("background__white");
+        }
+      });
+    </script>
+
+    <script>
+      (() => {
+        const menuBtnRef = document.querySelector("[data-menu-button]");
+        const mobileMenuRef = document.querySelector("[data-menu]");
+        const mobileBtnClose = document.querySelector("[data-menu-close]");
+
+        menuBtnRef.addEventListener("click", () => {
+          mobileMenuRef.classList.toggle("mobile-menu--is-open");
+        });
+
+        mobileBtnClose.addEventListener("click", () => {
+          mobileMenuRef.classList.toggle("mobile-menu--is-open");
+        });
+      })();
+    </script>
+  </body>
 </html>
