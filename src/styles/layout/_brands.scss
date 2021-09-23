@@ -1,6 +1,9 @@
 .brands {
     padding: 50px 0;
     margin: 95px 0 90px;
+    @media (max-width: 767px){
+        padding: 0;
+       }  
 }
 
 .brands__list{

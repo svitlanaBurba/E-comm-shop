@@ -2,6 +2,7 @@
     position: relative;
     padding-top: 110px;
     background-color: $light-bg-color;
+    background: url("../assets/footer/petals-footer.png") no-repeat;
 
     @media (max-width: 767px){
     padding-top: 50px;
@@ -137,6 +138,10 @@
     font-size: 14px;
     line-height: 1.7;
     color: $text-color;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    &:hover{
+    color: $main-color;
+    }
 }
 
 .footer-main__section-3{
@@ -160,6 +165,11 @@ margin-bottom: 10px;
     font-size: 14px;
     line-height: 1.7;
     color:  $text-color;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover{
+    color: $main-color;
+    }
     }
 
 .footer-copyright{
