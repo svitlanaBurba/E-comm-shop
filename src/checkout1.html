@@ -315,7 +315,7 @@
                   <label class="delivery-form__input-wrapper">
                     <input
                       type="tel"
-                      class="delivery-form__input"
+                      class="delivery-form__input phone_with_ddd"
                       name="userPhone"
                       placeholder="Enter your phone"
                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
@@ -600,6 +600,8 @@
       <!-- -------------- FOOTER  -------------->
     </div>
 
+
+
     <script
       type="text/javascript"
       src="//code.jquery.com/jquery-1.11.0.min.js"
@@ -612,6 +614,22 @@
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
     ></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"
+    ></script>
+
+    <script>
+      $(document).ready(function(){
+        $('.phone_with_ddd').mask(
+            '(+38) Z00-000-00-00',
+             {
+               placeholder: "(+38) 0__-___-__-__",
+               translation: {'Z':{pattern:/0/}}
+              },
+        );
+      });
+    </script>
 
     <script type="text/javascript">
       $(document).ready(function () {
