@@ -43,6 +43,20 @@ module.exports = {
           collapseWhitespace:isProd
         }
       }),
+      new HTMLWebpackPlugin({
+        template: './checkout1.html',
+        filename: './checkout1.html',
+        minify: {
+          collapseWhitespace:isProd
+        }
+      }),
+      new HTMLWebpackPlugin({
+        template: './checkout2.html',
+        filename: './checkout2.html',
+        minify: {
+          collapseWhitespace:isProd
+        }
+      }),
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
         filename: '[name].[contenthash].css',
@@ -100,7 +114,8 @@ module.exports = {
         },
         {
           test: /\.(html)$/,
-          use: ['html-loader']
+          use: [
+            'html-loader']
        }
       ]
     },

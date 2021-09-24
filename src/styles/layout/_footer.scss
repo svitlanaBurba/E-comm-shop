@@ -1,8 +1,8 @@
 .footer{
     position: relative;
     padding-top: 110px;
-    background-color: $light-bg-color;
     background: url("../assets/footer/petals-footer.png") no-repeat;
+    background-color: $light-bg-color;
 
     @media (max-width: 767px){
     padding-top: 50px;

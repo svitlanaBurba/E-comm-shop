@@ -5,6 +5,7 @@
 @import './base/container';
 @import './base/section';
 
+//MAIN PAGE
 @import './layout/hero-header';
 @import './layout/brands';
 @import './layout/categories';
@@ -16,5 +17,8 @@
 @import './layout/testimonials';
 @import './layout/instagram';
 @import './layout/footer';
+
+//CHECKOUT PAGE
+@import './layout/checkout';
 
 @import './utils/visually-hidden';
