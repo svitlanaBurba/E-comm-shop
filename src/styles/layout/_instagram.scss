@@ -93,14 +93,8 @@
         @media (max-width: 767px){
             flex-basis: calc(100% / 2 - 2px);
            }  
-        //    @media (max-width: 540px){
-        //     flex-basis: calc(100% - 2px);
-        //    }
 
            &:nth-child(even){
             bottom:30px;
-        //     @media (max-width: 767px){
-        //        bottom:0;
-        // }
         }
 }

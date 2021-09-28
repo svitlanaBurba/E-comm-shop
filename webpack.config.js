@@ -84,16 +84,10 @@ module.exports = {
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
-          /*           {
-            loader: 'file-loader',
-            options: {
-              filename: 'img/[name].[contenthash].jpg'
-            }
-          }, */
           {
             loader: 'image-webpack-loader',
             options: {
-              output: 'img/[name].[contenthash].jpg',
+              output: '[name].[contenthash].jpg',
               mozjpeg: {
                 progressive: true
               },
@@ -124,6 +118,13 @@ module.exports = {
           options: {
             presets: ['@babel/preset-env']
           }
+        }
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg|jfif)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: '[path][name][ext]'
         }
       },
       {

@@ -19,7 +19,7 @@ if (pathname === '/index.html' || pathname === '/') {
   onMainLoad();
 
   const timer = new CountdownTimer({
-    selector: '#timer-1',
+    selector: '#timer-main',
     targetDate: new Date('Oct 05, 2021')
   });
   timer.start();

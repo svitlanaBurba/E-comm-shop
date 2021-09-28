@@ -1,5 +1,3 @@
-
-
 .header{
     position: fixed;
     width: 100%;
@@ -73,7 +71,6 @@
 .header__nav-list {
     display: flex;
     flex-wrap: wrap;
-    // margin-left: -20px;
 }
 
 .header__nav-item {
@@ -350,7 +347,6 @@
 .slick-active span{
 font-weight: 500;
 font-size: 20px;
-// padding-bottom: 10px;
 }
 
 .hero__btns{
@@ -448,7 +444,6 @@ font-size: 20px;
 .mobile-menu__button-close {
     position: absolute;
     top: 90px;
-    // right: 28px;
     background-color: transparent;
     padding: 0;
     border: none;
