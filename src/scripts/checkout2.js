@@ -3,7 +3,7 @@ import 'jquery-mask-plugin';
 import 'jquery-validation';
 // import custom validator for names
 import './formValidators/nameValidator';
-import './formValidators/inListValidator';
+
 
 const onCheckout2Load = () => {
   $(document).ready(function () {

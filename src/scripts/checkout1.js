@@ -4,6 +4,8 @@ import 'jquery-validation';
 // import custom validator for names
 import './formValidators/nameValidator';
 import './formValidators/inListValidator';
+import './formValidators/phoneNumberValidator';
+import './formValidators/emailValidator';
 
 const onCheckout1Load = () => {
   $(document).ready(function () {
@@ -22,7 +24,6 @@ const addFormInputMasks = () => {
 const addFormInputValidation = () => {
   // add validation for a form
   $('#delivery-form').validate({
-    onkeyup: true,
     rules: {
       userName: {
         required: true,
@@ -31,16 +32,23 @@ const addFormInputValidation = () => {
       userLastName: {
         required: true,
         nameValidator: true
-      }
-      /*       userCountry: {
+      },
+      userPhone: {
         required: true,
-        inListValidator: {param: ['UA', 'US']}
-      } */
+        phoneNumberValidator:true
+      },
+      userEmail:{
+        required:true,
+        emailValidator:true,
+      }
     },
     messages: {
       userLastName: {
         nameValidator:
           'Last Name can only contain letters, asterisc, dots, commas and apostrophes'
+      },
+        userPhone:{ 
+          required: "Please input phone number"
       }
     }
   });
