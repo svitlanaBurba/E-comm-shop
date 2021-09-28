@@ -14,7 +14,7 @@
       rgba(152, 152, 156, 0.4),
       rgba(152, 152, 156, 0.4)
     ),
-    url("../assets/hero/wedding_landing1.jpg");
+    url('../assets/hero/wedding_landing1.jpg');
 }
 
 .checkout-hero__title {
@@ -54,7 +54,7 @@
   color: $text-color;
 
   &:not(:last-child)::after {
-    content: "-";
+    content: '-';
     margin: 0 10px;
   }
 }
@@ -187,6 +187,11 @@
   font-size: 14px;
   line-height: 1.7;
   color: $grey-color;
+
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid $main-color;
+  }
 }
 
 .delivery-form__textarea {
@@ -200,6 +205,11 @@
   font-size: 14px;
   line-height: 1.7;
   color: $grey-color;
+
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid $main-color;
+  }
 }
 
 .delivery-form__checkbox-wrapper {
@@ -217,7 +227,7 @@
   &::before {
     margin-top: 3.5px;
     margin-right: 15px;
-    content: "";
+    content: '';
     height: 14px;
     min-width: 14px;
     background-color: #f8f8fa;
@@ -228,7 +238,7 @@
   display: none;
 }
 .delivery-form__checkbox-wrapper
-  .delivery-form__checkbox
+  .delivery-form__checkbox:checked
   + .delivery-form__checkbox-label::before {
   background-image: url(../assets/icons/check-mark.svg);
   background-size: contain;
@@ -379,7 +389,8 @@
 }
 
 .payment-method__radio-input {
-  display: none;
+  //display: none;
+  visibility: hidden;
 }
 .payment-method__radio-input:checked + .payment-method__radio-label::after {
   transform: translateY(-50%) scale(1);
@@ -401,7 +412,7 @@
 
   &::before {
     position: absolute;
-    content: "";
+    content: '';
     top: 50%;
     left: 0;
     transform: translateY(-50%);
@@ -413,7 +424,7 @@
 
   &::after {
     position: absolute;
-    content: "";
+    content: '';
     top: 50%;
     left: 0;
     transform: translateY(-50%) scale(0);
@@ -425,13 +436,12 @@
   }
 }
 
-.payment-method__image-wrapper{
+.payment-method__image-wrapper {
   min-width: 50px;
-  background: #F5F9FA;
-border: 1px solid rgba(17, 17, 17, 0.1);
-border-radius: 3px;
+  background: #f5f9fa;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 3px;
 }
-
 
 .card-details {
   max-width: 345px;

@@ -1,9 +1,12 @@
-@import "~normalize.css";
+@import '~normalize.css';
 @import './utils/variables';
 
 @import './base/common';
 @import './base/container';
 @import './base/section';
+
+// form validation (SHARED)
+@import './utils/form_validation';
 
 //MAIN PAGE
 @import './layout/hero-header';

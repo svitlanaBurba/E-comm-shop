@@ -3,22 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-commerce Shop</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Sulphur+Point:wght@300;400;700&display=swap"
       rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"
     />
   </head>
   <body>
@@ -273,11 +263,14 @@
             >
 
             <!-- FORM BLOCK -->
-            <form action="checkout2.html" class="form-wrapper" name="delivery-form"
-            autocomplete="on">
-              <div
-                class="delivery-form"
-              >
+            <form
+              action="checkout2.html"
+              class="form-wrapper"
+              name="delivery-form"
+              autocomplete="off"
+              id="delivery-form"
+            >
+              <div class="delivery-form">
                 <h3 class="delivery-form__title" id="contact-person__details">
                   contact person
                 </h3>
@@ -291,7 +284,12 @@
                       type="text"
                       class="delivery-form__input"
                       name="userName"
+                      id="userName"
                       placeholder="Enter your name"
+                      minlength="2"
+                      maxlength="50"
+                      pattern="^[a-z ,.'-]+$"
+                      required
                     />
                   </label>
                   <label class="delivery-form__input-wrapper">
@@ -299,25 +297,36 @@
                       type="text"
                       class="delivery-form__input"
                       name="userLastName"
+                      id="userLastName"
                       placeholder="Enter your last name"
+                      minlength="2"
+                      maxlength="50"
+                      pattern="^[a-z ,.'-]+$"
+                      required
                     />
                   </label>
                   <label class="delivery-form__input-wrapper">
                     <input
                       type="email"
                       class="delivery-form__input"
+                      id="userEmail"
                       name="userEmail"
                       placeholder="Enter your email"
+                      pattern="(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"
+                      required
                     />
                   </label>
-                  <label class="delivery-form__input-wrapper">
+                  <label class="delivery-form__input-wrapper" for="userPhone">
                     <input
                       type="tel"
                       class="delivery-form__input phone_with_ddd"
                       name="userPhone"
+                      id="userPhone"
                       placeholder="Enter your phone"
-                      pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                      pattern="\(\+38\)[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
+                      required
                     />
+                    <span class="error" aria-live="polite"></span>
                   </label>
                 </div>
                 <h3 class="delivery-form__title" id="address__details">
@@ -332,9 +341,13 @@
                     <input
                       type="text"
                       class="delivery-form__input"
-                      name="country"
+                      name="userCountry"
+                      id="userCountry"
                       list="countries"
                       placeholder="Enter your country"
+                      minlength="2"
+                      maxlength="50"
+                      required
                     />
                   </label>
                   <datalist id="countries">
@@ -351,6 +364,9 @@
                       name="city"
                       list="cities"
                       placeholder="Enter your city"
+                      minlength="2"
+                      maxlength="50"
+                      required
                     />
                   </label>
                   <datalist id="cities">
@@ -366,6 +382,9 @@
                       class="delivery-form__input"
                       name="address"
                       placeholder="Enter your Аddress"
+                      minlength="2"
+                      maxlength="200"
+                      required
                     />
                   </label>
 
@@ -377,6 +396,7 @@
                       max="2021-12-31"
                       name="date"
                       placeholder="Delivery date"
+                      required
                     />
                   </label>
                   <label class="delivery-form__input-wrapper">
@@ -546,6 +566,7 @@
                       class="footer-main__form-input"
                       type="email"
                       placeholder="Enter your email"
+                      required
                     />
                     <button class="footer-main__form-btn" type="submit">
                       <svg class="send-icon" width="24" height="24">
@@ -598,122 +619,17 @@
       <!-- -------------- FOOTER  -------------->
     </div>
 
-
-
-    <script
-      type="text/javascript"
-      src="//code.jquery.com/jquery-1.11.0.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="//code.jquery.com/jquery-migrate-1.2.1.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"
-    ></script>
-
-    <script>
-      $(document).ready(function(){
-        $('.phone_with_ddd').mask(
-            '(+38) Z00-000-00-00',
-             {
-               placeholder: "(+38) 0__-___-__-__",
-               translation: {'Z':{pattern:/0/}}
-              },
-        );
-      });
-    </script>
-
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $(".testimonials__wrapper").slick({
-          infinite: true,
-          speed: 300,
-          slidesToShow: 1,
-          dots: false,
-          swipe: true,
-          nextArrow: ".testimonials__next",
-          prevArrow: ".testimonials__prev",
-          //
-          dots: true,
-          appendDots: ".testimonials__dots",
-          customPaging: function (slick, index) {
-            return `<span class="slick-icon">0${index + 1}.<span/>`;
-          },
-        });
-      });
-    </script>
-
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $(".promo__container").slick({
-          infinite: true,
-          speed: 300,
-          slidesToShow: 1,
-          arrows: false,
-          swipe: false,
-          fade: true,
-        });
-
-        $(".hero__container").slick({
-          infinite: true,
-          speed: 300,
-          slidesToShow: 1,
-          //
-          dots: true,
-          appendDots: ".hero__dots",
-          customPaging: function (slick, index) {
-            return `<span class="slick-icon">0${index + 1}. <span/>`;
-          },
-          //
-          arrows: true,
-          nextArrow: ".hero__btn__next",
-          prevArrow: ".hero__btn__prev",
-        });
-
-        $(".hero__container").on(
-          "afterChange",
-          function (event, slick, currentSlide, nextSlide) {
-            $(".promo__container").slick("slickGoTo", currentSlide);
-          }
-        );
-      });
-    </script>
-
     <script type="text/javascript">
       // toggle header transparent/opaque on scroll
-      let header = document.querySelector(".header");
+      let header = document.querySelector('.header');
 
-      window.addEventListener("scroll", () => {
+      window.addEventListener('scroll', () => {
         if (window.pageYOffset > 10) {
-          header.classList.add("background__white");
+          header.classList.add('background__white');
         } else if (window.pageYOffset <= 10) {
-          header.classList.remove("background__white");
+          header.classList.remove('background__white');
         }
       });
-    </script>
-
-    <script>
-      (() => {
-        const menuBtnRef = document.querySelector("[data-menu-button]");
-        const mobileMenuRef = document.querySelector("[data-menu]");
-        const mobileBtnClose = document.querySelector("[data-menu-close]");
-
-        menuBtnRef.addEventListener("click", () => {
-          mobileMenuRef.classList.toggle("mobile-menu--is-open");
-          menuBtnRef.classList.toggle("mobile-menu--is-open");
-        });
-
-        mobileBtnClose.addEventListener("click", () => {
-          mobileMenuRef.classList.toggle("mobile-menu--is-open");
-          menuBtnRef.classList.toggle("mobile-menu--is-open");
-        });
-      })();
     </script>
   </body>
 </html>

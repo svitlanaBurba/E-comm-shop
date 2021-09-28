@@ -10,16 +10,6 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Sulphur+Point:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"
-    />
   </head>
   <body>
     <div class="main-container">
@@ -277,12 +267,12 @@
              <a href="" class="checkout-back"><span class="arrow-icon">&#8592</span> back</a> 
        
             <!-- FORM BLOCK -->
-            <form action="index.html" class="form-wrapper" name="payment-form"
+        <form id="checkout2-form" action="index.html" class="form-wrapper" name="payment-form"
             autocomplete="on">
           <div action="#" class="delivery-form">
-            <div class="payment-method">
+              <div class="payment-method">
               <div class="payment-method__radio-wrapper">
-                  <input class="payment-method__radio-input" name="card" id="visaMastercard" type="radio">
+                  <input type="radio" required name="card"  id="visaMastercard" value="visaMastercard" class="payment-method__radio-input" checked>
                   <label class="payment-method__radio-label" for="visaMastercard">
                   <span class="payment-method__image-wrapper">
                   <img src="./assets/checkout/visa.png" alt="card">
@@ -293,31 +283,32 @@
                   Visa/Mastercard
                   </label>
               </div>
-            </div>
+            </div>  
 
               <div class="card-details">
                 <label class="card-details__title" for="cardNumber">Сard number</label>
-                <input type="text" class="card-details__input" id="cardNumber" placeholder="xxxx    -    xxxx    -    xxxx    -    xxxx" data-mask="9999    -   9999    -   9999    -   9999" inputmode="text">
+                <input type="text" id="cardNumber" name="cardNumber" class="card-details__input card-number" minlength="19" maxlength="19" placeholder="xxxx - xxxx - xxxx - xxxx" required>
                 <div class="card-details__titles">
                   <h4 class="card-details__title">Expiration date</h4>
                   <h4 class="card-details__title">Security code</h4>
                 </div>
                 <div class="card-details__data">
                   <div class="card-details__input-wrapper">
-                    <input type="text" class="card-details__input" placeholder="yy" data-mask="99" inputmode="text">
+                    <input type="number" id="cardDetailsExpirationYear" name="cardDetailsExpirationYear" class="card-details__input expiration-year" placeholder="yy" min="21" max="30" required>
                   </div>
                   <div class="card-details__input-wrapper">
-                    <input type="text" class="card-details__input" placeholder="mm" data-mask="99" inputmode="text">
+                    <input type="number" id="cardDetailsExpirationMonth" name="cardDetailsExpirationMonth" class="card-details__input expiration-month" placeholder="mm" min="1" max="12" required>
                   </div>
                   <div class="card-details__input-wrapper">
-                    <input type="text" class="card-details__input" placeholder="cvv" data-mask="999" inputmode="text">
+                    <input type="number" id="cardDetailsCVV" name="cardDetailsCVV" class="card-details__input security-code" placeholder="cvv" required>
                   </div>
                 </div>
                 </div>
 
-                <div class="payment-method">
+
+                  <div class="payment-method">
                   <div class="payment-method__radio-wrapper">
-                      <input class="payment-method__radio-input" name="card" id="paypal" type="radio">
+                      <input class="payment-method__radio-input" name="card" id="paypal" value="paypal" type="radio" required>
                       <label class="payment-method__radio-label" for="paypal">
                       <span class="payment-method__image-wrapper">
                       <img src="./assets/checkout/paypal.png" alt="card">
@@ -325,11 +316,11 @@
                       Pay Pal
                       </label>
                   </div>
-                </div>
+                </div>  
 
-                <div class="payment-method">
+                 <div class="payment-method">
                     <div class="payment-method__radio-wrapper">
-                        <input class="payment-method__radio-input" name="card" id="payoneer" type="radio">
+                        <input class="payment-method__radio-input" name="card" id="payoneer" type="radio" required>
                         <label class="payment-method__radio-label" for="payoneer">
                         <span class="payment-method__image-wrapper">
                         <img src="./assets/checkout/payeer.png" alt="card">
@@ -337,7 +328,7 @@
                         Payoneer
                         </label>
                     </div>
-                </div>
+                </div> 
               </div>
 
            <!-- ORDER BLOCK -->
@@ -474,75 +465,9 @@
       <!-- -------------- FOOTER  -------------->
     </div>
 
-    <script
-      type="text/javascript"
-      src="//code.jquery.com/jquery-1.11.0.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="//code.jquery.com/jquery-migrate-1.2.1.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
-    ></script>
 
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $(".testimonials__wrapper").slick({
-          infinite: true,
-          speed: 300,
-          slidesToShow: 1,
-          dots: false,
-          swipe:true,
-          nextArrow: ".testimonials__next",
-          prevArrow: ".testimonials__prev",
-         //
-         dots:true,
-          appendDots: '.testimonials__dots',
-          customPaging: function(slick,index) {
-                    return `<span class="slick-icon">0${index+1}.<span/>`;
-                },
-        });
-      });
-    </script>
 
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $(".promo__container").slick({
-          infinite: true,
-          speed: 300,
-          slidesToShow: 1,
-          arrows: false,
-          swipe: false,
-          fade: true,
-        });
-
-        $(".hero__container").slick({
-          infinite: true,
-          speed: 300,
-          slidesToShow: 1,
-          //
-          dots: true,
-          appendDots: ".hero__dots",
-          customPaging: function(slick,index) {
-                    return `<span class="slick-icon">0${index+1}. <span/>`;
-                },
-          //
-          arrows: true,
-          nextArrow: ".hero__btn__next",
-          prevArrow: ".hero__btn__prev",
-        });
-
-        $(".hero__container").on(
-          "afterChange",
-          function (event, slick, currentSlide, nextSlide) {
-            $(".promo__container").slick("slickGoTo", currentSlide);
-          }
-        );
-      });
-    </script>
-
+    
     <script type="text/javascript">
       // toggle header transparent/opaque on scroll
       let header = document.querySelector(".header");
