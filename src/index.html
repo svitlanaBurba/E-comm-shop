@@ -32,7 +32,7 @@
             </div>
             <div>
               Call us:
-              <a href="tel:18004527887"><strong>+1 800 452 78 87</strong></a>
+              <a class = "header__phone" href="tel:18004527887"><strong>+1 800 452 78 87</strong></a>
             </div>
           </div>
           <div class="header__primary">
@@ -223,14 +223,11 @@
         <!-- -------------- HERO  -------------->
         <section class="promo">
           <div class="promo__container">
-            <div class="promo__slide">
-              <img src="assets/hero/wedding_landing1.jpg" />
+            <div class="promo__slide--1">
             </div>
-            <div class="promo__slide">
-              <img src="assets/hero/wedding_landing2.jpg" />
+            <div class="promo__slide--2">
             </div>
-            <div class="promo__slide">
-              <img src="assets/hero/wedding_landing3.jpg" />
+            <div class="promo__slide--3">
             </div>
           </div>
         </section>
@@ -275,8 +272,8 @@
           <div class="hero__ctrls">
             <div class="hero__dots"></div>
             <div class="hero__btns">
-              <div class="hero__btn__prev">prev</div>
-              <div class="hero__btn__next">next</div>
+              <div class="hero__btn__prev"><span class="arrow-icon">&#8592</span> prev</div>
+              <div class="hero__btn__next">next<span class="arrow-icon">&#8594</span> </div>
             </div>
           </div>
         </section>
@@ -833,7 +830,7 @@
 
                 <h4 class="blog__title">
                   <a href="#"
-                    >Modern and trading decorations for wedding 2020</a
+                    >How to prepare everything on the high level</a
                   >
                 </h4>
               </li>
@@ -841,7 +838,7 @@
               <li class="blog__item">
                 <div class="blog__img-wrapper">
                   <a href="#">
-                    <img class="" src="./assets/blog/blog1.jpg" alt="img" />
+                    <img class="" src="./assets/blog/blog2.jpg" alt="img" />
                   </a>
                 </div>
 
@@ -860,7 +857,7 @@
 
                 <h4 class="blog__title">
                   <a href="#"
-                    >Modern and trading decorations for wedding 2020</a
+                    >The most important things when you choose the flowers</a
                   >
                 </h4>
               </li>
@@ -868,7 +865,7 @@
               <li class="blog__item">
                 <div class="blog__img-wrapper">
                   <a href="#">
-                    <img class="" src="./assets/blog/blog1.jpg" alt="img" />
+                    <img class="" src="./assets/blog/blog3.jpg" alt="img" />
                   </a>
                 </div>
 
@@ -956,9 +953,11 @@
               </div>
             </div>
             <div class="testimonials__btn">
-              <div class="testimonials__prev">prev</div>
-              <div class="testimonials__next">next</div>
+              <div class="testimonials__prev"><span class="arrow-icon">&#8592</span> prev</div>
+              <div class="testimonials__next">next<span class="arrow-icon">&#8594</span> </div>
             </div>
+            <div class="testimonials__dots">
+             </div>
           </div>
         </section>
         <!-- -------------- TESTIMONIALS SECTION  -------------->
@@ -980,7 +979,7 @@
                   More actions and bonuses you can find in our Instagram.
                 </p>
               </div>
-              <a href="#" class="instagram__btn"> follow us </a>
+              <a href="#" class="instagram__btn"> follow us <span class="arrow-icon">&#8594</span> </a>
             </div>
           </div>
           <div class="instagram__right-column">
@@ -1103,12 +1102,20 @@
           infinite: true,
           speed: 300,
           slidesToShow: 1,
-          dots: true,
+          dots: false,
+          swipe:true,
           nextArrow: ".testimonials__next",
           prevArrow: ".testimonials__prev",
+         //
+         dots:true,
+          appendDots: '.testimonials__dots',
+          customPaging: function(slick,index) {
+                    return `<span class="slick-icon">0${index+1}.<span/>`;
+                },
         });
       });
     </script>
+
     <script type="text/javascript">
       $(document).ready(function () {
         $(".promo__container").slick({
@@ -1124,8 +1131,13 @@
           infinite: true,
           speed: 300,
           slidesToShow: 1,
+          //
           dots: true,
           appendDots: ".hero__dots",
+          customPaging: function(slick,index) {
+                    return `<span class="slick-icon">0${index+1}. <span/>`;
+                },
+          //
           arrows: true,
           nextArrow: ".hero__btn__next",
           prevArrow: ".hero__btn__prev",
@@ -1161,10 +1173,12 @@
 
         menuBtnRef.addEventListener("click", () => {
           mobileMenuRef.classList.toggle("mobile-menu--is-open");
+          menuBtnRef.classList.toggle("mobile-menu--is-open");
         });
 
         mobileBtnClose.addEventListener("click", () => {
           mobileMenuRef.classList.toggle("mobile-menu--is-open");
+          menuBtnRef.classList.toggle("mobile-menu--is-open");
         });
       })();
     </script>
