@@ -4,18 +4,17 @@ import onCheckout1Load from './scripts/checkout1';
 import onCheckout2Load from './scripts/checkout2';
 import onMainLoad from './scripts/main';
 
-const pathname = window.location.pathname;
-console.log('pathname', pathname);
+const page = document.getElementsByTagName("head")[0].dataset['page'];
 
-if (pathname === '/checkout2.html') {
+if (page === 'checkout2') {
   onCheckout2Load();
 }
 
-if (pathname === '/checkout1.html') {
+if (page === 'checkout1') {
   onCheckout1Load();
 }
 
-if (pathname === '/index.html' || pathname === '/') {
+if (page === 'index') {
   onMainLoad();
 
   const timer = new CountdownTimer({
