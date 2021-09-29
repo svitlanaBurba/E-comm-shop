@@ -1,8 +1,8 @@
 .footer{
     position: relative;
     padding-top: 110px;
-    background-color: $light-bg-color;
     background: url("../assets/footer/petals-footer.png") no-repeat;
+    background-color: $light-bg-color;
 
     @media (max-width: 767px){
     padding-top: 50px;
@@ -83,9 +83,6 @@
 .footer-main__input-wrapper{
     display: flex;
     flex-wrap: wrap;
-    // max-width: 700px;
-    // width: 100%;
-
 }
 
 .footer-main__form-input {
