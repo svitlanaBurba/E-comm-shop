@@ -4,7 +4,7 @@ const products = [
     id: 1,
     name: 'White Long Dress With Train',
     price: 2285,
-    image: './assets/products/white-dress.jpg',
+    image: img1,
     categories: ['Wedding Dresses', 'Jewelry'],
     popular: true
   },
@@ -12,7 +12,7 @@ const products = [
     id: 2,
     name: 'Black Classic Suit',
     price: 1855,
-    image: './assets/products/black-wedding-suit.jpg',
+    image: img2,
     categories: ['Wedding Suits'],
     popular: true
   },
@@ -20,7 +20,7 @@ const products = [
     id: 3,
     name: 'Beautiful Glasses For Newlyweds',
     price: 168,
-    image: './assets/products/wedding-glasses.jpg',
+    image: img3,
     categories: ['Accessories'],
     popular: true
   },
@@ -28,7 +28,7 @@ const products = [
     id: 4,
     name: 'Candles For The Ceremony',
     price: 69,
-    image: './assets/products/wedding-candles.jpg',
+    image: img4,
     categories: ['Decorations'],
     popular: true
   },
@@ -36,7 +36,7 @@ const products = [
     id: 5,
     name: 'White Long Dress With Train',
     price: 2795,
-    image: './assets/products/white-dress-train.jpg',
+    image: img5,
     categories: ['Wedding Dresses'],
     popular: true
   },
@@ -44,7 +44,7 @@ const products = [
     id: 6,
     name: 'Navy Classic Suit',
     price: 1318,
-    image: './assets/products/navy-suit.jfif',
+    image: img6,
     categories: ['Wedding Suits', 'Wedding Shoes'],
     popular: true
   }
