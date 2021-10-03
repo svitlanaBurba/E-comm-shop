@@ -148,6 +148,10 @@
         fill:$main-color;
         stroke:$main-color;
     }
+
+    &--cart{
+        @extend .header__user-menu-link;
+    }
 }
 
 .header__user-menu-icon{
@@ -477,7 +481,4 @@ font-size: 20px;
     display: flex;
     flex-direction: column;
 }
-
-  
-
 
