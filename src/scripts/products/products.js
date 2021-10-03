@@ -1,3 +1,4 @@
+
 const products = [
   {
     id: 1,
@@ -48,5 +49,16 @@ const products = [
     popular: true
   }
 ];
+
+/* this is a hack to make webpack to load product images into a dist/asset folder
+   in prod this would not be required as images would be sourced from external API
+*/
+
+import img1 from '../../assets/products/white-dress.jpg';
+import img2 from '../../assets/products/black-wedding-suit.jpg';
+import img3 from '../../assets/products/wedding-glasses.jpg';
+import img4 from '../../assets/products/wedding-candles.jpg';
+import img5 from '../../assets/products/white-dress-train.jpg';
+import img6 from '../../assets/products/navy-suit.jfif';
 
 export default products;
