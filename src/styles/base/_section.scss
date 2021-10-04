@@ -69,3 +69,12 @@
         font-size: 14px;
 }
 }
+
+.section__loading {
+  display:none;
+  text-align: center;
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

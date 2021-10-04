@@ -3,11 +3,40 @@ import 'jquery-mask-plugin';
 import 'jquery-validation';
 import 'slick-carousel';
 
+import CountdownTimer from './timer';
+
+import './cart/toggleCart';
+import fetchProducts from './products/fetchProducts';
+import {setupStore, store} from './store.js';
+import renderProducts from './products/renderProducts.js';
+import setupProductCategories from './filters/productCategories';
+
+
 const onMainLoad = () => {
-  $(document).ready(function () {
-    //addSliders();
-  });
+  setupProductsSection();
+  setupTimer();
+  addSliders();
 };
+
+const setupProductsSection = () => {
+      const products = fetchProducts();
+      if (products) {
+        // add products to the store
+        setupStore(products);
+        const popular = store.filter(product => product.popular === true);
+        renderProducts(popular, document.querySelector('.products__list'));
+
+        setupProductCategories(store);
+      }
+}
+
+const setupTimer = () => {
+    const timer = new CountdownTimer({
+      selector: '#timer-main',
+      targetDate: new Date('Oct 05, 2021')
+    });
+    timer.start();
+}
 
 const addSliders = () => {
   console.log('Adding sliders');
@@ -56,7 +85,7 @@ const addSliders = () => {
 
     $('.hero__container').on(
       'afterChange',
-      function (event, slick, currentSlide, nextSlide) {
+      function (event, slick, currentSlide) {
         $('.promo__container').slick('slickGoTo', currentSlide);
       }
     );
