@@ -7,10 +7,13 @@ import './formValidators/inListValidator';
 import './formValidators/phoneNumberValidator';
 import './formValidators/emailValidator';
 
+import setupDeliveryFormSubmit from './formHandlers/handleDeliveryFormSubmit';
+
 const onCheckout1Load = () => {
   $(document).ready(function () {
     addFormInputMasks();
     addFormInputValidation();
+    setupDeliveryFormSubmit();
   });
 };
 

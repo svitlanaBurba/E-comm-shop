@@ -391,12 +391,12 @@
              <a href="checkout1.html" class="checkout-back"><span class="arrow-icon">&#8592</span> back</a> 
        
             <!-- FORM BLOCK -->
-        <form id="checkout2-form" action="index.html" class="form-wrapper" name="payment-form"
+        <form id="payment-form" action="index.html" class="form-wrapper" name="payment-form"
             autocomplete="on">
           <div action="#" class="delivery-form">
               <div class="payment-method">
               <div class="payment-method__radio-wrapper">
-                  <input type="radio" required name="card"  id="visaMastercard" value="visaMastercard" class="payment-method__radio-input" checked>
+                  <input type="radio" required name="cardType"  id="visaMastercard" value="visaMastercard" class="payment-method__radio-input" checked>
                   <label class="payment-method__radio-label" for="visaMastercard">
                   <span class="payment-method__image-wrapper">
                   <img src="./assets/checkout/visa.png" alt="card">
@@ -432,7 +432,7 @@
 
                   <div class="payment-method">
                   <div class="payment-method__radio-wrapper">
-                      <input class="payment-method__radio-input" name="card" id="paypal" value="paypal" type="radio" required>
+                      <input class="payment-method__radio-input" name="cardType" id="paypal" value="paypal" type="radio" required>
                       <label class="payment-method__radio-label" for="paypal">
                       <span class="payment-method__image-wrapper">
                       <img src="./assets/checkout/paypal.png" alt="card">
@@ -444,7 +444,7 @@
 
                  <div class="payment-method">
                     <div class="payment-method__radio-wrapper">
-                        <input class="payment-method__radio-input" name="card" id="payoneer" type="radio" required>
+                        <input class="payment-method__radio-input" name="cardType" id="payoneer" value="payoneer" type="radio" required>
                         <label class="payment-method__radio-label" for="payoneer">
                         <span class="payment-method__image-wrapper">
                         <img src="./assets/checkout/payeer.png" alt="card">
