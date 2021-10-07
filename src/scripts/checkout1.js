@@ -7,13 +7,12 @@ import './formValidators/inListValidator';
 import './formValidators/phoneNumberValidator';
 import './formValidators/emailValidator';
 
-import setupDeliveryFormSubmit from './formHandlers/handleDeliveryFormSubmit';
+import handleDeliveryFormSubmit from './formHandlers/handleDeliveryFormSubmit';
 
 const onCheckout1Load = () => {
   $(document).ready(function () {
     addFormInputMasks();
-    addFormInputValidation();
-    setupDeliveryFormSubmit();
+    addFormInputValidation(handleDeliveryFormSubmit);
   });
 };
 
@@ -24,9 +23,11 @@ const addFormInputMasks = () => {
   });
 };
 
-const addFormInputValidation = () => {
+const addFormInputValidation = (submitHandler) => {
+  console.log(submitHandler);
   // add validation for a form
   $('#delivery-form').validate({
+    submitHanlder: function(form,event){event.preventDefault();console.log(event)},
     rules: {
       userName: {
         required: true,

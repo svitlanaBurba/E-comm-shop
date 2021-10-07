@@ -1,6 +1,7 @@
 import { getElement } from "../utils"
 
 const handleDeliveryFormSubmit = e => {
+    console.log('handleDeliveryFormSubmit');
     e.preventDefault();
 
     const formData = new FormData(e.target);
@@ -16,10 +17,6 @@ const handleDeliveryFormSubmit = e => {
     return formJson;
 }
 
-const setupDeliveryFormSubmit = () => {
-    const deliveryForm = getElement('#delivery-form');
-    deliveryForm.addEventListener("submit", handleDeliveryFormSubmit);
 
-}
 
-export default setupDeliveryFormSubmit;
+export default handleDeliveryFormSubmit;

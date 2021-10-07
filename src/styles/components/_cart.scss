@@ -179,7 +179,7 @@
     line-height: 170%;
     color: $grey-color;
   }
-  .order-summary__text {
+  .order-summary__text--price, .order-summary__text--delivery {
     font-weight: 500;
     color: $titles-color;
   }

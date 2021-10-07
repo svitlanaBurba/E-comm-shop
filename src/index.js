@@ -1,3 +1,6 @@
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+
 import './styles/styles.scss';
 
 import onCheckout1Load from './scripts/checkout1';

@@ -202,7 +202,7 @@
                     <svg class="header__user-menu-icon" width="20" height="20">
                       <use href="./assets/sprite.svg#icon-heart"></use>
                     </svg>
-                    <span class="header__user-menu-count">0</span>
+                    <span class="header__user-menu-count--heart">0</span>
                   </a>
                 </li>
                 <li class="header__user-menu-item">
@@ -210,7 +210,7 @@
                     <svg class="header__user-menu-icon" width="20" height="20">
                       <use href="./assets/sprite.svg#icon-shopping-bag"></use>
                     </svg>
-                    <span class="header__user-menu-count">0</span>
+                    <span class="header__user-menu-count--cart">0</span>
                   </a>
                 </li>
               </ul>
@@ -234,87 +234,12 @@
 
         <h2 class="order__title">your order</h2>
         <ul class="order__product-list">
-          <li class="order-card" data-id="">
-            <a class="order-card__link" href="#">
-              <img
-                class="order-card__photo"
-                src="./assets/products/navy-suit.jfif"
-                alt="photo"
-              />
-            </a>
-            <div class="order-card__info">
-              <h3 class="order-card__title">
-                <a class="order-card__title-link" href=""
-                  >Navy Classic Suit
-                  <span class="order-card__quantity">x1</span></a
-                >
-              </h3>
-              <span class="order-card__new-price">$1,318</span>
-              <span class="order-card__old-price">$1,995</span>
-            </div>
-            <div class="order-card-buttons">
-              <button class="order-card-increase-btn">
-                <svg class="order-card-increase-icon" width="15" height="15">
-                  <use href="./assets/sprite.svg#icon-minus"></use>
-                </svg>
-              </button>
-              <span class="cart-item-amount">1</span>
-              <button class="order-card-decrease-btn">
-                <svg class="order-card-decrease-icon" width="15" height="15">
-                  <use href="./assets/sprite.svg#icon-plus"></use>
-                </svg>
-              </button>
-              <button class="order-card-remove-btn">
-                <svg class="order-card-remove-icon" width="18" height="18">
-                  <use href="./assets/sprite.svg#icon-trash-o"></use>
-                </svg>
-              </button>
-            </div>
-          </li>
-
-          <li class="order-card" data-id="">
-            <a class="order-card__link" href="#">
-              <img
-                class="order-card__photo"
-                src="./assets/products/wedding-candles.jpg"
-                alt="photo"
-              />
-            </a>
-            <div class="order-card__info">
-              <h3 class="order-card__title">
-                <a class="order-card__title-link" href=""
-                  >Candles For The Ceremony
-                  <span class="order-card__quantity">x1</span></a
-                >
-              </h3>
-              <span class="order-card__new-price">$69</span>
-            </div>
-            <div class="order-card-buttons">
-              <button class="order-card-increase-btn">
-                <svg class="order-card-increase-icon" width="15" height="15">
-                  <use href="./assets/sprite.svg#icon-minus"></use>
-                </svg>
-              </button>
-              <span class="cart-item-amount">1</span>
-              <button class="order-card-decrease-btn">
-                <svg class="order-card-decrease-icon" width="15" height="15">
-                  <use href="./assets/sprite.svg#icon-plus"></use>
-                </svg>
-              </button>
-
-              <button class="order-card-remove-btn">
-                <svg class="order-card-remove-icon" width="18" height="18">
-                  <use href="./assets/sprite.svg#icon-trash-o"></use>
-                </svg>
-              </button>
-            </div>
-          </li>
         </ul>
 
         <ul class="order-summary">
           <li class="order-summary__item">
             <div class="order-summary__title">Оrder price</div>
-            <div class="order-summary__text">$1,387</div>
+            <div class="order-summary__text--price">$0</div>
           </li>
           <li class="order-summary__item">
             <div class="order-summary__title">
@@ -326,11 +251,11 @@
             <div class="order-summary__title">
               Delivery <span>(Oct 02 at 14:35)</span>
             </div>
-            <div class="order-summary__text">$25</div>
+            <div class="order-summary__text--delivery">$0</div>
           </li>
           <li class="order-summary__total">
             <div class="order-summary__title">Total</div>
-            <div class="order-summary__amount">$1,412</div>
+            <div class="order-summary__amount">$0</div>
           </li>
         </ul>
 
