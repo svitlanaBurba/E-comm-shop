@@ -1,9 +1,6 @@
 import { getElement } from "../utils"
 
 const handleDeliveryFormSubmit = e => {
-    console.log('handleDeliveryFormSubmit');
-    e.preventDefault();
-
     const formData = new FormData(e.target);
 
     //transforming key-value pairs into an object
