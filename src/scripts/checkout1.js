@@ -23,11 +23,10 @@ const addFormInputMasks = () => {
   });
 };
 
-const addFormInputValidation = (submitHandler) => {
-  console.log(submitHandler);
+const addFormInputValidation = (submitCallback) => {
+
   // add validation for a form
-  $('#delivery-form').validate({
-    submitHanlder: function(form,event){event.preventDefault();console.log(event)},
+  $('#delivery-form').validate({    
     rules: {
       userName: {
         required: true,
@@ -54,7 +53,8 @@ const addFormInputValidation = (submitHandler) => {
         userPhone:{ 
           required: "Please input phone number"
       }
-    }
+    },
+    submitHandler: function(form,event){submitCallback(event);form.submit();},
   });
 };
 
