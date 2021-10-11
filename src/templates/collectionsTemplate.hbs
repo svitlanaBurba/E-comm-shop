@@ -1,0 +1,16 @@
+{{#each this}}
+<div class="categories-galery__item">
+              <a href="#" class="categories-galery__link">
+                <div class="categories-galery__wrapper">
+                  <img src="{{img}}" alt="img" width="100" />
+                  <div class="categories-galery__heading">
+                    <svg class="section__rings" width="30" height="20">
+                      <use href="./assets/sprite.svg#icon-rings"></use>
+                    </svg>
+                    <h3 class="categories-galery__title">{{name}}</h3>
+                    <a href="shop.html#{{name}}" class="btn-main invisible"> view products </a>
+                  </div>
+                </div>
+              </a>
+            </div>
+    {{/each}}

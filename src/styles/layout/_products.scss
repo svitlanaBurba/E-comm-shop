@@ -5,6 +5,10 @@
   @media (max-width: 767px) {
     padding: 75px 0 40px;
   }
+
+  & .products-nav span {
+display:none;
+  }
 }
 .products-nav {
   display: flex;
@@ -78,6 +82,7 @@
   font-weight: 400;
   line-height: 1.7;
   color: $text-color;
+  overflow-wrap: anywhere;
 }
 
 .card__price {

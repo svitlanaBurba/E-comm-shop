@@ -66,7 +66,7 @@ import {
         let delivery=0;
             if (total >0 && total <=1000) {delivery = 50;} else
             if (total > 1000 && total <=3000) {delivery = 25;}
-console.log(delivery);
+
               cartOrderTotals.forEach(el => el.textContent = formatPrice(total));
               cartOrderDelivery.forEach(el=>el.textContent = formatPrice(delivery));
               cartTotals.forEach(el=>el.textContent = 

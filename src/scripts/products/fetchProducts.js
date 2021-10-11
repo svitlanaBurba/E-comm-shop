@@ -1,7 +1,7 @@
 // import products from "./products";
 
 const fetchProducts = async () => {
-  const response = await fetch('http://localhost:3030/products?category.id=pcmcat274200050008')
+  const response = await fetch('http://localhost:3030/products?category.id=pcmcat274200050008&$limit=60000')
   .catch((err) => console.log(err));
   if (response) {
     return response.json();

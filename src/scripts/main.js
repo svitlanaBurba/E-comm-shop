@@ -9,27 +9,43 @@ import './cart/toggleCart';
 import './cart/setupCart';
 
 import fetchProducts from './products/fetchProducts';
-import {setupStore, store} from './store.js';
+import fetchCollectionImages from './collections/fetchCollectionImages';
+
+import {setupStore, store, categories, setupCategories} from './store.js';
 import renderProducts from './products/renderProducts.js';
 import setupProductCategories from './filters/productCategories';
+import renderCollections from './collections/renderCollections';
 
 
-const onMainLoad = () => {
-  setupProductsSection();
+ const onMainLoad = async () => {
+  await setupProductsSection();
   setupTimer();
   addSliders();
 };
 
 const setupProductsSection = async () => {
       const products = await fetchProducts();
-      if (products) {
+      const collectionImages = await fetchCollectionImages();
+      console.log(collectionImages);
+
+      if (products && collectionImages.hits) {
         // add products to the store
         setupStore(products);
-        const expensive = store.filter(product => product.price > 15);
-        renderProducts(expensive, document.querySelector('.products__list'));
+        setupCategories(store,collectionImages.hits);
 
-        setupProductCategories(store);
+        renderSelectedPopularProducts("All");
+        // render categories buttons list
+   
+        setupProductCategories(categories, renderSelectedPopularProducts, "All");  
+      
+        renderCollections(categories, document.querySelector('.categories-galery2'))
       }
+}
+
+const renderSelectedPopularProducts = selectedCategory => {
+  // we don't have any 'popular' flag, so let's choose cheap products
+  const popularProducts = store.filter(product => product.price < 16);
+  renderProducts(popularProducts, document.querySelector('.products__list'), selectedCategory);
 }
 
 const setupTimer = () => {
@@ -41,7 +57,7 @@ const setupTimer = () => {
 }
 
 const addSliders = () => {
-  console.log('Adding sliders');
+
   $(document).ready(function () {
     $('.testimonials__wrapper').slick({
       infinite: true,
@@ -67,6 +83,14 @@ const addSliders = () => {
       arrows: false,
       swipe: false,
       fade: true
+    });
+
+    $('.categories-galery2').slick({
+      infinite: true,
+      speed: 300,
+      slidesToShow: 4,
+      arrows: true,
+      swipe: true,
     });
 
     $('.hero__container').slick({

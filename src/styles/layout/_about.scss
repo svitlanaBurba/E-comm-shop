@@ -6,7 +6,7 @@
 
 .about__container{
     display: flex;
-    @media (max-width: 992px) {
+    @media (max-width: 991px) {
     display: block;
     }
 }
@@ -23,7 +23,7 @@
 .about__left-column-wrapper{
     width: 100%;
     max-width: 550px;
-    @media (max-width: 992px) {
+    @media (max-width: 991px) {
         max-width: none;
         text-align: center;
         }
@@ -33,7 +33,7 @@
     margin: 0 auto 60px 0;
     text-align: left;
     max-width: 460px;
-    @media (max-width: 992px) {
+    @media (max-width: 991px) {
         text-align: center;
         margin-right: auto;
         margin-left: auto;
@@ -44,7 +44,7 @@
 .about__right-column{
     min-height: 700px;  
     flex: 0 1 50%;
-    @media (max-width: 992px) {
+    @media (max-width: 991px) {
         min-height: 0;
         padding-bottom: 65%;
         position: relative;
@@ -55,7 +55,7 @@
     position: relative;
     height: 100%;
     width: 100%;
-    @media (max-width: 992px) {
+    @media (max-width: 991px) {
         position: absolute;
         top: 0;
         left: 0;
