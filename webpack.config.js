@@ -60,6 +60,13 @@ module.exports = {
         collapseWhitespace: isProd
       }
     }),
+    new HTMLWebpackPlugin({
+      template: './shop.html',
+      filename: './shop.html',
+      minify: {
+        collapseWhitespace: isProd
+      }
+    }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css'
@@ -130,6 +137,10 @@ module.exports = {
       {
         test: /\.(html)$/,
         use: ['html-loader']
+      },
+      {
+        test: /\.hbs$/,
+        use: 'handlebars-loader',
       }
     ]
   },

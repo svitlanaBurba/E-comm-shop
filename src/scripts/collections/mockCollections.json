@@ -1,0 +1,13 @@
+[
+  { "name": "All", "count": 72, "img" : "./assets/categories/accessories.jpg" },
+  { "name": "Toys, Games & Drones", "count": 72, "img" : "./assets/categories/dresses.jpg" } ,
+  { "name": "Games, Puzzles & Cards", "count": 72, "img" : "./assets/categories/decorations.jpg" } ,
+  { "name": "Puzzles", "count": 5, "img" : "./assets/categories/wedding-suits.jpg" } ,
+  { "name": "Board Games", "count": 5, "img" : "./assets/categories/accessories.jpg" } ,
+  { "name": "Cards, Poker & Casino Games", "count": 53, "img" : "./assets/categories/dresses.jpg" } ,
+  { "name": "Playing Cards & Games", "count": 7, "img" : "./assets/categories/decorations.jpg" } ,
+  { "name": "Casino Games & Machines", "count": 42, "img" : "./assets/categories/wedding-suits.jpg" } ,
+  { "name": "Poker Chip Sets", "count": 4, "img" : "./assets/categories/accessories.jpg" } ,
+  { "name": "Electronic Games", "count": 4, "img" : "./assets/categories/dresses.jpg" } 
+]
+

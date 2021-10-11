@@ -1,0 +1,237 @@
+.shop__header{
+    display: flex;
+    margin-top: 109px;
+    margin-bottom: 30px;
+
+    @media (max-width: 991px){
+        flex-direction: column;
+    }
+}
+
+.shop__header-left{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 0 0 244px;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+
+    @media (max-width: 991px){
+        flex: 0 1 100%;
+        padding-bottom: 10px;
+    }
+}
+
+.shop__header-right{
+    display: flex;
+    flex: auto;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 50px;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+    padding: 5px 0 10px;
+
+    @media (max-width: 991px){
+        flex: 0 1 100%;
+        margin-left: 0;
+        padding-top: 10px;
+    }
+
+    @media (max-width: 540px){
+        display: block;
+}
+}
+
+.form-search{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.form-search__input{
+    border: none;
+    width: 100%;
+} 
+
+.shop__header-summary{
+    font-size: 16px;
+    line-height: 170%;
+    color: $text-color;  
+
+    @media (max-width: 540px){
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+}
+}
+
+.shop__header-quantity{
+    font-weight: 600;
+}
+
+.form-relevance{
+    @media (max-width: 540px){
+        padding-top: 10px;
+}
+}
+
+.form-relevance__select{
+    font-size: 16px;
+    line-height: 170%;
+    color: $text-color;  
+    border: none;  
+    background-color: transparent;
+}
+
+.shop-sidebar__button{
+    display: none;
+    border: none;
+    background-color: transparent;
+    cursor:pointer;
+
+    @media (max-width: 991px){
+        display: flex;
+        margin-top: 10px;
+    }
+}
+
+.shop-main{
+    position: relative;
+    display: flex;
+
+    @media (max-width: 991px){
+        display: block;
+    }
+}
+
+.shop-sidebar{
+    flex: 0 0 244px;
+    padding: 10px 0 10px;
+
+    @media (max-width: 991px){
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 250px;
+        padding: 20px 15px 20px;
+        z-index: 10000;
+        background-color: $light-bg-color;
+        border-right: 1px solid rgba(236,157,171, 0.3);
+        border-top: 1px solid rgba(236,157,171, 0.3);
+        border-bottom: 1px solid rgba(236,157,171, 0.3);
+        transition: all .25s cubic-bezier(.4,0,.2,1);
+        min-height: 100%;
+    }
+    }
+
+    .shop-sidebar.show {
+        left: -15px;
+      }
+.shop-sidebar__button-close{
+    display: none;
+
+    @media (max-width: 991px){
+    position: absolute;
+    right: 15px;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    transition: .25s cubic-bezier(.4,0,.2,1);
+
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    }
+}
+
+.shop-sidebar__categories{
+        margin-bottom: 50px;   
+}
+
+.shop-sidebar__title{
+margin-bottom: 20px;
+font-family: $secondary-font;
+font-weight: normal;
+font-size: 24px;
+line-height: 120%;
+text-transform: capitalize;
+color: $titles-color;
+}
+
+.shop-sidebar__categories ul > li{
+    position: relative;
+    padding-left: 18px;
+
+    &:not(:last-child) {
+        margin-bottom: 7px;
+    }
+
+    &::before{
+        position: absolute;
+    content: '-';
+    top: 2px;
+    left: 0;
+    color: $grey-color;
+    }
+
+    & >a {
+        font-size: 14px;
+        line-height: 170%;
+        color: $text-color; 
+
+        & span {
+            margin-left: 10px;
+            font-size: 12px;
+            color: $grey-color;
+        }
+    }
+}
+
+.shop-sidebar__price{
+    margin-bottom: 50px;   
+}
+
+.slider {
+  appearance: none;
+    width: 100%;
+    height: 2px;
+    background: $main-color;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
+  }
+  
+  .slider:hover {
+    opacity: 1;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #ec9dab;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    cursor: pointer;
+  }
+  
+
+
+
+
+
+        .shop-galery{
+            flex: 1 1 auto;
+            margin-left: 50px;
+
+            @media (max-width: 991px){
+                margin-left: 0;
+            }
+        }
+
+
+
