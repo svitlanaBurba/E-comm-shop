@@ -5,7 +5,7 @@ const setupProductCategories = products => {
     // Create a list of categories from the product list (and add 'All' synthetic cateogy)
     let productCategories = [
         'All',
-        ...new Set(products.flatMap(product => product.categories))
+        ...new Set(products.flatMap(product => product.categories.map(category=>category.name)))
     ];
 
     // render filter buttons for categories
@@ -23,7 +23,7 @@ const setupProductCategories = products => {
             // create filtered list of products (for selected category only)
             let selectedCategoryProducts = (selectedCategory === 'All') ? 
                 [...products] :
-                products.filter(product => product.categories.includes(selectedCategory));
+                products.filter(product => product.categories.map(category=>category.name).includes(selectedCategory));
             
             // mark selected category button as 'Active'
             document.querySelectorAll('.products-nav__link').forEach(el => el.classList.remove('active'));

@@ -7,6 +7,14 @@ const getElement = (selection) => {
     );
 };
 
+const getElements = (selection) => {
+  const elements = document.querySelectorAll(selection);
+  if (elements) return elements;
+  throw new Error(
+    `Please check "${selection}" selector, there is no such element`
+  );
+};
+
 //Local Storage
 const getStorageItem = item => {
   let storageItem = localStorage.getItem(item);
@@ -34,4 +42,4 @@ const formatPrice = price => {
 };
 
 
-  export {getElement, getStorageItem, setStorageItem, formatPrice};
+  export {getElement,getElements, getStorageItem, setStorageItem, formatPrice};

@@ -6,6 +6,8 @@ import 'slick-carousel';
 import CountdownTimer from './timer';
 
 import './cart/toggleCart';
+import './cart/setupCart';
+
 import fetchProducts from './products/fetchProducts';
 import {setupStore, store} from './store.js';
 import renderProducts from './products/renderProducts.js';
@@ -18,13 +20,13 @@ const onMainLoad = () => {
   addSliders();
 };
 
-const setupProductsSection = () => {
-      const products = fetchProducts();
+const setupProductsSection = async () => {
+      const products = await fetchProducts();
       if (products) {
         // add products to the store
         setupStore(products);
-        const popular = store.filter(product => product.popular === true);
-        renderProducts(popular, document.querySelector('.products__list'));
+        const expensive = store.filter(product => product.price > 15);
+        renderProducts(expensive, document.querySelector('.products__list'));
 
         setupProductCategories(store);
       }

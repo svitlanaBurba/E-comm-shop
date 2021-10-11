@@ -7,10 +7,12 @@ import './formValidators/inListValidator';
 import './formValidators/phoneNumberValidator';
 import './formValidators/emailValidator';
 
+import handleDeliveryFormSubmit from './formHandlers/handleDeliveryFormSubmit';
+
 const onCheckout1Load = () => {
   $(document).ready(function () {
     addFormInputMasks();
-    addFormInputValidation();
+    addFormInputValidation(handleDeliveryFormSubmit);
   });
 };
 
@@ -21,9 +23,10 @@ const addFormInputMasks = () => {
   });
 };
 
-const addFormInputValidation = () => {
+const addFormInputValidation = (submitCallback) => {
+
   // add validation for a form
-  $('#delivery-form').validate({
+  $('#delivery-form').validate({    
     rules: {
       userName: {
         required: true,
@@ -50,7 +53,8 @@ const addFormInputValidation = () => {
         userPhone:{ 
           required: "Please input phone number"
       }
-    }
+    },
+    submitHandler: function(form,event){submitCallback(event);form.submit();},
   });
 };
 

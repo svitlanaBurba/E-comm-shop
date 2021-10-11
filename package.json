@@ -53,11 +53,13 @@
   },
   "dependencies": {
     "axios": "^0.21.4",
+    "core-js": "^3.18.2",
     "file-loader": "^6.2.0",
     "jquery": "^3.6.0",
     "jquery-mask-plugin": "^1.14.16",
     "jquery-validation": "^1.19.3",
     "normalize.css": "^8.0.1",
+    "regenerator-runtime": "^0.13.9",
     "slick-carousel": "^1.8.1"
   }
 }

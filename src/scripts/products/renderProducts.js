@@ -1,5 +1,5 @@
 import { formatPrice } from "../utils";
-import { openCart } from "../cart/toggleCart";
+import { addToCart } from "../cart/setupCart";
 const renderProducts = (products, element) => {
   // Render products
   element.innerHTML = products
@@ -50,7 +50,7 @@ const renderProducts = (products, element) => {
     element.addEventListener('click', function (e) {
       const parent = e.target.parentElement;
       if (parent.classList.contains('card__icons-btn')) {
-        openCart();
+        addToCart(parent.dataset.id);
       }
     });
 };

@@ -3,14 +3,15 @@ import 'jquery-mask-plugin';
 import 'jquery-validation';
 // import custom validator for names
 import './formValidators/nameValidator';
+import setupPaymentFormSubmit from './formHandlers/handlePaymentFormSubmit';
 
 
 const onCheckout2Load = () => {
   $(document).ready(function () {
     addFormInputMasks();
     addFormInputValidation();
-    //addFormInputValidationAPI();
-  });
+    setupPaymentFormSubmit();
+   });
 };
 
 const addFormInputMasks = () => {
@@ -33,7 +34,7 @@ const addFormInputMasks = () => {
 
 const addFormInputValidation = () => {
   // add validation for a form
-  $('#checkout2-form').validate({
+  $('#payment-form').validate({
     messages: {
       cardNumber: {
         minlength: 'Card number should have 16 digits',
@@ -43,9 +44,5 @@ const addFormInputValidation = () => {
   });
 };
 
-const addFormInputValidationAPI = () => {
-  const form = document.getElementById('checkout2-form');
-  console.dir(form);
-};
 
 export default onCheckout2Load;
