@@ -1,3 +1,4 @@
+
 import { getStorageItem, setStorageItem } from './utils.js';
 
 //Accessing products from the Local Storage
@@ -17,25 +18,22 @@ const setupStore = products => {
   setStorageItem('store', store);
 };
 
-const setupCategories = (products, categoryImages) => {
-  let productCategories = [
-    ...new Set(products.flatMap(product => product.categories.map(category=>category.name)))
-  ];
+const setupCategories = (categories, categoryImages) => {
+  // first category in a list is our main category (others are it's sub categories), so we can rename it to "All"
+  categories[0].name = "All";
 
-  categories =  productCategories.map(category => ({
-      name: category,
-      count: products.filter(product=>product.categories.filter(e => e.name === category).length>0).length
-    })
-  );
-
-  categories = [{name:"All", count: products.length},...categories];
-  
   // if array with category images was provided then enrich with image links - for main page only
   if (categoryImages) {
     categories.forEach( (category, index) => category.img = categoryImages[index].webformatURL);
   }
-  setStorageItem('categories', categories);
+
+  let filteredCategories = categories.filter(category=>category.count>0);
+
+  setStorageItem('categories', filteredCategories);
+  return filteredCategories;
 };
+
+
 
 //if the item is not in the cart, then find the product by Id in the store 
 //so that to add the product to the cart

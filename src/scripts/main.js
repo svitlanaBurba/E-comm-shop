@@ -8,10 +8,11 @@ import CountdownTimer from './timer';
 import './cart/toggleCart';
 import './cart/setupCart';
 
-import fetchProducts from './products/fetchProducts';
-import fetchCollectionImages from './collections/fetchCollectionImages';
+import fetchProducts from './api/fetchProducts';
+import fetchCategoryImages from './api/fetchCategoryImages';
+import fetchCategoriesWithCount from './api/fetchCategories';
 
-import {setupStore, store, categories, setupCategories} from './store.js';
+import setupCategories from './collections/setupCategories'
 import renderProducts from './products/renderProducts.js';
 import setupProductCategories from './filters/productCategories';
 import renderCollections from './collections/renderCollections';
@@ -24,28 +25,25 @@ import renderCollections from './collections/renderCollections';
 };
 
 const setupProductsSection = async () => {
-      const products = await fetchProducts();
-      const collectionImages = await fetchCollectionImages();
-      console.log(collectionImages);
+      const collectionImages = await fetchCategoryImages();
+      const categoriesWithCount = await fetchCategoriesWithCount();
+      const categories = setupCategories(categoriesWithCount,collectionImages.hits);
 
-      if (products && collectionImages.hits) {
-        // add products to the store
-        setupStore(products);
-        setupCategories(store,collectionImages.hits);
+      let defaultCategoryId = categories.find(category=>category.name="All").id;
 
-        renderSelectedPopularProducts("All");
-        // render categories buttons list
-   
-        setupProductCategories(categories, renderSelectedPopularProducts, "All");  
-      
-        renderCollections(categories, document.querySelector('.categories-galery2'))
-      }
+
+      // const pagination = {page:1, perPage:3};
+      await renderSelectedPopularProducts(defaultCategoryId);
+      setupProductCategories(categories, renderSelectedPopularProducts, defaultCategoryId); 
+      renderCollections(categories, document.querySelector('.categories-galery2'))
+
 }
 
-const renderSelectedPopularProducts = selectedCategory => {
+const  renderSelectedPopularProducts = async (selectedCategoryId) => {
   // we don't have any 'popular' flag, so let's choose cheap products
-  const popularProducts = store.filter(product => product.price < 16);
-  renderProducts(popularProducts, document.querySelector('.products__list'), selectedCategory);
+  const products = (await fetchProducts(selectedCategoryId)).data;   
+  let popularProducts = products.filter(product=>product.price<16);
+  renderProducts(popularProducts, document.querySelector('.products__list'));
 }
 
 const setupTimer = () => {
@@ -91,6 +89,35 @@ const addSliders = () => {
       slidesToShow: 4,
       arrows: true,
       swipe: true,
+
+      responsive: [
+        {
+          breakpoint: 991,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 540,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+        // You can unslick at a given breakpoint now by adding:
+        // settings: "unslick"
+        // instead of a settings object
+      ]
     });
 
     $('.hero__container').slick({

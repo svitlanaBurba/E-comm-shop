@@ -19,7 +19,7 @@ export const toggleShopSidebar = () => {
             sidebar.classList.remove('show');
         })
     
-        document.body.addEventListener('click', (e) => {
+       /*  document.body.addEventListener('click', (e) => {
             if(!e.target.closest('.shop-sidebar')) {
                 if(e.target.closest('.shop-sidebar__button')) {
                     return;
@@ -28,7 +28,7 @@ export const toggleShopSidebar = () => {
     
                 }
             }
-        })
+        }) */
     } 
   };
 

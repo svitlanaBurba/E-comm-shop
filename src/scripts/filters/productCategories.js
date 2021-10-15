@@ -1,38 +1,35 @@
 import {getElement} from '../utils';
 
-const setupProductCategories = (categories, renderSelectedProducts, selectedCategory) => {
-
+const setupProductCategories = (categories, selectedCategoryId, onSelected) => {
     // render filter buttons for categories
-    renderProductCategoryBtns(categories, selectedCategory);
+    renderProductCategories(categories, selectedCategoryId);
 
     // add listener for filter button block
     getElement('.products-nav').addEventListener('click', function (e) {
-        //
         if (e.target.classList.contains('products-nav__link')) {     
-            const selectedCategory = e.target.dataset.category;
+            const selectedCategoryId = e.target.dataset.categoryId;
+            renderProductCategories(categories, selectedCategoryId);
 
-            renderSelectedProducts(selectedCategory);
-            renderProductCategoryBtns(categories, selectedCategory);
+            onSelected(selectedCategoryId);
         }
     });
 }
 
-const renderProductCategoryBtns = (categories, selectedCategory) => {
+const renderProductCategories = (categories, selectedCategoryId) => {
     const productFilterDOM = getElement('.products-nav');
     productFilterDOM.innerHTML = categories
-        .map(category => renderProductCategoryBtn(category.name, category.count, category.name === selectedCategory))
+        .map(category => renderProductCategoryBtn(category, category.id === selectedCategoryId))
         .join('');
 }
 
-const renderProductCategoryBtn = (categoryName, categoryCount, isActive) => {
+const renderProductCategoryBtn = (category, isActive) => {
     // if btn should be marked as active - add 'active' class to it
     const activeClass = (isActive) ? 'active' : '';
 
     return `<li>
-                <a href="#${categoryName}" class="products-nav__link ${activeClass}" data-category="${categoryName}">${categoryName}<span>(${categoryCount})</span></a>
+                <a href="#${category.name}" class="products-nav__link ${activeClass}" data-category-id="${category.id}">${category.name}<span>(${category.count})</span></a>
               </li>`;
 }
-
 
 
 export default setupProductCategories;

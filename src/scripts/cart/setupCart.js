@@ -22,11 +22,11 @@ import {
       
         if (!item) {
             let product = findProduct(id);
-            console.log(product);
+            
             // addToCart(parent.dataset.id);
         //   adding amount field to the item
              product = { ...product, amount: 1 };
-             console.log(product);
+         
         //   adding item to the cart
              cart = [...cart, product];
         //   render item to the DOM;

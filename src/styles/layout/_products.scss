@@ -83,6 +83,9 @@ display:none;
   line-height: 1.7;
   color: $text-color;
   overflow-wrap: anywhere;
+  overflow: hidden;
+  max-height: 54px;
+  height: 100%;
 }
 
 .card__price {
@@ -94,7 +97,7 @@ display:none;
 
 .card__like {
   position: absolute;
-  top: 20px;
+  top: 0;
   right: 10px;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
