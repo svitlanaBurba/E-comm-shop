@@ -2,13 +2,13 @@ import rangeSlider from "./rangeSlider";
 import rangeSliderTemplate from './../../templates/rangeSlider.hbs'
 
 
-const initSlider = (container,sliderOptions) => {
+const initSlider = (container,sliderValues,onChange) => {
     container.innerHTML = rangeSliderTemplate();
 
     new rangeSlider(
         document.querySelector('#range-slider'),
-        sliderOptions.onChange,
-        sliderOptions.values,
+        onChange,
+        sliderValues,
     );
 }
 

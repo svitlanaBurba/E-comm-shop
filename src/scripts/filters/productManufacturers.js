@@ -1,37 +1,22 @@
-import {getElement} from '../utils';
+import productManufacturerFilterTemplate from '../../templates/productManufacturerFilter.hbs'
 
-const setupProductManufacturers = (manufacturers, selectedManufacturer, onSelected) => {
+const setupProductManufacturers = (container, manufacturers, onSelected) => {
     // render filter buttons for manufacturers
-    renderManufacturers(manufacturers, selectedManufacturer);
+    container.innerHTML = productManufacturerFilterTemplate(manufacturers);
 
     // add listener for filter button block
-    getElement('.manufacturers-nav').addEventListener('click', function (e) {
+    container.addEventListener('click', function (e) {
         //
         if (e.target.classList.contains('manufacturers-nav__link')) {     
             const selectedManufacturerName = e.target.dataset.manufacturerName;
-            renderManufacturers(manufacturers, selectedManufacturerName);
+            // set isActive flag for a selected manufacturer, drop for others
+            manufacturers.forEach(manufacturer => manufacturer.isActive = (manufacturer.name === selectedManufacturerName))
+            // render manufactureres
+            container.innerHTML = productManufacturerFilterTemplate(manufacturers);
 
             onSelected(selectedManufacturerName);
         }
     });
 }
-
-const renderManufacturers = (manufacturers, selectedManufacturerName) => {
-    const productFilterDOM = getElement('.manufacturers-nav');
-    productFilterDOM.innerHTML = manufacturers
-        .map(manufacturer => renderProductManufacturerBtn(manufacturer, manufacturer === selectedManufacturerName))
-        .join('');
-}
-
-const renderProductManufacturerBtn = (manufacturer, isActive) => {
-    // if btn should be marked as active - add 'active' class to it
-    const activeClass = (isActive) ? 'active' : '';
-
-    return `<li>
-                <a class="manufacturers-nav__link ${activeClass}" data-manufacturer-name="${manufacturer}">${manufacturer}</a>
-              </li>`;
-}
-
-
 
 export default setupProductManufacturers;

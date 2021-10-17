@@ -102,7 +102,8 @@ export default class rangeSlider {
       
       this.draggingBall = true;
 
-      evt.preventDefault();
+      if (evt.cancelable) evt.preventDefault();
+
     }
     
     onMove (evt) {

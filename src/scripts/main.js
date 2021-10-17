@@ -13,9 +13,10 @@ import fetchCategoryImages from './api/fetchCategoryImages';
 import fetchCategoriesWithCount from './api/fetchCategories';
 
 import setupCategories from './collections/setupCategories'
-import renderProducts from './products/renderProducts.js';
+import {initProducts, renderProducts} from './products/renderProducts.js';
 import setupProductCategories from './filters/productCategories';
 import renderCollections from './collections/renderCollections';
+import { addToCart } from './cart/setupCart';
 
 
  const onMainLoad = async () => {
@@ -43,7 +44,8 @@ const  renderSelectedPopularProducts = async (selectedCategoryId) => {
   // we don't have any 'popular' flag, so let's choose cheap products
   const products = (await fetchProducts(selectedCategoryId)).data;   
   let popularProducts = products.filter(product=>product.price<16);
-  renderProducts(popularProducts, document.querySelector('.products__list'));
+  renderProducts(document.querySelector('.products__list'), popularProducts);
+  initProducts(document.querySelector('.products__list'),addToCart);
 }
 
 const setupTimer = () => {

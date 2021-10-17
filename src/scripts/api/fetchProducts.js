@@ -6,7 +6,7 @@ const urlProducts = `${baseURL}/products?`;
 const fetchProducts = async ({categoryId,searchProduct,manufacturer, priceMin, priceMax, sortType}) => {
   if (!categoryId) {categoryId = defaultCategory} 
   if (!searchProduct) {searchProduct = ''} 
-  if (!manufacturer) {manufacturer = ''} 
+  if (!manufacturer) {manufacturer = ''} else {manufacturer=manufacturer.replace("&","*")}
   
   let priceMinClause = (!priceMin) ?  '' : `&price[$gt]=${priceMin}`;
   let priceMaxClause = (!priceMax) ?  '' : `&price[$lt]=${priceMax}`;
