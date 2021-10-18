@@ -16,7 +16,6 @@ const fetchProducts = async ({categoryId,searchProduct,manufacturer, priceMin, p
   if (sortType === 'priceHighToLow') sortClause = '&$sort[price]=-1';
 
   const url = `${urlProducts}category.id=${categoryId}&$limit=60000&name[$like]=*${searchProduct}*&manufacturer[$like]=*${manufacturer}*${priceMinClause}${priceMaxClause}${sortClause}`
-
   return myFetch(url);
 };
 

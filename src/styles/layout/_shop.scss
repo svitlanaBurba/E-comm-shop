@@ -164,6 +164,7 @@ color: $titles-color;
 .shop-sidebar__categories ul > li{
     position: relative;
     padding-left: 18px;
+    cursor: pointer;
 
     &::before{
         position: absolute;

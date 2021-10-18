@@ -25,25 +25,28 @@ import { addToCart } from './cart/setupCart';
   addSliders();
 };
 
+
 const setupProductsSection = async () => {
+
       const collectionImages = await fetchCategoryImages();
       const categoriesWithCount = await fetchCategoriesWithCount();
       const categories = setupCategories(categoriesWithCount,collectionImages.hits);
 
       let defaultCategoryId = categories.find(category=>category.name="All").id;
 
-
-      // const pagination = {page:1, perPage:3};
       await renderSelectedPopularProducts(defaultCategoryId);
-      setupProductCategories(categories, renderSelectedPopularProducts, defaultCategoryId); 
+      setupProductCategories(categories, defaultCategoryId, renderSelectedPopularProducts); 
       renderCollections(categories, document.querySelector('.categories-galery2'))
 
 }
 
 const  renderSelectedPopularProducts = async (selectedCategoryId) => {
+
   // we don't have any 'popular' flag, so let's choose cheap products
-  const products = (await fetchProducts(selectedCategoryId)).data;   
+const products = (await fetchProducts({categoryId:selectedCategoryId})).data;  
+
   let popularProducts = products.filter(product=>product.price<16);
+
   renderProducts(document.querySelector('.products__list'), popularProducts);
   initProducts(document.querySelector('.products__list'),addToCart);
 }
@@ -51,7 +54,7 @@ const  renderSelectedPopularProducts = async (selectedCategoryId) => {
 const setupTimer = () => {
     const timer = new CountdownTimer({
       selector: '#timer-main',
-      targetDate: new Date('Oct 05, 2021')
+      targetDate: new Date('Dec 31, 2021')
     });
     timer.start();
 }
@@ -89,9 +92,10 @@ const addSliders = () => {
       infinite: true,
       speed: 300,
       slidesToShow: 4,
-      arrows: true,
-      swipe: true,
-
+      slidesToScroll: 4,
+      // arrows: true,
+      // swipe: true,
+      dots: true,
       responsive: [
         {
           breakpoint: 991,

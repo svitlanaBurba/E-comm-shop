@@ -8,7 +8,6 @@ export const toggleShopSidebar = () => {
         const closeSidebarBtn = getElement('.shop-sidebar__button-close');
     
         openSidebarBtn.addEventListener('click', () => {
-            console.log('sidebar')
             if(sidebar.classList.contains('show')) {
                 sidebar.classList.remove('show');
             } else {
