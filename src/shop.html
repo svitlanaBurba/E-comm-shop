@@ -428,35 +428,5 @@
 
       <!-- -------------- FOOTER  -------------->
     </div>
-
-    <script type="text/javascript">
-      // toggle header transparent/opaque on scroll
-      let header = document.querySelector(".header");
-
-      window.addEventListener("scroll", () => {
-        if (window.pageYOffset > 10) {
-          header.classList.add("background__white");
-        } else if (window.pageYOffset <= 10) {
-          header.classList.remove("background__white");
-        }
-      });
-    </script>
-    <script>
-      (() => {
-        const menuBtnRef = document.querySelector("[data-menu-button]");
-        const mobileMenuRef = document.querySelector("[data-menu]");
-        const mobileBtnClose = document.querySelector("[data-menu-close]");
-
-        menuBtnRef.addEventListener("click", () => {
-          mobileMenuRef.classList.toggle("mobile-menu--is-open");
-          menuBtnRef.classList.toggle("mobile-menu--is-open");
-        });
-
-        mobileBtnClose.addEventListener("click", () => {
-          mobileMenuRef.classList.toggle("mobile-menu--is-open");
-          menuBtnRef.classList.toggle("mobile-menu--is-open");
-        });
-      })();
-    </script>
   </body>
 </html>
