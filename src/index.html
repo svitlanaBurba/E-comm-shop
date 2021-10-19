@@ -184,7 +184,7 @@
             <div class="header__user-menu">
               <ul class="header__user-menu-list">
                 <li class="header__user-menu-item">
-                  <button type="submit" class="search-button">
+                  <button type="button" class="search-button">
                     <svg class="header__user-menu-icon" width="20" height="20">
                       <use href="./assets/sprite.svg#icon-search"></use>
                     </svg>
@@ -391,67 +391,8 @@
             </div>
           </div>
 
-          <ul class="categories-galery">
-            <li class="categories-galery__item">
-              <a href="#" class="categories-galery__link">
-                <div class="categories-galery__wrapper">
-                  <img src="./assets/categories/accessories.jpg" alt="img" />
-                  <div class="categories-galery__heading">
-                    <svg class="section__rings" width="30" height="20">
-                      <use href="./assets/sprite.svg#icon-rings"></use>
-                    </svg>
-                    <h3 class="categories-galery__title">accessories</h3>
-                    <a href="#" class="btn-main invisible"> view products </a>
-                  </div>
-                </div>
-              </a>
-            </li>
-
-            <li class="categories-galery__item">
-              <a href="#" class="categories-galery__link">
-                <div class="categories-galery__wrapper">
-                  <img src="./assets/categories/dresses.jpg" alt="img" />
-                  <div class="categories-galery__heading">
-                    <svg class="section__rings" width="30" height="20">
-                      <use href="./assets/sprite.svg#icon-rings"></use>
-                    </svg>
-                    <h3 class="categories-galery__title">wedding dresses</h3>
-                    <a href="#" class="btn-main invisible"> view products </a>
-                  </div>
-                </div>
-              </a>
-            </li>
-
-            <li class="categories-galery__item">
-              <a href="#" class="categories-galery__link">
-                <div class="categories-galery__wrapper">
-                  <img src="./assets/categories/decorations.jpg" alt="img" />
-                  <div class="categories-galery__heading">
-                    <svg class="section__rings" width="30" height="20">
-                      <use href="./assets/sprite.svg#icon-rings"></use>
-                    </svg>
-                    <h3 class="categories-galery__title">decorations</h3>
-                    <a href="#" class="btn-main invisible"> view products </a>
-                  </div>
-                </div>
-              </a>
-            </li>
-
-            <li class="categories-galery__item">
-              <a href="#" class="categories-galery__link">
-                <div class="categories-galery__wrapper">
-                  <img src="./assets/categories/wedding-suits.jpg" alt="img" />
-                  <div class="categories-galery__heading">
-                    <svg class="section__rings" width="30" height="20">
-                      <use href="./assets/sprite.svg#icon-rings"></use>
-                    </svg>
-                    <h3 class="categories-galery__title">wedding suits</h3>
-                    <a href="#" class="btn-main invisible"> view products </a>
-                  </div>
-                </div>
-              </a>
-            </li>
-          </ul>
+          <div class="categories-galery2">
+          </div>
         </section>
         <!-- -------------- CATEGORIES SECTION  -------------->
 
@@ -479,7 +420,7 @@
              
           </ul>
       </div>   
-            <a href="#" class="btn-main--products"> view all products </a>
+            <a href="shop.html" class="btn-main--products"> view all products </a>
           </div>
         </section>
         <!-- -------------- POPULAR PRODUCTS SECTION  -------------->
@@ -914,37 +855,6 @@
 
       <!-- -------------- FOOTER  -------------->
     </div>
-
-    <script type="text/javascript">
-      // toggle header transparent/opaque on scroll
-      let header = document.querySelector(".header");
-
-      window.addEventListener("scroll", () => {
-        if (window.pageYOffset > 10) {
-          header.classList.add("background__white");
-        } else if (window.pageYOffset <= 10) {
-          header.classList.remove("background__white");
-        }
-      });
-    </script>
-
-    <script>
-      (() => {
-        const menuBtnRef = document.querySelector("[data-menu-button]");
-        const mobileMenuRef = document.querySelector("[data-menu]");
-        const mobileBtnClose = document.querySelector("[data-menu-close]");
-
-        menuBtnRef.addEventListener("click", () => {
-          mobileMenuRef.classList.toggle("mobile-menu--is-open");
-          menuBtnRef.classList.toggle("mobile-menu--is-open");
-        });
-
-        mobileBtnClose.addEventListener("click", () => {
-          mobileMenuRef.classList.toggle("mobile-menu--is-open");
-          menuBtnRef.classList.toggle("mobile-menu--is-open");
-        });
-      })();
-    </script>
 
   </body>
 </html>

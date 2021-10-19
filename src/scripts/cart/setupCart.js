@@ -22,11 +22,11 @@ import {
       
         if (!item) {
             let product = findProduct(id);
-            console.log(product);
+            
             // addToCart(parent.dataset.id);
         //   adding amount field to the item
              product = { ...product, amount: 1 };
-             console.log(product);
+         
         //   adding item to the cart
              cart = [...cart, product];
         //   render item to the DOM;
@@ -66,7 +66,7 @@ import {
         let delivery=0;
             if (total >0 && total <=1000) {delivery = 50;} else
             if (total > 1000 && total <=3000) {delivery = 25;}
-console.log(delivery);
+
               cartOrderTotals.forEach(el => el.textContent = formatPrice(total));
               cartOrderDelivery.forEach(el=>el.textContent = formatPrice(delivery));
               cartTotals.forEach(el=>el.textContent = 

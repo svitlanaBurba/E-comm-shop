@@ -6,6 +6,7 @@
 @import './base/section';
 
 @import './components/cart';
+@import './components/rangeSlider';
 
 // form validation (SHARED)
 @import './utils/form_validation';
@@ -25,5 +26,8 @@
 
 //CHECKOUT PAGE
 @import './layout/checkout';
+
+//SHOP PAGE
+@import './layout/shop';
 
 @import './utils/visually-hidden';

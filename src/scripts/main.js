@@ -8,40 +8,59 @@ import CountdownTimer from './timer';
 import './cart/toggleCart';
 import './cart/setupCart';
 
-import fetchProducts from './products/fetchProducts';
-import {setupStore, store} from './store.js';
-import renderProducts from './products/renderProducts.js';
+import fetchProducts from './api/fetchProducts';
+import fetchCategoryImages from './api/fetchCategoryImages';
+import fetchCategoriesWithCount from './api/fetchCategories';
+
+import setupCategories from './collections/setupCategories'
+import {initProducts, renderProducts} from './products/renderProducts.js';
 import setupProductCategories from './filters/productCategories';
+import renderCollections from './collections/renderCollections';
+import { addToCart } from './cart/setupCart';
 
 
-const onMainLoad = () => {
-  setupProductsSection();
+ const onMainLoad = async () => {
+  await setupProductsSection();
   setupTimer();
   addSliders();
 };
 
-const setupProductsSection = async () => {
-      const products = await fetchProducts();
-      if (products) {
-        // add products to the store
-        setupStore(products);
-        const expensive = store.filter(product => product.price > 15);
-        renderProducts(expensive, document.querySelector('.products__list'));
 
-        setupProductCategories(store);
-      }
+const setupProductsSection = async () => {
+
+      const collectionImages = await fetchCategoryImages();
+      const categoriesWithCount = await fetchCategoriesWithCount();
+      const categories = setupCategories(categoriesWithCount,collectionImages.hits);
+
+      let defaultCategoryId = categories.find(category=>category.name="All").id;
+
+      await renderSelectedPopularProducts(defaultCategoryId);
+      setupProductCategories(categories, defaultCategoryId, renderSelectedPopularProducts); 
+      renderCollections(categories, document.querySelector('.categories-galery2'))
+
+}
+
+const  renderSelectedPopularProducts = async (selectedCategoryId) => {
+
+  // we don't have any 'popular' flag, so let's choose cheap products
+const products = (await fetchProducts({categoryId:selectedCategoryId})).data;  
+
+  let popularProducts = products.filter(product=>product.price<16);
+
+  renderProducts(document.querySelector('.products__list'), popularProducts);
+  initProducts(document.querySelector('.products__list'),addToCart);
 }
 
 const setupTimer = () => {
     const timer = new CountdownTimer({
       selector: '#timer-main',
-      targetDate: new Date('Oct 05, 2021')
+      targetDate: new Date('Dec 31, 2021')
     });
     timer.start();
 }
 
 const addSliders = () => {
-  console.log('Adding sliders');
+
   $(document).ready(function () {
     $('.testimonials__wrapper').slick({
       infinite: true,
@@ -67,6 +86,44 @@ const addSliders = () => {
       arrows: false,
       swipe: false,
       fade: true
+    });
+
+    $('.categories-galery2').slick({
+      infinite: true,
+      speed: 300,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      // arrows: true,
+      // swipe: true,
+      dots: true,
+      responsive: [
+        {
+          breakpoint: 991,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 540,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+        // You can unslick at a given breakpoint now by adding:
+        // settings: "unslick"
+        // instead of a settings object
+      ]
     });
 
     $('.hero__container').slick({
