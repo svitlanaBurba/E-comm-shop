@@ -14,7 +14,7 @@ const initProducts = (element, onProductClick) => {
       element.addEventListener('click', function (e) {
         const parent = e.target.parentElement;
         if (parent.classList.contains('card__icons-btn')) {
-          onProductClick(parent.dataset.id);
+          onProductClick(Number(parent.dataset.id));
         }
       });
 }

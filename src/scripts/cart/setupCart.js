@@ -17,15 +17,18 @@ import {
 
     let cart = getStorageItem('cart');
 
-    export const addToCart = (id) => {
-        let item = cart.find((cartItem) => cartItem.id === Number(id));
+    export const addToCart = (id, productData, numToAdd) => {
+        if (numToAdd === 0) return;
+
+        let item  = cart.find((cartItem) => cartItem.id === Number(id));
+        const numItemsToAdd = numToAdd>1 ? numToAdd : 1;
       
         if (!item) {
-            let product = findProduct(id);
+            let product = productData || findProduct(id);
             
             // addToCart(parent.dataset.id);
         //   adding amount field to the item
-             product = { ...product, amount: 1 };
+             product = { ...product, amount: numItemsToAdd };
          
         //   adding item to the cart
              cart = [...cart, product];
@@ -33,11 +36,13 @@ import {
              renderCartItem(product);
         } else {
           // update values
-          const amount = increaseAmount(id);
+          const amount = increaseAmount(id, numItemsToAdd);
           //tranforming nodelist into array
           const items = [...cartList.querySelectorAll('.cart-item-amount')];
           //updating amount in DOM without page refreshing
-          const newAmount = items.find((amountContainer) => amountContainer.dataset.id === id);
+          const newAmount = items.find((amountContainer) => Number(amountContainer.dataset.id) === id);
+          
+          console.log(amount,id,items, newAmount);
           newAmount.textContent = amount;
         }
         // adding numbers one to the items count in user-menu 
@@ -79,11 +84,11 @@ import {
         }
 
         // increasing cartItem in Local Storage
-        function increaseAmount(id) {
+        function increaseAmount(id, numToAdd) {
             let newAmount;
             cart = cart.map((cartItem) => {
               if (cartItem.id === Number(id)) {
-                newAmount = cartItem.amount + 1;
+                newAmount = cartItem.amount + numToAdd;
                 cartItem = { ...cartItem, amount: newAmount };
               }
               return cartItem;

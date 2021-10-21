@@ -413,6 +413,11 @@ font-size: 20px;
   left:50%;
   transform: translatex(-50%);
     }
+
+    &--review {
+        @extend .btn-main;
+        background: transparent;
+      }
     &:hover, &:focus {
         color: $main-color; 
         border-color: #ec9dab;   

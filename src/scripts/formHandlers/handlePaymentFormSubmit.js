@@ -10,6 +10,7 @@ const handlePaymentFormSubmit = e => {
 
     //forming Json for form data object
     const formJson = JSON.stringify(formObject, null, 4);
+    console.log(formJson);
     return formJson;
 }
 

@@ -10,6 +10,13 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Sulphur+Point:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <div class="main-container">
@@ -256,8 +263,9 @@
             <h1 class="checkout-hero__title">Shop</h1>
             <nav class="checkout-nav">
               <ul class="checkout-nav__list">
-                <li class="checkout-nav__item"><a href="#">Home</a></li>
-                <li class="checkout-nav__item checkout-active">Shop</li>
+                <li class="checkout-nav__item"><a href="index.html">Home</a></li>
+                <li class="checkout-nav__item"><a href="shop.html">Shop</a></li>
+                <li class="hero-product-title checkout-nav__item checkout-active">Shop</li>
               </ul>
             </nav>
           </div>
@@ -266,53 +274,50 @@
 
         <!-- --------------SINGLE PRODUCT SECTION  -------------->
         <section class="shop">
-          <div class="container">
-            <div class="product-page__head">
-              <div class="product-page__head-left">
-                <div class="product-page__mini-photos-container">
- <!--                  <div class="product-page__mini-photo">
-                    <img
-                      class="product-page__mini-photo-img"
-                      src="1"
-                      alt="mini-photo"
-                    />
-                  </div>
-                  <div class="product-page__mini-photo">
-                    <img
-                      class="product-page__mini-photo-img"
-                      src="2"
-                      alt="mini-photo"
-                    />
-                  </div>
-                  <div class="product-page__mini-photo">
-                    <img
-                      class="product-page__mini-photo-img"
-                      src="3"
-                      alt="mini-photo"
-                    />
-                  </div>
-                  <div class="product-page__mini-photo">
-                    <img
-                      class="product-page__mini-photo-img"
-                      src="4"
-                      alt="mini-photo"
-                    />
-                  </div>
-                  <div class="product-page__mini-photo">
-                    <img
-                      class="product-page__mini-photo-img"
-                      src="5"
-                      alt="mini-photo"
-                    />
-                  </div> -->
-                </div>
-              </div>
-
-             
-            </div>
+          <div class="container product-container">
+           
           </div>
         </section>
         <!-- --------------SINGLE PRODUCT SECTION  -------------->
+
+         <!-- --------------RANDOM PRODUCTS SECTION  -------------->
+        <section class="shop-products">
+          <div class="container">
+            <div class="section__heading">
+              <div class="section__accent-title">
+                look
+                <svg class="section__rings" width="30" height="20">
+                  <use href="assets/sprite.svg#icon-rings"></use>
+                </svg>
+                here
+              </div>
+              <h2 class="section__title">Take a look</h2>
+            </div>
+            <ul class="products__list random"></ul>
+            <div class="btn-container random"></div>
+          </div>
+        </section>
+        <!-- --------------RANDOM PRODUCTS SECTION  -------------->
+
+                   <!-- --------------VIEWED PRODUCTS SECTION  -------------->
+        <section class="shop-products">
+          <div class="container">
+            <div class="section__heading">
+              <div class="section__accent-title">
+                look
+                <svg class="section__rings" width="30" height="20">
+                  <use href="assets/sprite.svg#icon-rings"></use>
+                </svg>
+                here
+              </div>
+              <h2 class="section__title">You viewed</h2>
+            </div>
+            <ul class="products__list viewed"></ul>
+            <div class="btn-container viewed"></div>
+          </div>
+        </section>
+          <!-- --------------VIEWED PRODUCTS SECTION  -------------->
+
       </main>
       <!-- -------------- FOOTER  -------------->
       <footer class="footer">
@@ -389,35 +394,5 @@
 
       <!-- -------------- FOOTER  -------------->
     </div>
-
-    <script type="text/javascript">
-      // toggle header transparent/opaque on scroll
-      let header = document.querySelector(".header");
-
-      window.addEventListener("scroll", () => {
-        if (window.pageYOffset > 10) {
-          header.classList.add("background__white");
-        } else if (window.pageYOffset <= 10) {
-          header.classList.remove("background__white");
-        }
-      });
-    </script>
-    <script>
-      (() => {
-        const menuBtnRef = document.querySelector("[data-menu-button]");
-        const mobileMenuRef = document.querySelector("[data-menu]");
-        const mobileBtnClose = document.querySelector("[data-menu-close]");
-
-        menuBtnRef.addEventListener("click", () => {
-          mobileMenuRef.classList.toggle("mobile-menu--is-open");
-          menuBtnRef.classList.toggle("mobile-menu--is-open");
-        });
-
-        mobileBtnClose.addEventListener("click", () => {
-          mobileMenuRef.classList.toggle("mobile-menu--is-open");
-          menuBtnRef.classList.toggle("mobile-menu--is-open");
-        });
-      })();
-    </script>
   </body>
 </html>

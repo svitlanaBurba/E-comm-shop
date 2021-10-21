@@ -1,0 +1,203 @@
+ <div class="product-page__head">
+              <div class="product-page__head-left">
+                <div class="product-page__mini-photos-container">
+                    {{#each images}}
+                  <div class="product-page__mini-photo">
+                    <img
+                      class="product-page__mini-photo-img"
+                      src="{{this}}"
+                      onerror="this.closest('div').remove()"
+                      alt="mini-photo"
+                        width="120"
+                        height="140"
+                    />
+                  </div>
+                    {{/each}}
+                </div>
+
+                <div class="product-page__main-photo-container">
+                  <img
+                    class="product-page__main-photo-img"
+                    src="{{image}}"
+                    alt="main-photo"
+                    width="522"
+                    height="590"
+                  />
+                </div>
+              </div>
+
+              <div class="product-page__head-right">
+                <h3 class="product-page__title">{{title}}</h3>
+
+                <div class="product-page__numbers">
+                  <div class="product-page__price-container">
+                    <div class="product-page__price">{{discountedPrice}}</div>
+                    <div class="product-page__old-price">${{price}}</div>
+                  </div>
+
+                  <div class="rating">
+                        {{#each ratingArr}}
+                        <i class="rating__star {{#if this}}fas{{/if}}{{#unless this}}far{{/unless}} fa-star"></i>
+                        {{/each}}
+                    <span class="rating__number">{{avgRating}}</span>
+                  </div>
+                </div>
+
+                <p class="product-page__short-desc">
+                  {{description}}
+                </p>
+
+                <div class="product-page__quantity-buttons">
+                  <button class="product-page__decrease-btn" data-id="{{id}}">
+                    <svg
+                      class="product-page__decrease-icon"
+                      width="15"
+                      height="15"
+                    >
+                      <use href="./assets/sprite.svg#icon-minus"></use>
+                    </svg>
+                  </button>
+                  <span class="product-page__item-amount" data-id="{{id}}">1</span>
+                  <button class="product-page__increase-btn" data-id="{{id}}">
+                    <svg
+                      class="product-page__increase-icon"
+                      width="15"
+                      height="15"
+                    >
+                      <use href="./assets/sprite.svg#icon-plus"></use>
+                    </svg>
+                  </button>
+                </div>
+                <div class="product-page__cart-buttons">
+                  <button class="order-btn" type="button">add to cart</button>
+                  <button href="#" class="like-btn" type="button">
+                    <svg width="20" height="20">
+                      <use href="./assets/sprite.svg#icon-heart"></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-page__description">
+              <div class="product-page__description-left">
+                <h4 class="product-page__description-title">Description</h4>
+                <p class="product-page__description-text">
+                  {{longDescription}}
+                </p>
+              </div>
+
+              <div class="product-page__description-right">
+                <table class="description-table">
+                  <tbody>
+                    <tr>
+                      <td class="description-table__title">Manufacturer:</td>
+                      <td class="description-table__text">{{manufacturer}}</td>
+                    </tr>
+                    <tr>
+                      <td class="description-table__title">Type:</td>
+                      <td class="description-table__text">
+                        {{type}}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="description-table__title">UPC:</td>
+                      <td class="description-table__text">
+                        {{upc}}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="description-table__title">Color:</td>
+                      <td class="description-table__text">
+                       {{color}}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="description-table__title">Dimension:</td>
+                      <td class="description-table__text">{{dimension}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="product-page__reviews">
+              <div class="product-page__reviews-left">
+                  <div class="review-form__header">
+                    <div class="section__accent-title--left">
+                      <svg class="section__rings" width="30" height="20">
+                        <use href="assets/sprite.svg#icon-rings"></use>
+                      </svg>
+                      What people say
+                    </div>
+                    <h2 class="section__title">
+                      Product reviews
+                    </h2>
+                         </div>
+                <ul class="reviews__list">
+                </ul>
+
+                <button class="reviews__btn" type="button">
+                  load more <span class="reviews__arrow">&#8595</span></button>
+              </div>
+
+              <div class="product-page__reviews-right">
+                <form class="review-form" name="review-form" id="review-form" action="product.html" data-id={{id}}>
+                  <div class="review-form__header">
+                    <div class="section__accent-title--left">
+                      <svg class="section__rings" width="30" height="20">
+                        <use href="assets/sprite.svg#icon-rings"></use>
+                      </svg>
+                      say a word
+                    </div>
+                    <h2 class="section__title">
+                      Leave a review
+                    </h2>
+                     <p class="review-form__header-text">Leave your product review so other buyers can rely on your opinion about the product.</p>
+                  </div>
+                  <div class="rating-wrapper">
+                    <div class="rating form">
+                      <i class="rating__star far fa-star form" data-index='1'></i>
+                      <i class="rating__star far fa-star form" data-index='2'></i>
+                      <i class="rating__star far fa-star form" data-index='3'></i>
+                      <i class="rating__star far fa-star form" data-index='4'></i>
+                      <i class="rating__star far fa-star form" data-index='5'></i>
+                    </div>
+                  </div>
+          
+                  <div class="review-form__body">
+                    <label class="review-form__input-wrapper">
+                      <input
+                        type="text"
+                        class="review-form__input"
+                        name="reviewUserName"
+                        id="reviewUserName"
+                        placeholder="Enter your name"
+                        minlength="2"
+                        maxlength="50"
+                        {{!-- pattern="^[a-z ,.'-]+$" --}}
+                        required
+                      />
+                    </label>
+
+                  <label class="review-form__input-wrapper">
+                    <textarea
+                      class="delivery-form__textarea"
+                      name="reviewText"
+                      placeholder="Enter your feedback"
+                    ></textarea>
+                  </label>
+
+                    <input
+                        type="text"
+                        class="review-form__number"
+                        name="reviewNumber"
+                        id="reviewNumber"        
+                      />
+
+                     <button class="btn-main--review" type="submit">post a review</button>
+                  </div>
+               </form>
+
+              </div>
+            </div>

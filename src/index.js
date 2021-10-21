@@ -19,7 +19,7 @@ if (page === 'shop') {
 }
 
 if (page === 'product') {
-  onShopLoad();
+  onProductLoad();
 }
 
 if (page === 'checkout2') {
