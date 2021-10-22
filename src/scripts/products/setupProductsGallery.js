@@ -3,8 +3,12 @@ import paginate from "./paginate";
 import { initProductPaginationBtns, renderPagesButtons } from "./paginationButtons";
 import { initProducts, renderProducts } from "./renderProducts";
 
+const setupProductsGallery = (products,params) => {
+    renderProductsGallery(products,params);
+    initProductsGallery(products,params);  
+  };
 
-const setupProductsGallery = (
+const renderProductsGallery = (
     products,
     {
       paginatedProducts,
@@ -13,9 +17,6 @@ const setupProductsGallery = (
       productsBtnsContainer,
     }
   ) => {
-    // renders products and pagination buttons
-    // slice products into pages
-
     paginatedProducts.pages = paginate(products, numProductsPerPage);
     paginatedProducts.index = 0;
   
@@ -29,24 +30,34 @@ const setupProductsGallery = (
       paginatedProducts.pages.length,
       paginatedProducts.index
     );
-  
+  }
+
+  const initProductsGallery = (
+    products,
+    {
+      paginatedProducts,
+      numProductsPerPage,
+      productsContainer,
+      productsBtnsContainer,
+    }
+  ) => {
     // adds 'add to cart' listener to similar products cards
     initProducts(productsContainer, (selectedProductId) => {
-      const selectedProduct = products.find(
-        (product) => product.id === Number(selectedProductId)
-      );
-      addToCart(selectedProductId, selectedProduct);
-    });
-  
-    // add listener to pagination buttons
-    initProductPaginationBtns(productsBtnsContainer, (selectedIndex) => {
-      paginatedProducts.index = selectedIndex;
-      renderProducts(
-        productsContainer,
-        paginatedProducts.pages[paginatedProducts.index]
-      );
-    });
-  };
+        const selectedProduct = products.find(
+          (product) => product.id === Number(selectedProductId)
+        );
+        addToCart(selectedProductId, selectedProduct);
+      });
+    
+      // add listener to pagination buttons
+      initProductPaginationBtns(productsBtnsContainer, (selectedIndex) => {
+        paginatedProducts.index = selectedIndex;
+        renderProducts(
+          productsContainer,
+          paginatedProducts.pages[paginatedProducts.index]
+        );
+      });
+  }
 
-  export default setupProductsGallery;
+  export {setupProductsGallery, renderProductsGallery};
   

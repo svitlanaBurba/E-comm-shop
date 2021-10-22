@@ -1,5 +1,5 @@
 import { baseURL, defaultCategory } from "./configURLs";
-import myFetch from "./utils";
+import {myFetch} from "./utils";
 
 const urlProducts = `${baseURL}/products?`;
 

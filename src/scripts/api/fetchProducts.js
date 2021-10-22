@@ -1,6 +1,5 @@
 import { baseURL, defaultCategory } from "./configURLs";
-import myFetch from "./utils";
-
+import {calculateProductDiscountPrice, myFetch} from "./utils";
 const urlProducts = `${baseURL}/products?`;
 
 const fetchProducts = async ({categoryId,searchProduct,manufacturer, priceMin, priceMax, sortType}) => {
@@ -16,8 +15,19 @@ const fetchProducts = async ({categoryId,searchProduct,manufacturer, priceMin, p
   if (sortType === 'priceHighToLow') sortClause = '&$sort[price]=-1';
 
   const url = `${urlProducts}category.id=${categoryId}&$limit=60000&name[$like]=*${searchProduct}*&manufacturer[$like]=*${manufacturer}*${priceMinClause}${priceMaxClause}${sortClause}`
-  return myFetch(url);
+  return myFetch(url,transformRawProductsData);
 };
+
+const transformRawProductsData = (rawProductsData) => {
+  if (!rawProductsData || !rawProductsData.data) return [];
+  rawProductsData.data;
+
+  rawProductsData.data.forEach(product => { 
+    calculateProductDiscountPrice(product);  
+  });
+
+  return rawProductsData.data;
+}
 
 
 export default fetchProducts;

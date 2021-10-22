@@ -1,4 +1,4 @@
-import { findProduct } from "../store.js";
+import fetchProductById from "../api/fetchProductById.js";
 import {
   formatPrice,
   getElement,
@@ -17,7 +17,7 @@ const cartTotals = getElements(".order-summary__amount");
 
 let cart = getStorageItem("cart");
 
-export const addToCart = (id, productData, numToAdd) => {
+export const addToCart = async (id, productData, numToAdd) => {
   id = Number(id);
   if (numToAdd === 0) return;
 
@@ -25,9 +25,8 @@ export const addToCart = (id, productData, numToAdd) => {
   const numItemsToAdd = numToAdd > 1 ? numToAdd : 1;
 
   if (!item) {
-    let product = productData || findProduct(id);
-
-    // addToCart(parent.dataset.id);
+    // if product deatils were not provided - fetch them from backand by id
+    let product = productData || await fetchProductById(id);
     //   adding amount field to the item
     product = { ...product, amount: numItemsToAdd };
 

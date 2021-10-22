@@ -18,7 +18,6 @@ import setupProductCategories from './filters/productCategories';
 import renderCollections from './collections/renderCollections';
 import { addToCart } from './cart/setupCart';
 
-
  const onMainLoad = async () => {
   await setupProductsSection();
   setupTimer();
@@ -27,7 +26,6 @@ import { addToCart } from './cart/setupCart';
 
 
 const setupProductsSection = async () => {
-
       const collectionImages = await fetchCategoryImages();
       const categoriesWithCount = await fetchCategoriesWithCount();
       const categories = setupCategories(categoriesWithCount,collectionImages.hits);
@@ -37,14 +35,11 @@ const setupProductsSection = async () => {
       await renderSelectedPopularProducts(defaultCategoryId);
       setupProductCategories(categories, defaultCategoryId, renderSelectedPopularProducts); 
       renderCollections(categories, document.querySelector('.categories-galery2'))
-
 }
 
 const  renderSelectedPopularProducts = async (selectedCategoryId) => {
-
+  const products = await fetchProducts({categoryId:selectedCategoryId});  
   // we don't have any 'popular' flag, so let's choose cheap products
-const products = (await fetchProducts({categoryId:selectedCategoryId})).data;  
-
   let popularProducts = products.filter(product=>product.price<16);
 
   renderProducts(document.querySelector('.products__list'), popularProducts);
@@ -60,7 +55,6 @@ const setupTimer = () => {
 }
 
 const addSliders = () => {
-
   $(document).ready(function () {
     $('.testimonials__wrapper').slick({
       infinite: true,
@@ -93,8 +87,6 @@ const addSliders = () => {
       speed: 300,
       slidesToShow: 4,
       slidesToScroll: 4,
-      // arrows: true,
-      // swipe: true,
       dots: true,
       responsive: [
         {
@@ -120,9 +112,6 @@ const addSliders = () => {
             slidesToScroll: 1
           }
         }
-        // You can unslick at a given breakpoint now by adding:
-        // settings: "unslick"
-        // instead of a settings object
       ]
     });
 

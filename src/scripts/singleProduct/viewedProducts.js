@@ -1,6 +1,8 @@
 import { getStorageItem, setStorageItem } from "../utils";
 
-export const addProductToViewedList = (productToAdd,numViewedProductsToStore) => {
+const numViewedProductsToStore = 10; // we don't want to store more than 10 viewed products in local storage
+
+export const addProductToViewedList = (productToAdd) => {
     let viewedProducts = getStorageItem("viewedProducts");
     // if product exists in the array - delete it (so that we will add it at the start)
     let i = viewedProducts.findIndex((product) => product.id === productToAdd.id);
@@ -13,6 +15,6 @@ export const addProductToViewedList = (productToAdd,numViewedProductsToStore) =>
     );
   };
 
-export const getViewedProducts = () => {
-  return getStorageItem("viewedProducts");
+export const getViewedProducts = (numProducts) => {
+  return getStorageItem("viewedProducts").slice(0,numProducts);
 }

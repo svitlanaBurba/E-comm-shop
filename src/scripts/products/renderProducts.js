@@ -2,6 +2,7 @@
 import productsTemplate from "../../templates/productsTemplate.hbs"
 import productsEmptyTemplate from "../../templates/productsEmptyTemplate.hbs"
 
+
 const renderProducts = (element, products) => {
   // Render products
   element.innerHTML = (products && products.length > 0) ?
@@ -19,4 +20,9 @@ const initProducts = (element, onProductClick) => {
       });
 }
 
-export {initProducts,renderProducts};
+const renderTotalProductCount = (element,products) => {
+  const productCount = products.length;
+  element.innerHTML = productCount + " products";
+};
+
+export {initProducts,renderProducts, renderTotalProductCount};

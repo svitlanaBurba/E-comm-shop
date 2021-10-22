@@ -1,6 +1,6 @@
 import fetchProductById from "../api/fetchProductById";
 import fetchProductByUPC from "../api/fetchProductByUPC";
-import { calculateProductDiscountPrice } from "../utils";
+// import { formatPrice } from "../utils";
 import { getProductAvgRating } from "./getProductAvgRating";
 
 export const getSingleProductData = async (productId) => {
@@ -9,7 +9,6 @@ export const getSingleProductData = async (productId) => {
     const productDataByUPC = await fetchProductByUPC(productData.upc);
   
     //adding to product object calculated prorerties
-    productData.discountedPrice = calculateProductDiscountPrice(productData);
     productData.avgRating = getProductAvgRating(productId);
   
     //adding to product object prorerties from additional API

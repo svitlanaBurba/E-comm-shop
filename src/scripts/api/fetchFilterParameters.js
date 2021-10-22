@@ -1,4 +1,4 @@
-import myFetch from "./utils";
+import {myFetch} from "./utils";
 import fetchCategoriesWithCount from "./fetchCategories";
 import { baseURL, defaultCategory } from "./configURLs";
 

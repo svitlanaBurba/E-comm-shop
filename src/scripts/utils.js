@@ -41,9 +41,5 @@ const formatPrice = price => {
   return formattedPrice;
 };
 
-const calculateProductDiscountPrice = (product) => {
-  const dicsountRate = product.price > 50 ? 0.2 : 0.1;
-  return formatPrice(product.price * (1 - dicsountRate));
-};
 
-  export {getElement,getElements, getStorageItem, setStorageItem, formatPrice,calculateProductDiscountPrice};
+  export {getElement,getElements, getStorageItem, setStorageItem, formatPrice};
