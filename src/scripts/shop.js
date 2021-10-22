@@ -11,7 +11,7 @@ import {
   initProductPaginationBtns,
   renderPagesButtons,
 } from "./products/paginationButtons";
-import {renderProducts, initProducts } from "./products/renderProducts.js";
+import { initProducts, renderProducts } from "./products/renderProducts.js";
 import { setupStore } from "./store.js";
 
 let filtersApplied = {};
@@ -82,7 +82,9 @@ const setupProductCategorySection = () => {
       name: "All",
       count: filterParameters.categoriesCollection[0].count,
     },
-    ...filterParameters.categoriesCollection.filter(category=>category.count>0),
+    ...filterParameters.categoriesCollection.filter(
+      (category) => category.count > 0
+    ),
   ];
 
   // if there is no category selected then set it to empty which means 'All'
@@ -103,13 +105,17 @@ const setupManufacturerSection = () => {
     renderSelectedProducts(filtersApplied);
   };
 
-  // 
+  //
   const manufacturersWithAll = [
-    { id: '',
-      name : "All",
-      count: filterParameters.manufacturersCollection.reduce((a,v)=>(a+v.count),0),
+    {
+      id: "",
+      name: "All",
+      count: filterParameters.manufacturersCollection.reduce(
+        (a, v) => a + v.count,
+        0
+      ),
       isActive: true,
-  },
+    },
     ...filterParameters.manufacturersCollection,
   ];
 
@@ -124,14 +130,14 @@ const setupProductsGrid = (filters) => {
   // load and render products
   renderSelectedProducts(filters);
   // Add listeners - Open Cart when button "cart" on the product is clicked
-  initProducts(productsGridContainer,addToCart);
+  initProducts(productsGridContainer, addToCart);
   // initiating pagination buttons - add listeners
   // when pagination button is clicked - change active index and render proper page
   initProductPaginationBtns(btnContainer, (selectedIndex) => {
     matchingProducts.index = selectedIndex;
     renderProducts(
       productsGridContainer,
-      matchingProducts.pages[matchingProducts.index],
+      matchingProducts.pages[matchingProducts.index]
     );
   });
 };
@@ -149,7 +155,7 @@ const renderSelectedProducts = async (filters) => {
 
   renderProducts(
     productsGridContainer,
-    matchingProducts.pages[matchingProducts.index],
+    matchingProducts.pages[matchingProducts.index]
   );
   renderPagesButtons(
     btnContainer,
@@ -161,7 +167,6 @@ const renderSelectedProducts = async (filters) => {
 };
 
 const renderTotalProductCount = (productCount) => {
-
   totalProductCountContainer.innerHTML = productCount + " products";
 };
 
@@ -183,19 +188,18 @@ const initSortBy = () => {
 };
 
 const initPriceSlider = () => {
+  const onChange = (min, max) => {
+    filtersApplied.priceMin = min;
+    filtersApplied.priceMax = max;
+    renderSelectedProducts(filtersApplied);
+  };
 
-    const onChange =  (min, max) => {
-      filtersApplied.priceMin = min;
-      filtersApplied.priceMax = max;
-      renderSelectedProducts(filtersApplied);
-    };
-
-    const sliderValues = {
-      startingMin: filterParameters.minMaxPrice.minPrice,
-      startingMax: filterParameters.minMaxPrice.maxPrice,
-      min: filterParameters.minMaxPrice.minPrice,
-      max: filterParameters.minMaxPrice.maxPrice,
-    };
+  const sliderValues = {
+    startingMin: filterParameters.minMaxPrice.minPrice,
+    startingMax: filterParameters.minMaxPrice.maxPrice,
+    min: filterParameters.minMaxPrice.minPrice,
+    max: filterParameters.minMaxPrice.maxPrice,
+  };
 
   initSlider(sliderContainer, sliderValues, onChange);
 };
