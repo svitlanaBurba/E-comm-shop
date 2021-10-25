@@ -1,5 +1,5 @@
 import { categoryImgURL } from "./configURLs";
-import myFetch from "./utils";
+import {myFetch} from "./utils";
 
 const fetchCategoryImages = async () =>  myFetch(categoryImgURL);
 

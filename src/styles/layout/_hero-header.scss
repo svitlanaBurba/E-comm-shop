@@ -41,7 +41,7 @@
     left: 50%;
     transform: translateX(-50%);
     height: 1px;
-    width: 100vw;
+    width: 100%;
     z-index: 10;
     background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.05) 25%, rgba(0, 0, 0, 0.01) 75%, rgba(0, 0, 0, 0.1) 100%);
 }
@@ -413,6 +413,11 @@ font-size: 20px;
   left:50%;
   transform: translatex(-50%);
     }
+
+    &--review {
+        @extend .btn-main;
+        background: transparent;
+      }
     &:hover, &:focus {
         color: $main-color; 
         border-color: #ec9dab;   

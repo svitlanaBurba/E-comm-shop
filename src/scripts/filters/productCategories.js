@@ -1,5 +1,36 @@
 import {getElement} from '../utils';
 
+// renders whole products section - list of products and list of categories (works as a filter)
+export const setupProductCategorySection = (
+    categories,
+    selectedCategoryId,
+    onCategorySelected
+  ) => {
+    // if there are no categories to render - quit
+    if (!categories) return;
+    // adding 'All' category before the render - it will have empty categoryId
+    const categoriesWithAll = [
+      {
+        id: "",
+        name: "All",
+        count: categories[0].count,
+      },
+      ...categories.filter(
+        (category) => category.count > 0
+      ),
+    ];
+  
+    // if there is no category selected then set it to empty which means 'All'
+    if (!selectedCategoryId) selectedCategoryId = "";
+  
+    // render 'Categories' filter
+    setupProductCategories(
+      categoriesWithAll,
+      selectedCategoryId,
+      onCategorySelected
+    );
+  };
+
 const setupProductCategories = (categories, selectedCategoryId, onSelected) => {
     // render filter buttons for categories
     renderProductCategories(categories, selectedCategoryId);

@@ -1,4 +1,6 @@
-const myFetch = async (url, transformer) => {
+// import { formatPrice } from "../utils";
+
+export const myFetch = async (url, transformer) => {
     return new Promise(function (resolve, reject) {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', url);
@@ -30,4 +32,9 @@ const myFetch = async (url, transformer) => {
       });
   };
 
-  export default myFetch;
+  export const calculateProductDiscountPrice = (product) => {
+    const dicsountRate = product.price > 50 ? 0.2 : 0.1;
+    product.discountedPrice = Math.round(product.price * (1 - dicsountRate) * 100) / 100;
+  };
+
+ 

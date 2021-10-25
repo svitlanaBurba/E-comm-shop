@@ -1,5 +1,29 @@
 import productManufacturerFilterTemplate from '../../templates/productManufacturerFilter.hbs'
 
+
+export const setupManufacturerSection = (
+    container,
+    manufacturers,
+    onManufacturerSelected
+  ) => {
+    // add 'All' option
+    const manufacturersWithAll = [
+      {
+        id: "",
+        name: "All",
+        count: manufacturers.reduce((a, v) => a + v.count, 0),
+        isActive: true,
+      },
+      ...manufacturers,
+    ];
+  
+    setupProductManufacturers(
+      container,
+      manufacturersWithAll,
+      onManufacturerSelected
+    );
+  };
+
 const setupProductManufacturers = (container, manufacturers, onSelected) => {
     // render filter buttons for manufacturers
     container.innerHTML = productManufacturerFilterTemplate(manufacturers);

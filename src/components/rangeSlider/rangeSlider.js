@@ -25,8 +25,7 @@ export default class rangeSlider {
       this.sliderStartX = null;
       this.sliderEndX = null;
       this.draggingBall = false;
-    
-      
+
       // Internal Elements
       this.rootElement = element;
       this.minControlElement = element.querySelector('#slider-min-control');
@@ -42,8 +41,6 @@ export default class rangeSlider {
   
       this.addEventListeners();
       this.init();
-      
-      //requestAnimationFrame(this.updateSliderValues);
     }
     
     addEventListeners () {
@@ -54,7 +51,6 @@ export default class rangeSlider {
       this.rootElement.addEventListener('mousedown', this.onStart);
       document.addEventListener('mousemove', this.onMove);
       document.addEventListener('mouseup', this.onEnd);
-
     }
     
     init () {
@@ -101,9 +97,7 @@ export default class rangeSlider {
       this.currentX = this.startX;
       
       this.draggingBall = true;
-
       if (evt.cancelable) evt.preventDefault();
-
     }
     
     onMove (evt) {
@@ -138,7 +132,6 @@ export default class rangeSlider {
   
     
     updateSliderValues () {
-
       this.selectedMinPercent = Math.floor(this.selectedMinPercent);
       this.selectedMaxPercent = Math.ceil(this.selectedMaxPercent);
 
@@ -167,5 +160,3 @@ export default class rangeSlider {
 
     }
   }
-  
-
