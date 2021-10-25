@@ -7,6 +7,7 @@ import onCheckout1Load from './scripts/checkout1';
 import onCheckout2Load from './scripts/checkout2';
 import onShopLoad from './scripts/shop';
 import onProductLoad from './scripts/product';
+import onCartLoad from "./scripts/cart";
 import onMainLoad from './scripts/main';
 import mobileMenu from "./scripts/header/mobileMenu";
 import initHeader from "./scripts/header/initHeader";
@@ -20,6 +21,10 @@ if (page === 'shop') {
 
 if (page === 'product') {
   onProductLoad();
+}
+
+if (page === 'cart') {
+  onCartLoad();
 }
 
 if (page === 'checkout2') {
