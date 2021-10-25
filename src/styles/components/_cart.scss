@@ -77,6 +77,10 @@
 
   .order-card-remove-icon {
   fill:$grey-color;
+
+  &:hover{
+    fill:$main-color;
+  }
   }
 
 

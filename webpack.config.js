@@ -74,6 +74,13 @@ module.exports = {
         collapseWhitespace: isProd
       }
     }),
+    new HTMLWebpackPlugin({
+      template: './cart.html',
+      filename: './cart.html',
+      minify: {
+        collapseWhitespace: isProd
+      }
+    }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css'

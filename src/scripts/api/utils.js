@@ -32,9 +32,9 @@ export const myFetch = async (url, transformer) => {
       });
   };
 
-  export const calculateProductDiscountPrice = (product) => {
+  export const calculateProductOldPrice = (product) => {
     const dicsountRate = product.price > 50 ? 0.2 : 0.1;
-    product.discountedPrice = Math.round(product.price * (1 - dicsountRate) * 100) / 100;
+    product.oldPrice = Math.round(product.price * (1 + dicsountRate) * 100) / 100;
   };
 
  

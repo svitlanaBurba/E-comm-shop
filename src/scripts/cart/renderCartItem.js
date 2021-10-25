@@ -1,15 +1,15 @@
 import { formatPrice, getElements } from '../utils.js';
 
-const renderCartItem = ({ id, name, price, image, amount }) => {
+const renderCartItem = ({ id, name, price, oldPrice, image, amount }) => {
   const cartList = getElements('.order__product-list');
 
   cartList.forEach(el=>
         el.appendChild(
-            getCartItem(id, name, price, image, amount))
+            getCartItem(id, name, price, oldPrice, image, amount))
         );
 };
 
-const getCartItem = ( id, name, price, image, amount ) => { 
+const getCartItem = ( id, name, price, oldPrice, image, amount ) => { 
     const cartItem = document.createElement('li');
     cartItem.classList.add('order-card');
     cartItem.setAttribute('data-id', id);
@@ -26,7 +26,7 @@ const getCartItem = ( id, name, price, image, amount ) => {
                 <a class="order-card__title-link" href="">${name}</a>
                 </h3>
                 <span class="order-card__new-price">${formatPrice(price)}</span>
-                <span class="order-card__old-price">${formatPrice(price*1.2)}</span>
+                <span class="order-card__old-price">${formatPrice(oldPrice)}</span>
             </div>
             <div class="order-card-buttons">
                 <button class="order-card-decrease-btn" data-id="${id}">

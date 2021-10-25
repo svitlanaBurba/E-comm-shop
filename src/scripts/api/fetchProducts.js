@@ -1,5 +1,5 @@
 import { baseURL, defaultCategory } from "./configURLs";
-import {calculateProductDiscountPrice, myFetch} from "./utils";
+import {calculateProductOldPrice, myFetch} from "./utils";
 const urlProducts = `${baseURL}/products?`;
 
 const fetchProducts = async ({categoryId,searchProduct,manufacturer, priceMin, priceMax, sortType}) => {
@@ -23,7 +23,7 @@ const transformRawProductsData = (rawProductsData) => {
   rawProductsData.data;
 
   rawProductsData.data.forEach(product => { 
-    calculateProductDiscountPrice(product);  
+    calculateProductOldPrice(product);  
   });
 
   return rawProductsData.data;
