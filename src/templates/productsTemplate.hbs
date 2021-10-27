@@ -18,19 +18,24 @@
                           <use href="./assets/sprite.svg#icon-eye"></use>
                         </svg>
                       </a>
-                     <button class="card__icons-btn" data-id="{{id}}">
+                     <button class="card__icons-btn" data-id="{{id}}" data-stock="{{stock}}">
+                      {{#unless stockIsOut}}
                       <svg class="overlay__icon--bag" width="20" height="20">
                         <use
                           href="./assets/sprite.svg#icon-shopping-bag-white"
                         ></use>
                       </svg>
+                      {{else}}
+                      Out of stock
+                      {{/unless}}
                      </button>
                     
                     </div>
                   </div>
                   <div class="card__content">
                     <h3 class="card__title">{{name}}</h3>
-                    <p class="card__price">${{price}}</p>
+                    <span class="card__price">${{price}}</span>
+                    <span class="card__price-old">${{oldPrice}}</span>
                     <a href="#" class="card__like">
                       <svg width="20" height="20">
                         <use href="./assets/sprite.svg#icon-heart"></use>

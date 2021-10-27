@@ -197,7 +197,7 @@
                   </a>
                 </li>
                 <li class="header__user-menu-item">
-                  <a href="" class="header__user-menu-link--cart">
+                  <a href="cart.html" class="header__user-menu-link--cart">
                     <svg class="header__user-menu-icon" width="20" height="20">
                       <use href="./assets/sprite.svg#icon-shopping-bag"></use>
                     </svg>
@@ -219,7 +219,7 @@
             </button>
 
             <h2 class="order__title">your order</h2>
-            <ul class="order__product-list"></ul>
+            <ul class="order__product-list cart__product-list"></ul>
 
             <ul class="order-summary">
               <li class="order-summary__item">
@@ -228,7 +228,7 @@
               </li>
               <li class="order-summary__item">
                 <div class="order-summary__title">Discount for promo code</div>
-                <div class="order-summary__text">No</div>
+                <div class="order-summary__text--promo">No</div>
               </li>
               <li class="order-summary__item">
                 <div class="order-summary__title">Delivery <span>(Oct 02 at 14:35)</span></div>
@@ -274,118 +274,25 @@
                     <div class="cart-page__products-header-quantity">Quantity</div>
                     <div class="cart-page__products-header-subtotal">Subtotal</div>
                   </div>
-                  <ul class="order__product-list(test)">
-                    <li class="cart-page__product-item">
-                      <a class="cart-page__product-link" href="#">
-                        <img
-                          class="cart-page__product-photo"
-                          src="http://img.bbystatic.com/BestBuy_US/images/products/1461/1461464_sa.jpg"
-                          alt="The Young Scientists Club - The Magic School Bus Soaring into Flight Science Kit - Multi"
-                        />
-                      </a>
-
-                      <div class="cart-page__product-info">
-                        <div class="cart-page__product-info-header">
-                          <h3 class="cart-page__product-info-title">
-                            <a class="cart-page__product-info-title-link" href="#"
-                              >The Young Scientists Club - The Magic School Bus Soaring into Flight Science Kit -
-                              Multi</a
-                            >
-                          </h3>
-                          <button class="order-card-remove-btn" data-id="1461464">
-                            <svg class="order-card-remove-icon" width="18" height="18">
-                              <use href="./assets/sprite.svg#icon-trash-o"></use>
-                            </svg>
-                          </button>
-                        </div>
-                        <div class="cart-page__product-info-body">
-                          <div class="cart-page__price-container">
-                            <div class="cart-page__price">$19.99</div>
-                            <div class="cart-page__old-price">$21.99</div>
-                          </div>
-
-                          <div class="product-page__quantity-buttons">
-                            <button class="product-page__decrease-btn" data-id="1242087">
-                              <svg class="product-page__decrease-icon" width="15" height="15">
-                                <use href="./assets/sprite.svg#icon-minus"></use>
-                              </svg>
-                            </button>
-                            <span class="product-page__item-amount" data-id="1242087">1</span>
-                            <button class="product-page__increase-btn" data-id="1242087">
-                              <svg class="product-page__increase-icon" width="15" height="15">
-                                <use href="./assets/sprite.svg#icon-plus"></use>
-                              </svg>
-                            </button>
-                          </div>
-
-                          <div class="cart-page__product-info-subtotal">$1,318</div>
-                        </div>
-                      </div>
-                    </li>
-
-                    <li class="cart-page__product-item">
-                      <a class="cart-page__product-link" href="#">
-                        <img
-                          class="cart-page__product-photo"
-                          src="http://img.bbystatic.com/BestBuy_US/images/products/1461/1461464_sa.jpg"
-                          alt="The Young Scientists Club - The Magic School Bus Soaring into Flight Science Kit - Multi"
-                        />
-                      </a>
-
-                      <div class="cart-page__product-info">
-                        <div class="cart-page__product-info-header">
-                          <h3 class="cart-page__product-info-title">
-                            <a class="cart-page__product-info-title-link" href="#"
-                              >The Young Scientists Club - The Magic School Bus Soaring into Flight Science</a
-                            >
-                          </h3>
-                          <button class="order-card-remove-btn" data-id="1461464">
-                            <svg class="order-card-remove-icon" width="18" height="18">
-                              <use href="./assets/sprite.svg#icon-trash-o"></use>
-                            </svg>
-                          </button>
-                        </div>
-                        <div class="cart-page__product-info-body">
-                          <div class="cart-page__price-container">
-                            <div class="cart-page__price">$19.99</div>
-                            <div class="cart-page__old-price">$21.99</div>
-                          </div>
-
-                          <div class="product-page__quantity-buttons">
-                            <button class="product-page__decrease-btn" data-id="1242087">
-                              <svg class="product-page__decrease-icon" width="15" height="15">
-                                <use href="./assets/sprite.svg#icon-minus"></use>
-                              </svg>
-                            </button>
-                            <span class="product-page__item-amount" data-id="1242087">1</span>
-                            <button class="product-page__increase-btn" data-id="1242087">
-                              <svg class="product-page__increase-icon" width="15" height="15">
-                                <use href="./assets/sprite.svg#icon-plus"></use>
-                              </svg>
-                            </button>
-                          </div>
-
-                          <div class="cart-page__product-info-subtotal">$1,318</div>
-                        </div>
-                      </div>
-                    </li>
+                  <ul class="cart-page__product-list cart__product-list">
+                   
                   </ul>
 
                   <div class="cart-page__promo-row-1">
                     <div class="cart-page__promo-code">
                       <input class="cart-page__promo-code-input" type="text" placeholder="Enter promo code" />
+                      <div class = "cart-page__promo-msg visually-hidden">
+                        <span></span>
+                        <button type="button" class = "cart-page__promo-msg-btn">&#10005</button>
+                      </div>
+                      <div class = "cart-page__promo-msg--alert visually-hidden">No such promocode
+                            </div>
                       <button class="cart-page__send-btn" type="submit">
                         <svg class="send-icon" width="24" height="24">
                           <use href="assets/sprite.svg#icon-send"></use>
                         </svg>
                       </button>
                     </div>
-                    <button type="button" class="cart-page__update-btn">
-                      <svg class="update-btn" width="24" height="24">
-                        <use href="assets/sprite.svg#icon-update-cart"></use>
-                      </svg>
-                      Update cart
-                    </button>
                   </div>
 
                   <div class="cart-page__promo-row-2">
@@ -408,7 +315,7 @@
                   </li>
                   <li class="order-summary__item">
                     <div class="order-summary__title">Discount for promo code</div>
-                    <div class="order-summary__text">No</div>
+                    <div class="order-summary__text--promo">No</div>
                   </li>
                   <li class="order-summary__item">
                     <div class="order-summary__title">Delivery <span>(to be clarified)</span></div>
@@ -425,6 +332,25 @@
           </div>
         </section>
         <!-- --------------CART SECTION  -------------->
+
+        <!-- --------------RANDOM PRODUCTS SECTION  -------------->
+        <section class="shop-products">
+          <div class="container">
+            <div class="section__heading">
+              <div class="section__accent-title">
+                look
+                <svg class="section__rings" width="30" height="20">
+                  <use href="assets/sprite.svg#icon-rings"></use>
+                </svg>
+                here
+              </div>
+              <h2 class="section__title">You can also buy</h2>
+            </div>
+            <ul class="products__list random"></ul>
+            <div class="btn-container random"></div>
+          </div>
+        </section>
+        <!-- --------------RANDOM PRODUCTS SECTION  -------------->
 
         <!-- --------------  SECTION  -------------->
 

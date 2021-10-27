@@ -1,9 +1,9 @@
 import { baseURL, defaultCategory } from "./configURLs";
-import {calculateProductOldPrice, myFetch} from "./utils";
+import {addProductAdditionalProperties, myFetch} from "./utils";
 
 const urlProducts = `${baseURL}/products?`;
 
-const fetchSimilarProducts = async (productId, numProductsToLoad) => {
+const fetchSimilarProducts = async (numProductsToLoad) => {
   // our backend does not have any 'similarity' lookup etc
   // so let's just pick numProductsToLoad products in a row
   const urlNumProducts = `${urlProducts}category.id=${defaultCategory}&$limit=0`;
@@ -23,7 +23,7 @@ const transformRawProductsData = (rawProductsData) => {
   rawProductsData.data;
 
   rawProductsData.data.forEach(product => { 
-    calculateProductOldPrice(product);  
+    addProductAdditionalProperties(product);  
   });
 
   return rawProductsData.data;

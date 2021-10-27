@@ -1,15 +1,15 @@
 import { formatPrice, getElements } from '../utils.js';
 
-const renderCartItem = ({ id, name, price, oldPrice, image, amount }) => {
+const renderCartItem = (product) => {
   const cartList = getElements('.order__product-list');
 
   cartList.forEach(el=>
         el.appendChild(
-            getCartItem(id, name, price, oldPrice, image, amount))
+            getCartItem(product))
         );
 };
 
-const getCartItem = ( id, name, price, oldPrice, image, amount ) => { 
+const getCartItem = ({ id, name, price, oldPrice, image, amount, stock } ) => {
     const cartItem = document.createElement('li');
     cartItem.classList.add('order-card');
     cartItem.setAttribute('data-id', id);
@@ -29,18 +29,18 @@ const getCartItem = ( id, name, price, oldPrice, image, amount ) => {
                 <span class="order-card__old-price">${formatPrice(oldPrice)}</span>
             </div>
             <div class="order-card-buttons">
-                <button class="order-card-decrease-btn" data-id="${id}">
+                <button class="order-card-decrease-btn" data-id="${id}" data-cart-decrease-btn>
                 <svg class="order-card-decrease-icon" width="15" height="15">
                     <use href="./assets/sprite.svg#icon-minus"></use>
                 </svg>
                 </button>
-                <span class="cart-item-amount" data-id="${id}">${amount}</span>
-                <button class="order-card-increase-btn" data-id="${id}">
+                <span class="cart-item-amount" data-id="${id}" data-stock="${stock}" data-cart-item-amount>${amount}</span>
+                <button class="order-card-increase-btn" data-id="${id}" data-stock="${stock}" data-cart-increase-btn>
                 <svg class="order-card-increase-icon" width="15" height="15">
                     <use href="./assets/sprite.svg#icon-plus"></use>
                 </svg>
                 </button>
-                <button class="order-card-remove-btn" data-id="${id}">
+                <button class="order-card-remove-btn" data-id="${id}" data-stock="${stock}">
                 <svg class="order-card-remove-icon" width="18" height="18">
                     <use href="./assets/sprite.svg#icon-trash-o"></use>
                 </svg>

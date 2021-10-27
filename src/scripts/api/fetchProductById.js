@@ -1,5 +1,5 @@
 import { baseURL } from './configURLs';
-import { calculateProductOldPrice, myFetch } from './utils';
+import { addProductAdditionalProperties, myFetch } from './utils';
 
 const fetchProductById = async productId => {
   const urlProductById = `${baseURL}/products/${productId}`;
@@ -7,7 +7,7 @@ const fetchProductById = async productId => {
 };
 
 const transformRawProductData = product => {
-  calculateProductOldPrice(product);
+  addProductAdditionalProperties(product);
   return product;
 };
 

@@ -41,5 +41,16 @@ const formatPrice = price => {
   return formattedPrice;
 };
 
+//Get PromoDiscount from Local Storage
+const getStoragePromoDiscount= () => {
+  let storageItem = localStorage.getItem('promoDiscount');
+  if (storageItem) {
+    return JSON.parse(storageItem);
+  } else {
+    return {code:'', discount:0};
+  }
+};
 
-  export {getElement,getElements, getStorageItem, setStorageItem, formatPrice};
+
+
+  export {getElement,getElements, getStorageItem, setStorageItem, formatPrice, getStoragePromoDiscount};

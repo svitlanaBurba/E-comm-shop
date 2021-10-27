@@ -135,6 +135,7 @@
 }
 
 .product-page__quantity-buttons {
+  position: relative;
   display: flex;
   width: 110px;
   height: 40px;
@@ -168,6 +169,22 @@
   width: 100%;
   text-align: center;
   line-height: 250%;
+}
+
+.stock-message{
+position: absolute;
+top:0;
+left:130px;
+height: 40px;
+width: 200px;
+color: $main-color;
+line-height: 40px;
+
+&--cart {
+  @extend .stock-message;
+  top:-40px;
+  left:0;
+}
 }
 
 .product-page__cart-buttons {

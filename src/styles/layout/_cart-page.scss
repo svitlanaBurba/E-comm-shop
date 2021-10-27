@@ -75,6 +75,10 @@
   width: 130px;
   height: 130px;
   margin-right: 20px;
+
+  & img{
+    height: 100%;
+  }
 }
 
 .cart-page__product-info {
@@ -149,6 +153,7 @@
 }
 
 .cart-page__promo-code{
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   max-width: 250px;
@@ -165,6 +170,30 @@
   border-bottom: 1px solid rgba(85, 85, 85, 0.2);
   background: transparent;
   outline: none;
+}
+
+.cart-page__promo-msg{
+  position: absolute;
+  top:50px;
+  left:0;
+  font-size: 18px;
+  color:$main-color;
+
+  &--alert {
+    @extend .cart-page__promo-msg;
+    color:red;
+  }
+}
+
+.cart-page__promo-msg-btn{
+  border:none;
+  background-color: transparent;
+  color:$grey-color;
+  cursor: pointer;
+
+  &:hover{
+    color: $main-color;
+  }
 }
 
 .cart-page__send-btn{
