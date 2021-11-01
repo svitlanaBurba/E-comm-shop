@@ -106,6 +106,12 @@
 
 .send-icon{
     display: inline-block;
+    fill:none;
+    stroke: #555;
+
+    &:hover{
+        stroke: $main-color;
+    }
 }
 
 .footer-main__section-2{

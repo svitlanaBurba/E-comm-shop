@@ -1,16 +1,14 @@
-import { baseURL} from "./configURLs";
-import {calculateProductDiscountPrice, myFetch} from "./utils";
+import { baseURL } from './configURLs';
+import { addProductAdditionalProperties, myFetch } from './utils';
 
+const fetchProductById = async productId => {
+  const urlProductById = `${baseURL}/products/${productId}`;
+  return myFetch(urlProductById, transformRawProductData);
+};
 
-const fetchProductById = async (productId) => {
-    const urlProductById = `${baseURL}/products/${productId}`;
-    return myFetch(urlProductById,transformRawProductData);
-  };  
+const transformRawProductData = product => {
+  addProductAdditionalProperties(product);
+  return product;
+};
 
-const transformRawProductData = (product) => {
-    calculateProductDiscountPrice(product);
-    return product;
-}
-  
-  
-  export default fetchProductById;
+export default fetchProductById;

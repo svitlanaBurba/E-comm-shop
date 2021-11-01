@@ -2,7 +2,7 @@ import * as $ from "jquery";
 import "slick-carousel";
 import singleProductTemplate from "./../templates/singleProductTemplate.hbs";
 import fetchSimilarProducts from "./api/fetchSimilarProducts";
-import { addToCart } from "./cart/setupCart";
+import { addToCart, setupCart } from "./cart/setupCart";
 import { setupProductsGallery } from "./products/setupProductsGallery";
 import { setupLeaveReview } from "./reviews/setupLeaveReview";
 import { setupReviews } from "./reviews/setupReviews";
@@ -37,7 +37,7 @@ const onProductLoad = async () => {
   initMainPhotoSlider();
 
   // Similar products gallery
-  const similarProducts = await fetchSimilarProducts(productId, 9); //  fetch 9 (or less) similar products
+  const similarProducts = await fetchSimilarProducts(9); //  fetch 9 (or less) similar products
   setupProductsGallery(similarProducts, similarProductsParams);
   // Viewed products gallery
   const viewedProducts = await getViewedProducts(9); //  fetch 9 (or less) viewed products
@@ -49,6 +49,8 @@ const onProductLoad = async () => {
 
   // add product to the list of the previously viewed
   addProductToViewedList(productData);
+
+  setupCart();
 };
 
 const setupProductDetailsSection = (product) => {
@@ -60,6 +62,9 @@ const setupProductDetailsSection = (product) => {
     product.avgRating !== 0
       ? (product.avgRating = product.avgRating.toFixed(2))
       : (product.avgRating = "No reviews yet");
+  
+  product.stockIsLow = product.stock > 0 && product.stock < 5;
+  product.stockIsOut = product.stock === 0;
 
   document.querySelector(".product-container").innerHTML =
     singleProductTemplate(product);
@@ -74,7 +79,11 @@ const initAddToCartBlock = (product) => {
   const itemAmount = document.querySelector(".product-page__item-amount");
 
   document.querySelector(".product-page__increase-btn").onclick = () =>
-    (itemAmount.textContent = `${+itemAmount.textContent + 1}`);
+  {
+    const curAmount = +itemAmount.textContent;
+    const stock = itemAmount.dataset.stock;
+    itemAmount.textContent = Math.min(curAmount + 1, stock);
+  };
 
   document.querySelector(".product-page__decrease-btn").onclick = () =>
     (itemAmount.textContent = `${Math.max(0, +itemAmount.textContent - 1)}`);

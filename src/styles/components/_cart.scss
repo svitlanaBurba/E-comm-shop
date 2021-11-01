@@ -77,6 +77,10 @@
 
   .order-card-remove-icon {
   fill:$grey-color;
+
+  &:hover{
+    fill:$main-color;
+  }
   }
 
 
@@ -179,7 +183,7 @@
     line-height: 170%;
     color: $grey-color;
   }
-  .order-summary__text--price, .order-summary__text--delivery {
+  .order-summary__text--price, .order-summary__text--delivery, .order-summary__text--promo {
     font-weight: 500;
     color: $titles-color;
   }

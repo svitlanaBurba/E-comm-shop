@@ -2,13 +2,13 @@ import { getElement } from "../utils";
 
 const cartOverlay = getElement(".cart-overlay");
 const closeCartBtn = getElement(".cart__button-close");
-const openCartBtn = getElement(".header__user-menu-link--cart");
+// const openCartBtn = getElement(".header__user-menu-link--cart");
 const checkoutBtn = getElement('.order-btn--cart');
 
-openCartBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  cartOverlay.classList.add("show");
-});
+// openCartBtn.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   cartOverlay.classList.add("show");
+// });
 closeCartBtn.addEventListener("click", (e) => {
   e.preventDefault();
   cartOverlay.classList.remove("show");

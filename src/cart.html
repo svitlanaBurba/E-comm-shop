@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head data-page="shop">
+  <head data-page="cart">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,14 +24,10 @@
       <header class="header">
         <div class="header__container">
           <div class="header__secondary">
-            <div>
-              <strong>30% off</strong> on all products enter code: joolie2020
-            </div>
+            <div><strong>30% off</strong> on all products enter code: joolie2020</div>
             <div>
               Call us:
-              <a class="header__phone" href="tel:18004527887"
-                ><strong>+1 800 452 78 87</strong></a
-              >
+              <a class="header__phone" href="tel:18004527887"><strong>+1 800 452 78 87</strong></a>
             </div>
           </div>
           <div class="header__primary">
@@ -142,12 +138,14 @@
               </li>
               <li class="order-summary__item">
                 <div class="order-summary__title">Discount for promo code</div>
-                <div class="order-summary__text--promo">No</div>
+                <div class="order-summary__text--promo">-</div>
               </li>
               <li class="order-summary__item">
-                <div class="order-summary__title">
-                  Delivery <span>(Oct 02 at 14:35)</span>
-                </div>
+                <div class="order-summary__title">Additional services</div>
+                <div class="order-summary__text--services">-</div>
+              </li>
+              <li class="order-summary__item">
+                <div class="order-summary__title">Delivery <span>(Oct 02 at 14:35)</span></div>
                 <div class="order-summary__text--delivery">$0</div>
               </li>
               <li class="order-summary__total">
@@ -166,105 +164,170 @@
         <!-- --------------SHOP HERO  -------------->
         <section class="checkout-hero">
           <div class="container">
-            <h1 class="checkout-hero__title">Shop</h1>
+            <h1 class="checkout-hero__title">Cart</h1>
             <nav class="checkout-nav">
               <ul class="checkout-nav__list">
-                <li class="checkout-nav__item"><a href="#">Home</a></li>
-                <li class="checkout-nav__item checkout-active">Shop</li>
+                <li class="checkout-nav__item">
+                  <a href="index.html">Home</a>
+                </li>
+                <li class="checkout-nav__item checkout-active">Cart</li>
               </ul>
             </nav>
           </div>
         </section>
         <!-- --------------SHOP HERO  -------------->
 
-        <!-- --------------SHOP SECTION  -------------->
-        <section class="shop">
+        <!-- --------------CART SECTION  -------------->
+        <section class="cart-page">
           <div class="container">
-            <!-- Shop search block -->
-            <div class="shop__header">
-              <div class="shop__header-left">
-                <form class="form-search" name="form-search">
-                  <input
-                    type="text"
-                    class="form-search__input"
-                    name="formSearch"
-                    placeholder="Search"
-                  />
-                  <button type="button" class="search-button">
-                    <svg class="header__user-menu-icon" width="20" height="20">
-                      <use href="./assets/sprite.svg#icon-search"></use>
-                    </svg>
-                  </button>
-                </form>
-              </div>
-              <div class="shop__header-right">
-                <div class="shop__header-summary">
-                  There are
-                  <span class="shop__header-quantity"></span>
-                </div>
-
-                <form class="form-relevance" name="form-relevance">
-                  <div class="form-relevance__wrapper">
-                    <select class="form-relevance__select">
-                      <option value="byRelevance" selected="">
-                        By relevance
-                      </option>
-                      <option value="priceLowToHigh">Price(low to high)</option>
-                      <option value="priceHighToLow">Price(high to low)</option>
-                    </select>
+            <div class="cart-page__content">
+              <div class="cart-page__content-left">
+                <div class="cart-page__products">
+                  <div class="cart-page__products-header">
+                    <div class="cart-page__products-header-product">Product</div>
+                    <div class="cart-page__products-header-quantity">Quantity</div>
+                    <div class="cart-page__products-header-subtotal">Subtotal</div>
                   </div>
-                </form>
+                  <ul class="cart-page__product-list cart__product-list">
+                   
+                  </ul>
+
+                  <div class="cart-page__promo-row-1">
+                    <div class="cart-page__promo-code">
+                      <input class="cart-page__promo-code-input" type="text" placeholder="Enter promo code" />
+                      <div class = "cart-page__promo-msg visually-hidden">
+                        <span></span>
+                        <button type="button" class = "cart-page__promo-msg-btn">&#10005</button>
+                      </div>
+                      <div class = "cart-page__promo-msg--alert visually-hidden">No such promocode
+                            </div>
+                      <button class="cart-page__send-btn" type="submit">
+                        <svg class="send-icon" width="24" height="24">
+                          <use href="assets/sprite.svg#icon-send"></use>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="cart-page__promo-row-2">
+                    <h3 class="cart-page__promo-title">How to get a promo code</h3>
+                    <p class="cart-page__promo-text">
+                      Follow our news on the website, as well as subscribe to our social networks. So you will not only
+                      be able to receive up-to-date codes, but also learn about new products and promotional items.
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <button type="button" class="shop-sidebar__button">
-                <svg class="shop-sidebar__icon" width="24" height="24">
-                  <use href="./assets/sprite.svg#icon-categories"></use>
-                </svg>
-              </button>
-            </div>
-            <!-- Shop search block -->
-            <div class="shop-main">
-              <!-- Shop sidebar -->
-              <aside class="shop-sidebar">
-                <button class="shop-sidebar__button-close">
-                  <svg
-                    class="mobile-menu__button-close-icon"
-                    width="24"
-                    height="24"
-                  >
-                    <use href="./assets/sprite.svg#icon-menu-close"></use>
-                  </svg>
-                </button>
-
-                <div class="shop-sidebar__categories">
-                  <h3 class="shop-sidebar__title">Categories</h3>
-                  <ul class="products-nav shop-sidebar__categories-list"></ul>
-                </div>
-
-                <div class="shop-sidebar__categories">
-                  <h3 class="shop-sidebar__title">Manufacturers</h3>
-                  <ul
-                    class="manufacturers-nav shop-sidebar__categories-list"
-                  ></ul>
-                </div>
-
-                <div class="shop-sidebar__price">
-                  <h3 class="shop-sidebar__title">Price</h3>
-                  <div class="shop-sidebar__slider-container"></div>
-                </div>
-              </aside>
-              <!-- Shop sidebar -->
-
-              <!-- Shop main (galery) block -->
-              <div class="shop-galery">
-                <ul class="products__list"></ul>
-                <div class="btn-container"></div>
+              <div class="order">
+                <h2 class="order__title">your order</h2>
+                
+                <ul class="order-summary">
+                  <li class="order-summary__item">
+                    <div class="order-summary__title">Оrder price</div>
+                    <div class="order-summary__text--price">$169.99</div>
+                  </li>
+                  <li class="order-summary__item">
+                    <div class="order-summary__title">Discount for promo code</div>
+                    <div class="order-summary__text--promo">-</div>
+                  </li>
+                  <li class="order-summary__item">
+                    <div class="order-summary__title">Additional services</div>
+                    <div class="order-summary__text--services">-</div>
+                  </li>
+                  <li class="order-summary__item">
+                    <div class="order-summary__title">Delivery <span>(to be clarified)</span></div>
+                    <div class="order-summary__text--delivery">$50</div>
+                  </li>
+                  <li class="order-summary__total">
+                    <div class="order-summary__title">Total</div>
+                    <div class="order-summary__amount">$219.99</div>
+                  </li>
+                </ul>
+                <button class="order-btn" type="submit">checkout</button>
               </div>
             </div>
-            <!-- Shop main (galery) block -->
           </div>
         </section>
-        <!-- --------------SHOP SECTION  -------------->
+        <!-- --------------CART SECTION  -------------->
+
+        <!-- --------------RANDOM PRODUCTS SECTION  -------------->
+        <section class="shop-products">
+          <div class="container">
+            <div class="section__heading">
+              <div class="section__accent-title">
+                look
+                <svg class="section__rings" width="30" height="20">
+                  <use href="assets/sprite.svg#icon-rings"></use>
+                </svg>
+                here
+              </div>
+              <h2 class="section__title">You can also buy</h2>
+            </div>
+            <ul class="products__list random"></ul>
+            <div class="btn-container random"></div>
+          </div>
+        </section>
+        <!-- --------------RANDOM PRODUCTS SECTION  -------------->
+
+        <!-- --------------  SECTION  -------------->
+
+        <section class="instagram">
+          <div class="container instagram__container">
+          <div class="instagram__left-column">
+            <div class="instagram__left-column-wrapper">
+              <div class="instagram__left-column-heading">
+                <div class="section__accent-title--left">
+                  <svg class="section__rings" width="30" height="20">
+                    <use href="./assets/sprite.svg#icon-rings"></use>
+                  </svg>
+                  our instagram
+                </div>
+                <h2 class="section__title">be closer</h2>
+                <p class="section__text">
+                  More actions and bonuses you can find in our Instagram.
+                </p>
+              </div>
+              <a href="#" class="instagram__btn"> follow us <span class="arrow-icon">&#8594</span> </a>
+            </div>
+          </div>
+          <div class="instagram__right-column">
+            <ul class="instagram-list">
+              <li class="instagram-list__item">
+                <a href="#" class="instagram-list__link">
+                  <img class="" src="./assets/instagram/inst1.jpeg" alt="img" />
+                </a>
+              </li>
+              <li class="instagram-list__item">
+                <a href="#" class="instagram-list__link">
+                  <img class="" src="./assets/instagram/inst2.jfif" alt="img" />
+                </a>
+              </li>
+              <li class="instagram-list__item">
+                <a href="#" class="instagram-list__link">
+                  <img class="" src="./assets/instagram/inst3.jpeg" alt="img" />
+                </a>
+              </li>
+              <li class="instagram-list__item">
+                <a href="#" class="instagram-list__link">
+                  <img class="" src="./assets/instagram/inst4.jpg" alt="img" />
+                </a>
+              </li>
+            </ul>
+          </div>
+          </div>
+        </section>
+        <!-- -------------- INSTAGRAM SECTION  -------------->
+
+        <!-- -------------- MODAL  -------------->
+        <div class="modal-overlay">
+          <div class="modal-window">
+            <button class="close-btn"><i class="fas fa-times"></i></button>
+            <div class="modal-container"></div>
+          </div>
+        </div>
+      <!-- -------------- MODAL  -------------->
+
       </main>
       <!-- -------------- FOOTER  -------------->
       <footer class="footer">
@@ -281,16 +344,9 @@
               <div class="footer-main__section-1">
                 <form class="footer-main__form">
                   <h4 class="footer-main__form-title">Newsletter</h4>
-                  <p class="footer-main__form-text">
-                    Don't miss our significant news and season sales. Subscribe!
-                  </p>
+                  <p class="footer-main__form-text">Don't miss our significant news and season sales. Subscribe!</p>
                   <div class="footer-main__input-wrapper">
-                    <input
-                      class="footer-main__form-input"
-                      type="email"
-                      placeholder="Enter your email"
-                      required
-                    />
+                    <input class="footer-main__form-input" type="email" placeholder="Enter your email" required />
                     <button class="footer-main__form-btn" type="submit">
                       <svg class="send-icon" width="24" height="24">
                         <use href="./assets/sprite.svg#icon-send"></use>
@@ -301,14 +357,8 @@
               </div>
               <div class="footer-main__section-2">
                 <h5 class="footer-main__title">Hit us up:</h5>
-                <strong
-                  ><a class="footer-main__contact" href="tel:18004527887"
-                    >+1 800 452 78 87</a
-                  ></strong
-                >
-                <a class="footer-main__contact" href="mailto:info@sitename.com"
-                  >info@sitename.com</a
-                >
+                <strong><a class="footer-main__contact" href="tel:18004527887">+1 800 452 78 87</a></strong>
+                <a class="footer-main__contact" href="mailto:info@sitename.com">info@sitename.com</a>
                 <p>27 Division St, New York, NY 10002, USA</p>
               </div>
               <div class="footer-main__section-3">
@@ -327,9 +377,7 @@
               </div>
             </div>
             <div class="footer-copyright">
-              <div class="footer-copyright__left">
-                All right reserved. Joolie 2020
-              </div>
+              <div class="footer-copyright__left">All right reserved. Joolie 2020</div>
               <div class="footer-copyright__right">
                 <a href="#">Privacy policy</a> -
                 <a href="#">Terms and Conditions </a>

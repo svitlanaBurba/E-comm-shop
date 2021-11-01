@@ -1,16 +1,24 @@
 .instagram{
     position: relative;
-    display: flex;
+    // display: flex;
     padding: 75px 0 150px;
     align-items: center;
     background: url("../assets/instagram/petals-instagram.png") no-repeat;
 
-    @media (max-width: 991px) {
+    @media (max-width: 767px) {
     display: block;
     }
     @media (max-width: 767px){
         padding: 0 0 75px; 
        }
+}
+
+.instagram__container{
+    display: flex;
+    
+    @media (max-width: 767px) {
+        display: block;
+        }
 }
 
 .instagram__left-column{
@@ -19,14 +27,14 @@
     flex-direction: column;
     justify-content: center;
     min-height: 315px;
-    padding: 0 30px;
-    align-items: flex-end;
+    // padding: 0 30px;
+    // align-items: flex-end;
 }  
 
 .instagram__left-column-wrapper{
     width: 100%;
-    max-width: 380px;
-    @media (max-width: 991px) {
+    max-width: 261px;
+    @media (max-width: 767px) {
         max-width: none;
         text-align: center;
         }
@@ -36,7 +44,7 @@
     margin: 0 auto 40px 0;
     text-align: left;
     max-width: 500px;
-    @media (max-width: 991px) {
+    @media (max-width: 767px) {
         text-align: center;
         margin-right: auto;
         margin-left: auto;
@@ -74,7 +82,9 @@
 
 
 .instagram__right-column{
+    display: flex;
     flex: 0 1 60%;
+align-items: center;
 }
 
 .instagram-list{

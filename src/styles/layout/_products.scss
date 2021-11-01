@@ -89,10 +89,20 @@ display:none;
 }
 
 .card__price {
+  display: inline-block;
+  margin-right: 10px;
   font-weight: 500;
   font-size: 18px;
   line-height: 1.7;
   color: $titles-color;
+}
+
+.card__price-old {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 170%;
+  text-decoration-line: line-through;
+  color: #888888;
 }
 
 .card__like {
