@@ -1,0 +1,19 @@
+<form class='modal-options' id='cart-services__form' data-product-id={{id}}>
+<h4 class='cart-services__title'>There is list of services available for <span class='cart-services__product-name'>{{name}}</span></h4>
+  <ul class='cart-services__list'>
+    {{#each additionalServices}}
+      <li class='cart-services__wrapper'>
+        <input
+          class='cart-services__checkbox'
+          type='checkbox'
+          id='service_{{id}}'
+          data-service-id='{{id}}'
+          {{#if selected}}checked{{/if}}
+        />
+        <label for='service_{{id}}' class='cart-services__label'><span class='cart-services__name'>{{name}}</span>
+        <span>&nbsp</span><span class='cart-services__cost'>${{cost}}</span></label>
+      </li>
+    {{/each}}
+  </ul>
+<button type='submit' class='cart-addinfo-btn'>Add services</button>
+</form>

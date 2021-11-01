@@ -1,0 +1,30 @@
+<h4 class='cart-services__title'>Credit available:</h4>
+<ul class='credit-component__list'>
+  {{#each this}}
+    <li class='credit-component__item'>
+      <div class='credit-component__heading'>
+        <img aria-hidden='true' class='credit-component__icon' src='{{logo}}' />
+        {{bankName}}
+      </div><div class='credit-component__period'><label
+          class='credit-component__period-label'
+          for='creditPeriodSelector'
+        > <span class='credit-component__num-payments'>{{paymentOptions.0.numPayments}}</span> payments for</label>
+        <select class='credit-component__period-select' id='creditPeriodSelector' name='' data-bank-id={{bankId}}>
+          {{#each paymentOptions}}
+            <option value={{paymentOptionId}}> {{numMonths}} month(s) </option>
+          {{/each}}
+        </select></div><div class='credit-component__payment'><label
+          class='credit-component__payment-label'
+        ><span>$</span><span class='credit-component__payment-price'>{{paymentOptions.0.amount}}</span>&nbsp;&nbsp;/&nbsp;month
+        </label>
+
+        <button class='cart-addinfo-btn' type='button' data-bank-id={{bankId}} data-payment-option-id={{paymentOptions.0.paymentOptionId}}>
+          select
+        </button>
+      </div>
+    </li>
+  {{/each}}
+</ul>
+<button class='cart-addinfo-btn' type='button'>
+  I don't need a credit
+</button>
