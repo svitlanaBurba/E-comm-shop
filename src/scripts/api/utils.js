@@ -37,4 +37,24 @@ export const addProductAdditionalProperties = product => {
   product.oldPrice = Math.round(product.price * (1 + dicsountRate) * 100) / 100;
   // adding available stock as 'stock'
   product.stock = product.id % 10;
+
+  // add additional services information
+  addAdditionalServices(product);
 };
+
+
+const addAdditionalServices = product => {
+  product.additionalServices = [];
+
+  // gift wrapping
+  if (product.price > 20) {
+    product.additionalServices.push({id: 1, name:'Gift wrapping', cost: 5})
+  }
+
+  // extended warranty
+  if (product.price > 50) {
+    product.additionalServices.push({id: 2, name:'Extended 1 Year Warranty', cost: Math.ceil(product.price * 0.05)})
+  }
+  // set flag of some services are availble for purchase
+  product.additionalServicesAvaliable = (product.additionalServices.length > 0);
+}

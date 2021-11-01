@@ -20,6 +20,13 @@
       type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"
     />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
   </head>
   <body>
     <div class="main-container">
@@ -36,6 +43,7 @@
             </div>
           </div>
           <div class="header__primary">
+            
             <!-- MOBILE MENU -->
             <button type="button" class="burger-button" data-menu-button="">
               <svg class="burger-button-icon" width="24" height="24">
@@ -44,6 +52,7 @@
             </button>
 
             <div class="mobile-menu" data-menu>
+              <aside class="mobile-menu__sidebar">
               <button class="mobile-menu__button-close" data-menu-close="">
                 <svg
                   class="mobile-menu__button-close-icon"
@@ -55,47 +64,33 @@
               </button>
 
               <ul class="header__nav-list nav-menu">
-                <li class="header__nav-item">
-                  <a href="#" class="header__nav-link"> Categories </a>
-
-                </li>
-                <li class="header__nav-item">
-                  <a href="#" class="header__nav-link"> Pages </a>
-
-                </li>
-                <li class="header__nav-item">
-                  <a href="#" class="header__nav-link"> Shop </a>
-
-                </li>
-                <li class="header__nav-item">
-                  <a href="#" class="header__nav-link"> Blog </a>
-
-                </li>
+              
               </ul>
+            </aside>
             </div>
-
             <!-- MOBILE MENU -->
 
             <nav class="header__nav">
               <ul class="header__nav-list">
+
                 <li class="header__nav-item">
-                  <a href="#" class="header__nav-link"> Categories </a>
+                  <a href="#" class="header__nav-link">main</a>
 
                 </li>
                 <li class="header__nav-item">
-                  <a href="#" class="header__nav-link"> Pages </a>
+                  <a href="#" class="header__nav-link">make a purchase</a>
 
                 </li>
                 <li class="header__nav-item">
-                  <a href="#" class="header__nav-link"> Shop </a>
-
-                </li>
-                <li class="header__nav-item">
-                  <a href="#" class="header__nav-link"> Blog </a>
+                  <a href="#" class="header__nav-link">checkout</a>
 
                 </li>
               </ul>
+
+              <aside class="submenu"></aside>
+
             </nav>
+
             <div class="header__logo">
               <a href="index.html">
                 <img src="./assets/header/logo.png" alt="logo" />
@@ -111,7 +106,7 @@
                   </button>
                 </li>
                 <li class="header__user-menu-item">
-                  <a href="#" class="header__user-menu-link">
+                  <a href="index.html#categories" class="header__user-menu-link">
                     <svg class="header__user-menu-icon" width="20" height="20">
                       <use href="./assets/sprite.svg#icon-user"></use>
                     </svg>
@@ -249,7 +244,7 @@
         <!-- -------------- HERO  -------------->
 
         <!-- -------------- BRANDS SECTION  -------------->
-        <section class="brands">
+        <section id="brands" class="brands">
           <div class="container">
             <ul class="brands__list">
               <li class="brands__item">
@@ -293,7 +288,7 @@
         <!-- -------------- BRANDS SECTION  -------------->
 
         <!-- -------------- CATEGORIES SECTION  -------------->
-        <section class="categories section">
+        <section id="categories" class="categories section">
           <div class="container">
             <div class="section__heading">
               <div class="section__accent-title">
@@ -317,7 +312,7 @@
         <!-- -------------- CATEGORIES SECTION  -------------->
 
 <!-- -------------- POPULAR PRODUCTS SECTION  -------------->
-        <section class="products section">
+        <section id="popular-products" class="products section">
           <div class="container">
             <div class="section__heading">
               <div class="section__accent-title">
@@ -347,7 +342,7 @@
 
         <!-- -------------- ABOUT SECTION (with video)  -------------->
 
-        <section class="about">
+        <section id="about" class="about">
           <div class="about__container">
             <div class="about__left-column">
               <div class="about__left-column-wrapper">
@@ -396,7 +391,7 @@
         <!-- -------------- ABOUT SECTION (with video)  -------------->
 
         <!-- -------------- ADVANTAGES SECTION  -------------->
-        <section class="advantages">
+        <section id="advantages" class="advantages">
           <div class="container">
             <ul class="advantages__list">
               <li class="advantages__item">
@@ -452,7 +447,7 @@
         <!-- -------------- ADVANTAGES SECTION  -------------->
 
         <!-- -------------- GIFT SECTION  -------------->
-        <section class="gift">
+        <section id="gift" class="gift">
           <div class="gift__content">
             <p class="hero__accent-title">mega sale 2020</p>
             <h1 class="hero__title">
@@ -483,7 +478,7 @@
         <!-- -------------- GIFT SECTION  -------------->
 
         <!-- -------------- BLOG SECTION  -------------->
-        <section class="blog">
+        <section id="blog" class="blog">
           <div class="container">
             <div class="section__heading">
               <div class="section__accent-title">
@@ -587,7 +582,7 @@
         <!-- -------------- BLOG SECTION  -------------->
 
         <!-- -------------- TESTIMONIALS SECTION  -------------->
-        <section class="testimonials">
+        <section id="testimonials" class="testimonials">
           <div class="container">
             <div class="section__heading">
               <div class="section__accent-title">
@@ -654,9 +649,9 @@
           </div>
         </section>
         <!-- -------------- TESTIMONIALS SECTION  -------------->
-        <!-- --------------  SECTION  -------------->
 
-        <section class="instagram">
+        <!-- --------------  INSTAGRAM SECTION  -------------->
+        <section id="instagram" class="instagram">
           <div class="container instagram__container">
           <div class="instagram__left-column">
             <div class="instagram__left-column-wrapper">

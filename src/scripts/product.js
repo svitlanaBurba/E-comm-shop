@@ -2,7 +2,7 @@ import * as $ from "jquery";
 import "slick-carousel";
 import singleProductTemplate from "./../templates/singleProductTemplate.hbs";
 import fetchSimilarProducts from "./api/fetchSimilarProducts";
-import { addToCart } from "./cart/setupCart";
+import { addToCart, setupCart } from "./cart/setupCart";
 import { setupProductsGallery } from "./products/setupProductsGallery";
 import { setupLeaveReview } from "./reviews/setupLeaveReview";
 import { setupReviews } from "./reviews/setupReviews";
@@ -49,6 +49,8 @@ const onProductLoad = async () => {
 
   // add product to the list of the previously viewed
   addProductToViewedList(productData);
+
+  setupCart();
 };
 
 const setupProductDetailsSection = (product) => {

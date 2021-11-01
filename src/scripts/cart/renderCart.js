@@ -1,5 +1,5 @@
 import { fetchDeliveryCost } from '../api/fetchDeliveryCost';
-import { formatPrice, getElement, getElements, getStoragePromoDiscount, hideElement, unHideElement } from '../utils';
+import { formatPrice, getElement, getElements, getStoragePromoDiscount, hideElements, unHideElements } from '../utils';
 import renderCartItem from './renderCartItem';
 import { renderCartPageItem } from './renderCartPageItem';
 
@@ -92,9 +92,9 @@ export const updateCartItemOnPage = (cart, productId) => {
         itemContainer.querySelectorAll('.cart-page__product-services-cost').forEach(element => {
           element.textContent = formatPrice(cartItem.additionalServicesCost);
         });
-        unHideElement('.cart-page__product-services', itemContainer);
+        unHideElements('.cart-page__product-services', itemContainer);
       } else {
-        hideElement('.cart-page__product-services', itemContainer);
+        hideElements('.cart-page__product-services', itemContainer);
       }
 
       // update/hide credit section
@@ -108,9 +108,9 @@ export const updateCartItemOnPage = (cart, productId) => {
           element.textContent = formatPrice(cartItem.creditData.payment * cartItem.amount);
         });
 
-        unHideElement('.cart-page__product-credit', itemContainer);
+        unHideElements('.cart-page__product-credit', itemContainer);
       } else {
-        hideElement('.cart-page__product-credit', itemContainer);
+        hideElements('.cart-page__product-credit', itemContainer);
       }
     }
   });

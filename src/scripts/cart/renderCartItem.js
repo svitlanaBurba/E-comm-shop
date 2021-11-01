@@ -1,20 +1,18 @@
 import { formatPrice, getElements } from '../utils.js';
 
-const renderCartItem = (product) => {
+const renderCartItem = product => {
   const cartList = getElements('.order__product-list');
 
-  cartList.forEach(el=>
-        el.appendChild(
-            getCartItem(product))
-        );
+  cartList.forEach(el => el.appendChild(getCartItem(product)));
 };
 
-const getCartItem = ({ id, name, price, oldPrice, image, amount, stock } ) => {
-    const cartItem = document.createElement('li');
-    cartItem.classList.add('order-card');
-    cartItem.setAttribute('data-id', id);
-    cartItem.innerHTML = `
-            <a class="order-card__link" href="#">
+const getCartItem = ({ id, name, price, oldPrice, image, amount, stock }) => {
+  const cartItem = document.createElement('li');
+  cartItem.classList.add('order-card');
+  cartItem.classList.add('cart-item');
+  cartItem.setAttribute('data-id', id);
+  cartItem.innerHTML = `
+            <a class="order-card__link" href="product.html?id=${id}">
                 <img
                 class="order-card__photo"
                 src="${image}"
@@ -23,7 +21,7 @@ const getCartItem = ({ id, name, price, oldPrice, image, amount, stock } ) => {
             </a>
             <div class="order-card__info">
                 <h3 class="order-card__title">
-                <a class="order-card__title-link" href="">${name}</a>
+                <a class="order-card__title-link" href="product.html?id=${id}">${name}</a>
                 </h3>
                 <span class="order-card__new-price">${formatPrice(price)}</span>
                 <span class="order-card__old-price">${formatPrice(oldPrice)}</span>
@@ -48,7 +46,7 @@ const getCartItem = ({ id, name, price, oldPrice, image, amount, stock } ) => {
             </div>
     `;
 
-    return cartItem;
-}
+  return cartItem;
+};
 
 export default renderCartItem;

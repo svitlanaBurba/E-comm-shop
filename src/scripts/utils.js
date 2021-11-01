@@ -51,6 +51,28 @@ const getStoragePromoDiscount= () => {
   }
 };
 
+const hideElements = (selector, container) => {
+  const parent = container || document;
+  const els = parent.querySelectorAll(selector);
+  els.forEach(el =>  el.classList.add('display-none'));
+}
+
+const unHideElements = (selector, container) => {
+  const parent = container || document;
+  const els = parent.querySelectorAll(selector);
+  els.forEach(el =>  el.classList.remove('display-none'));
+}
+
+const cleanLocalStorageIfTooOld = () => {
+  const today = new Date();
+  const lastVisited = window.localStorage.getItem('lastvisited');
+  const daysPassed = (today - Date.parse(lastVisited)) / (1000 * 60 * 60 * 24);
+
+  if (!lastVisited || daysPassed >= 1) window.localStorage.clear();
+  
+  window.localStorage.setItem('lastvisited', today);
+}
 
 
-  export {getElement,getElements, getStorageItem, setStorageItem, formatPrice, getStoragePromoDiscount};
+
+  export {getElement,getElements, getStorageItem, setStorageItem, formatPrice, getStoragePromoDiscount, hideElements, unHideElements,cleanLocalStorageIfTooOld};

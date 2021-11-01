@@ -1,164 +1,141 @@
 import fetchProductById from '../api/fetchProductById.js';
-import { formatPrice, getElement, getElements, getStorageItem, setStorageItem, getStoragePromoDiscount } from '../utils';
-import renderCartItem from './renderCartItem';
-import renderCartPageItem from './renderCartPageItem.js';
+import { getElements, getStorageItem, setStorageItem } from '../utils';
+import { renderCart, renderCartTotal, updateCartItemOnPage } from './renderCart.js';
 import { openCart } from './toggleCart';
 
-const cartUserMenuCount = getElement('.header__user-menu-count--cart');
 const cartLists = getElements('.cart__product-list');
-const cartOrderTotals = getElements('.order-summary__text--price');
-const cartOrderPromo = getElements('.order-summary__text--promo');
-const cartOrderDelivery = getElements('.order-summary__text--delivery');
-const cartTotals = getElements('.order-summary__amount');
-
 let cart = getStorageItem('cart');
 
 export const addToCart = async (id, productData, numToAdd) => {
   id = Number(id);
   if (numToAdd === 0) return;
-// check if we have stock
-  if (productData.stock === 0) return;
-
-  let item = cart.find(cartItem => cartItem.id === Number(id));
   const numItemsToAdd = numToAdd > 1 ? numToAdd : 1;
 
+  // if product details were not provided - fetch them from backend by id
+  let product = productData || (await fetchProductById(id));
+  if (!product) return;
+
+  // check if we have stock
+  if (product.stock === 0) return;
+
+  // check if we already have this product in cart
+  let item = cart.find(cartItem => cartItem.id === id);
+  // if product is not in cart yet - add it, otherwise increase it's qty
   if (!item) {
-    // if product details were not provided - fetch them from backend by id
-    let product = productData || (await fetchProductById(id));
     //   adding amount field to the item
-    product = { ...product, amount: numItemsToAdd };
-
+    const cartItem = { ...product, amount: numItemsToAdd };
     //   adding item to the cart
-    cart = [...cart, product];
-    //   render item to the DOM;
-    renderCartItem(product);
-    renderCartPageItem(product);
+    cart = [...cart, cartItem];
+    // save
+    setStorageItem('cart', cart);
+    //   render item - add to the cart lists
+    updateCartItemOnPage(cart, id);
   } else {
-    // update values
-    const amount = increaseAmount(id, numItemsToAdd, productData.stock);
-    //tranforming nodelist into array
-    const cartItems = [...document.querySelectorAll('[data-cart-item-amount]')];
-    //updating amount in DOM without page refreshing
-    const existingCartItem = cartItems.find(cartItem => Number(cartItem.dataset.id) === id);
-
-    existingCartItem.textContent = amount;
+    // increase num in cart on 1
+    increaseCartItemAmount(id, numItemsToAdd, productData.stock);
   }
-  // adding numbers one to the items count in user-menu
-  renderCartItemCount();
-  // render Cart Total
-  renderCartTotal();
-  // set cart in Local storage so that to get access to it in every page
-  setStorageItem('cart', cart);
   openCart();
 };
 
-// render items count in user-menu
-function renderCartItemCount() {
-  const totalAmount = cart.reduce((acc, cartItem) => (acc += cartItem.amount), 0);
-  cartUserMenuCount.textContent = totalAmount;
+// increasing cartItem
+function increaseCartItemAmount(productId, numToAdd) {
+  const itemIndex = cart.findIndex(item => item.id === Number(productId));
+  if (itemIndex === undefined) return;
+  let cartItem = cart[itemIndex];
+
+  cartItem.amount = Math.min(cartItem.amount + (numToAdd || 1), cartItem.stock || 999);
+  calculateCartItemAdditionalServicesCost(cartItem);
+  // save
+  setStorageItem('cart', cart);
+  // update pages
+  updateCartItemOnPage(cart, productId);
+  return cartItem.amount;
 }
 
-// render Cart Total
-export function renderCartTotal() {
-  const promoDiscount = getStoragePromoDiscount().discount;
-  const total = cart.reduce((acc, { price, amount }) => (acc += price * amount), 0);
+// decreasing cartItem
+function decreaseCartItemAmount(productId) {
+  let cartItem = cart.find(item => item.id === Number(productId));
+  if (!cartItem) return;
 
-  let delivery = 0;
-  if (total > 0 && total <= 100) {
-    delivery = 10;
-  } else if (total > 100 && total <= 1000) {
-    delivery = 5;
+  cartItem.amount = Math.max(cartItem.amount - 1, 0);
+
+  if (cartItem.amount !== 0) {
+    calculateCartItemAdditionalServicesCost(cartItem);
+    // save
+    setStorageItem('cart', cart);
+    // update pages
+    updateCartItemOnPage(cart, productId);
+  } else {
+    // if new amount is 0 them remove item from cart
+    removeCartItem(productId);
   }
-  else delivery = 0;
-
-  cartOrderTotals.forEach(el => (el.textContent = formatPrice(total)));
-  cartOrderPromo.forEach(el => (el.textContent = formatPrice(total*promoDiscount)));
-  cartOrderDelivery.forEach(el => (el.textContent = formatPrice(delivery)));
-  cartTotals.forEach(el => (el.textContent = formatPrice(total - total*promoDiscount + delivery)));
-}
-
-// render all Cart items items from the Local Storage
-function renderCart() {
-  cart.forEach(cartItem => { renderCartItem(cartItem); renderCartPageItem(cartItem);});
-}
-
-// increasing cartItem 
-function increaseAmount(id, numToAdd, stock) {
-  let newAmount;
-  cart = cart.map(cartItem => {
-    if (cartItem.id === Number(id)) {
-      newAmount = Math.min(cartItem.amount + (numToAdd || 1), stock);
-      cartItem = { ...cartItem, amount: newAmount };
-    }
-    return cartItem;
-  });
-  return newAmount;
-}
-
-// decreasing cartItem 
-function decreaseAmount(id) {
-  let newAmount;
-  cart = cart.map(cartItem => {
-    if (cartItem.id === Number(id)) {
-      newAmount = Math.max(cartItem.amount - 1, 0);
-      cartItem = { ...cartItem, amount: newAmount };
-    }
-    return cartItem;
-  });
-  return newAmount;
+  return cartItem.amount;
 }
 
 // removing cartItem from Local Storage
-function removeCartItem(id) {
-  cart = cart.filter(cartItem => cartItem.id !== Number(id));
+function removeCartItem(productId) {
+  cart = cart.filter(cartItem => cartItem.id !== Number(productId));
+  // save
+  setStorageItem('cart', cart);
+  // update pages - remove items from sidebar and cart page
+  updateCartItemOnPage(cart, productId);
 }
 
 function activateCartButtons() {
-  cartLists.forEach(cartList => cartList.addEventListener('click', e => {
-    const parent = e.target.closest('button');
-    if (!parent) return;
-    const parentId = parent.dataset.id;
-    const stock = parent.dataset.stock;
+  cartLists.forEach(cartList =>
+    cartList.addEventListener('click', e => {
+      const parent = e.target.closest('button');
+      if (!parent) return;
+      const productId = Number(parent.dataset.id);
 
-    // removing cartItem
-    if (parent.classList.contains('order-card-remove-btn')) {
-      removeCartItem(parentId);
-      // removing cartItem from the DOM
-      parent.closest('li').remove();
-    }
-    // increasing cartItem
-    if (parent.hasAttribute('data-cart-increase-btn')) {
-      const newAmount = increaseAmount(parentId, 1, stock);
-      // increasing cartItem in the DOM
-      parent.previousElementSibling.textContent = newAmount;
-    }
-    // decreasing cartItem
-    if (parent.hasAttribute('data-cart-decrease-btn')) {
-      const newAmount = decreaseAmount(parentId);
-      if (newAmount === 0) {
-        removeCartItem(parentId);
-        parent.closest('li').remove();
-      } else {
-        parent.nextElementSibling.textContent = newAmount;
-      }
-    }
-
-    renderCartItemCount();
-    renderCartTotal();
-    setStorageItem('cart', cart);
-  }));
+      // removing cartItem
+      if (parent.classList.contains('order-card-remove-btn')) removeCartItem(productId);
+      // increasing cartItem
+      if (parent.hasAttribute('data-cart-increase-btn')) increaseCartItemAmount(productId, 1);
+      // decreasing cartItem
+      if (parent.hasAttribute('data-cart-decrease-btn')) decreaseCartItemAmount(productId);
+    }),
+  );
 }
 
-const start = () => {
-  // render items count in user-menu
-  renderCartItemCount();
-  // render Cart Total
-  renderCartTotal();
-  // render all Cart items items from the Local Storage
-  renderCart();
-  // activate Cart buttons
+export const updateCartItemAdditionalServices = (productId, selectedServicesIds) => {
+  let cartItem = cart.find(item => item.id === productId);
+  if (!cartItem) return;
 
-  activateCartButtons();
+  cartItem.additionalServices.forEach(service => {
+    service.selected = selectedServicesIds.findIndex(id => id === service.id) > -1;
+  });
+  // recalculate
+  calculateCartItemAdditionalServicesCost(cartItem);
+  // save
+  setStorageItem('cart', cart);
+  // update page
+  updateCartItemOnPage(cart, productId);
 };
 
-start();
+export const updateCartItemCreditData = (productId, creditData) => {
+  let cartItem = cart.find(item => item.id === productId);
+  if (!cartItem) return;
+
+  cartItem.creditData = creditData;
+  //save
+  setStorageItem('cart', cart);
+  // update pages
+  updateCartItemOnPage(cart, productId);
+};
+
+const calculateCartItemAdditionalServicesCost = cartItem => {
+  cartItem.additionalServicesCost =
+    cartItem.amount *
+    cartItem.additionalServices.reduce((total, service) => (service.selected ? total + service.cost : total), 0);
+};
+
+export const onPromoApplied = () => {
+  renderCartTotal(cart);
+};
+
+export const setupCart = () => {
+  let cart = getStorageItem('cart');
+  renderCart(cart);
+  activateCartButtons();
+};

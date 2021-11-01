@@ -62,6 +62,7 @@
 }
 
 .header__nav {
+    position: relative;
     display:none;
     @media (min-width: 768px){
         display: block;
@@ -83,33 +84,22 @@
 
 .header__nav-link {
         display: inline-block;
-        padding: 10px 0px 10px 16px;
-        font-weight: 500;
-        font-size: 14px;
+        padding: 10px 20px 12px 0px;
+        font-weight: 600;
+        font-size: 18px;
         line-height: 1.1em;
         color: $text-color;
         transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        text-transform: capitalize;
+     
+        @media (max-width: 991px){
+            padding: 10px 10px 12px 0px;
+            font-weight: 600;
+            font-size: 16px;
+           } 
     
 }
 
-
-.header__nav-item:first-child::before {
-    content: '';
-    display: inline-block;
-    margin-right: -8px;
-    height: 12px;
-    width: 12px;
-    background: url(../assets/icons/categories.svg) center no-repeat;
-    background-size: contain;
-}
-
-.header__nav-item:not(:first-child)::after {
-    content: '+';
-    display: inline-block;
-    font-size: 14px;
-    line-height: 1.1em;
-    color: $text-color;
-}
 
 .header__logo{
     position: relative;
@@ -428,28 +418,47 @@ font-size: 20px;
 
 .mobile-menu {
     position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    z-index: 100500;
+    display: grid;
+    place-items: center;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: flex-start;
+    // z-index: 100500;
     width: 100vw;
     height: 100vh;
     top: 0;
-    right: -40px;
-    background-color: $main-color;
-    opacity: 90%;
-    padding: 125px 20px;
+    left:0;
+    // right: -60px;
+    background-color: rgba(0, 0, 0, 0.5);
+    // opacity: 90%;
+    // padding: 125px 30px;
     transition: all .25s cubic-bezier(.4,0,.2,1);
-    overflow-y: scroll;
-    transform: translateX(-100%) translateY(0);
-    pointer-events: none;
+    transform: scale(0);
+    visibility: hidden;
+    z-index: -999;
+    // overflow-y: scroll;
+    // transform: translateX(-100%) translateY(0);
+    // pointer-events: none;
 }
 
 .mobile-menu--is-open {
-    transform: translateX(0) translateY(0);
-    pointer-events: auto;
+    visibility: visible;
+    z-index: 100500;
+    transform: scale(1);
+    // transform: translateX(0) translateY(0);
+    // pointer-events: auto;
 }
 
+
+.mobile-menu__sidebar{
+    width: 90vw;
+    height: 95vh;
+    max-width: 720px;
+    background: $light-bg-color;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    padding: 125px 20px;
+}
 .mobile-menu__button-close {
     position: absolute;
     top: 90px;
@@ -487,3 +496,90 @@ font-size: 20px;
     flex-direction: column;
 }
 
+.header__nav-article{
+    margin-bottom: 20px;  
+}
+.header__nav-title{
+    text-transform: capitalize;
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+}
+
+
+.header__nav-sublinks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 10px;
+
+  & a {
+    display: block;
+    font-weight: 500;
+    color: $text-color;
+    text-transform: capitalize;
+  }
+  & i {
+    color: $text-color;
+    margin-right: 10px;
+  }
+}
+
+//SUBMENU
+
+.submenu {
+    background:  $light-bg-color;
+    //box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    left: 50%;
+    z-index: 3;
+    display: none;
+    padding: 2rem;
+    border-radius: 5px;
+  }
+  .submenu::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid white;
+    position: absolute;
+    top: -5px;
+    left: 40px;
+    transform: translateX(-50%);
+  }
+  
+  .submenu.show {
+    display: block;
+  }
+  
+  .submenu-center {
+    display: grid;
+    gap: 0.25rem 2rem;
+  }
+  .col-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .col-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .col-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .submenu h4 {
+    text-transform: capitalize;
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+  }
+  .submenu-center a {
+    width: 10rem;
+    display: block;
+    color: $text-color;
+    text-transform: capitalize;
+  }
+  .submenu-center i {
+    color: $text-color;
+    margin-right: 10px;
+  }

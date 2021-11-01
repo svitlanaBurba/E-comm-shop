@@ -11,8 +11,9 @@ import onCartLoad from "./scripts/cart";
 import onMainLoad from './scripts/main';
 import mobileMenu from "./scripts/header/mobileMenu";
 import initHeader from "./scripts/header/initHeader";
+import { cleanLocalStorageIfTooOld } from "./scripts/utils";
 
-
+cleanLocalStorageIfTooOld();
 const page = document.getElementsByTagName("head")[0].dataset['page'];
 
 if (page === 'shop') {

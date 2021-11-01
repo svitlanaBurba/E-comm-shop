@@ -2,6 +2,7 @@ import initSlider from "../components/rangeSlider";
 import fetchFilterParameters from "../scripts/api/fetchFilterParameters";
 import initSearch from "../scripts/filters/searchProducts";
 import fetchProducts from "./api/fetchProducts";
+import { setupCart } from "./cart/setupCart";
 import { setupProductCategorySection } from "./filters/productCategories";
 import { setupManufacturerSection } from "./filters/productManufacturers";
 import { toggleShopSidebar } from "./filters/toggleShopSidebar";
@@ -57,6 +58,8 @@ const onShopLoad = async () => {
 
   initSortBy(); // enable sorting
   toggleShopSidebar(); // init side bar
+
+  setupCart();
 };
 
 const getSelectedCategoryFromUrl = () => {
