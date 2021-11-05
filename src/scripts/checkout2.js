@@ -4,10 +4,12 @@ import 'jquery-validation';
 // import custom validator for names
 import './formValidators/nameValidator';
 import setupPaymentFormSubmit from './formHandlers/handlePaymentFormSubmit';
+import { setupCart } from './cart/setupCart';
 
 
 const onCheckout2Load = () => {
   $(document).ready(function () {
+    setupCart();
     addFormInputMasks();
     addFormInputValidation();
     setupPaymentFormSubmit();

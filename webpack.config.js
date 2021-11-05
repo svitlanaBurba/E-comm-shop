@@ -61,6 +61,13 @@ module.exports = {
       }
     }),
     new HTMLWebpackPlugin({
+      template: './checkout3.html',
+      filename: './checkout3.html',
+      minify: {
+        collapseWhitespace: isProd
+      }
+    }),
+    new HTMLWebpackPlugin({
       template: './shop.html',
       filename: './shop.html',
       minify: {

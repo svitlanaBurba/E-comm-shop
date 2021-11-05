@@ -1,0 +1,9 @@
+<div>{{name}}</div>
+<div>Address: <span class="pickup-store-details-address">{{address}}, {{city}}, {{state}}</span></div>
+<div>Working Hours: 
+  <ul class="pickup-store-details-workhours">
+    {{#each workHours}}
+    <li><span>{{day}}</span> : <span>{{hours}}</span></li>
+    {{/each}}
+  </ul>
+</div>

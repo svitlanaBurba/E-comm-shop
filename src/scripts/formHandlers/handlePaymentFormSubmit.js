@@ -4,6 +4,7 @@ const handlePaymentFormSubmit = e => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
+    console.log(formData);
 
     //transforming key-value pairs into an object
     const formObject = Object.fromEntries(formData.entries());

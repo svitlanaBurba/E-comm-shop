@@ -32,16 +32,13 @@ export const initAdditionalSevices = () => {
     modalContainer.querySelector('form').addEventListener('submit', e => {
       e.preventDefault();
       const form = e.target;
-      // handler for additional services form
-      if (form.id === 'cart-services__form') {
-        const productId = Number(form.dataset.productId);
-        // build array of selected services ids
-        const selectedServices = [...form.querySelectorAll('input:checked')].map(checkbox =>
-          Number(checkbox.dataset.serviceId),
-        );
-        // add selected services to cart (update record for a product)
-        updateCartItemAdditionalServices(productId, selectedServices);
-      }
+      // build array of selected services ids
+      const selectedServices = [...form.querySelectorAll('input:checked')].map(checkbox =>
+        Number(checkbox.dataset.serviceId),
+      );
+      // add selected services to cart (update record for a product)
+      updateCartItemAdditionalServices(productId, selectedServices);
+
       modalHide();
     });
   });
@@ -110,5 +107,3 @@ export const initCreditOptions = () => {
     modalHide();
   });
 };
-
-

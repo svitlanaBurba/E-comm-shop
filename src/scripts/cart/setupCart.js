@@ -138,4 +138,6 @@ export const setupCart = () => {
   let cart = getStorageItem('cart');
   renderCart(cart);
   activateCartButtons();
+
+  return cart; //this is useful for checkout pages that have static cart
 };

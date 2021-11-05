@@ -1,0 +1,299 @@
+<form action='checkout2.html' class='form-wrapper' name='delivery-form' autocomplete='off' id='delivery-form'>
+  <div class='delivery-form'>
+    <h3 class='delivery-form__title' id='contact-person__details'>contact person</h3>
+    <div class='delivery-form__block' role='group' aria-labelledby='contact-person__details'>
+      <label class='delivery-form__input-wrapper'>
+        <input
+          type='text'
+          class='delivery-form__input'
+          name='userName'
+          id='userName'
+          placeholder='Enter your name'
+          minlength='2'
+          maxlength='50'
+          pattern="^[a-z ,.'-]+$"
+          value="{{userName}}"
+          required
+        />
+      </label>
+      <label class='delivery-form__input-wrapper'>
+        <input
+          type='text'
+          class='delivery-form__input'
+          name='userLastName'
+          id='userLastName'
+          placeholder='Enter your last name'
+          minlength='2'
+          maxlength='50'
+          pattern="^[a-z ,.'-]+$"
+          value="{{userLastName}}"
+          required
+        />
+      </label>
+      <label class='delivery-form__input-wrapper'>
+        <input
+          type='email'
+          class='delivery-form__input'
+          id='userEmail'
+          name='userEmail'
+          placeholder='Enter your email'
+          pattern="(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"
+          value="{{userEmail}}"
+          required
+        />
+      </label>
+      <label class='delivery-form__input-wrapper' for='userPhone'>
+        <input
+          type='tel'
+          class='delivery-form__input phone_with_ddd'
+          name='userPhone'
+          id='userPhone'
+          placeholder='Enter your phone'
+          pattern='\\\(\+38\)[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}'
+          value="{{userPhone}}"
+          required
+        />
+      </label>
+    </div>
+
+    <h3 class='delivery-form__title' id='address__details'>delivery type</h3>
+    <div class='delivery-methods'>
+      <div class='payment-method'>
+        <div class='payment-method__radio-wrapper'>
+          <input
+            type='radio'
+            required
+            name='deliveryType'
+            id='atHomeDelivery'
+            value='atHomeDelivery'
+            class='payment-method__radio-input collapser-input collapsible-section-btn'
+            {{#if isAtHomeSelected}}checked{{/if}}
+          />
+          <label class='payment-method__radio-label' for='atHomeDelivery'> At Home Delivery </label>
+        </div>
+
+        <div class='delivery-form__block collapsible-section' role='group' aria-labelledby='address__details'>
+          <div class='delivery-form__home-delivery__sub-type__container'>
+            <input
+              type='radio'
+              name='atHomeDeliveryType'
+              id='atHomeDeliveryTypeStandard'
+              value='atHomeDeliveryTypeStandard'
+              class='payment-method__radio-input'  
+              required            
+            />
+            <label class='payment-method__radio-label--secondary' for='atHomeDeliveryTypeStandard'>
+              <span style="width:150px">Standard Delivery (3-7 business days)</span><span>{{deliveryCost.normalDelivery}}</span>
+            </label>
+            <input
+              type='radio'
+              name='atHomeDeliveryType'
+              id='atHomeDeliveryTypeExpress'
+              value='atHomeDeliveryTypeExpress'
+              class='payment-method__radio-input'
+              required
+            />
+            <label class='payment-method__radio-label--secondary' for='atHomeDeliveryTypeExpress'>
+              Express Delivery
+            </label>
+          </div>
+          <label class='delivery-form__input-wrapper--address'>
+            <input
+              type='text'
+              class='delivery-form__input'
+              name='address'
+              id='userShipAddress'
+              placeholder='Enter your Аddress'
+              minlength='2'
+              maxlength='200'
+              value='{{userShipAddress}}'
+              required
+            />
+          </label>
+
+          <label class='delivery-form__input-wrapper--address'>
+            <input
+              type='text'
+              class='delivery-form__input'
+              name='userAddressDetails'
+              id='userAddressDetails'
+              placeholder='Enter your apartment, unit, suite, or floor #'
+              minlength='2'
+              maxlength='200'
+              value='{{userAddressDetails}}'
+              required
+            />
+          </label>
+          <label class='delivery-form__input-wrapper'>
+            <input
+              type='text'
+              class='delivery-form__input'
+              name='userCountry'
+              id='userCountry'
+              placeholder='Enter your country'
+              minlength='2'
+              maxlength='50'
+              value='{{userCountry}}'
+              required
+            />
+          </label>
+
+          <label class='delivery-form__input-wrapper'>
+            <input
+              type='text'
+              class='delivery-form__input'
+              name='city'
+              id='userCity'
+              placeholder='Enter your city'
+              minlength='2'
+              maxlength='50'
+              value='{{userCity}}'
+              required
+            />
+          </label>
+
+          <label class='delivery-form__input-wrapper'>
+            <input
+              type='text'
+              class='delivery-form__input'
+              name='userPostcode'
+              id='userPostcode'
+              placeholder='Enter your postal code'
+              minlength='2'
+              maxlength='50'
+              value='{{userPostcode}}'
+              required
+            />
+          </label>
+
+          <label class='delivery-form__input-wrapper'>
+            <input
+              type='text'
+              class='delivery-form__input'
+              name='userState'
+              id='userState'
+              placeholder='Enter your state'
+              minlength='2'
+              maxlength='50'
+              value='{{userPostcode}}'
+              required
+            />
+          </label>
+
+          <label class='delivery-form__input-wrapper'>
+            <input type='date' class='delivery-form__input' min='2021-09-29' max='2022-09-29' required />
+          </label>
+          <label class='delivery-form__input-wrapper'>
+            <input type='time' class='delivery-form__input' name='time' placeholder='Delivery time' />
+          </label>
+        </div>
+      </div>
+      <!-- 
+                  <div class="payment-method">
+                    <div class="payment-method__radio-wrapper">
+                      <input
+                        type="radio"
+                        required
+                        name="deliveryType"
+                        id="standardDelivery"
+                        value="standardDelivery"
+                        class="payment-method__radio-input"
+                      />
+                      <label class="payment-method__radio-label" for="standardDelivery">
+                        standart delivery (UPC)
+                      </label>
+                    </div>
+                  </div> -->
+
+      <div class='payment-method'>
+        <div class='payment-method__radio-wrapper'>
+          <input
+            type='radio'
+            required
+            name='deliveryType'
+            id='pickupDelivery'
+            value='pickupDelivery'
+            class='payment-method__radio-input collapsible-section-btn'
+            {{#if isPickupSelected}}checked{{/if}}
+          />
+          <label class='payment-method__radio-label' for='pickupDelivery'> Pickup in the store </label>
+          <input type='hidden' id='pickupStoreData' />
+        </div>
+        <div class='delivery-form__block collapsible-section delivery-form__pickup-delivery__store-selector__container'>
+          <button class='pickup-btn' type='button' data-id=''>pickup store</button>
+          <div class='delivery-form__pickup-store_address'>{{#if isPickupSelected}}{{pickupStore.name}}: {{pickupStore.address}}, {{pickupStore.city}},{{pickupStore.city}}{{/if}}</div>
+        </div>
+      </div>
+    </div>
+    <h3 class='delivery-form__title comments-title' id='comment'>comment to the order</h3>
+    <div class='delivery-form__block' role='group' aria-labelledby='comment'>
+      <label class='delivery-form__input-wrapper'>
+        <textarea class='delivery-form__textarea' name='comment' placeholder='Enter your comment'></textarea>
+      </label>
+
+      <div class='delivery-form__input-wrapper'>
+        <div class='delivery-form__checkbox-wrapper'>
+          <input
+            class='delivery-form__checkbox'
+            type='checkbox'
+            name='checkboxDelivery'
+            id='createAccount'
+            value='createAccount'
+          />
+          <label class='delivery-form__checkbox-label' for='createAccount'>Create an account.</label>
+        </div>
+        <div class='delivery-form__checkbox-wrapper'>
+          <input
+            class='delivery-form__checkbox'
+            type='checkbox'
+            name='checkboxDelivery'
+            id='notCall'
+            value='doNotCallMeBack'
+          />
+          <label class='delivery-form__checkbox-label' for='notCall'>Do not call me back i am sure of the order.</label>
+        </div>
+        <div class='delivery-form__checkbox-wrapper'>
+          <input
+            class='delivery-form__checkbox'
+            type='checkbox'
+            name='checkboxDelivery'
+            id='accept'
+            value='acceptTermsOfUse'
+            checked
+          />
+          <label class='delivery-form__checkbox-label' for='accept'>I accept the Terms of use.</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORDER BLOCK -->
+  <div class='order'>
+    <h2 class='order__title'>your order</h2>
+    <ul class='checkout-order__product-list cart__product-list'></ul>
+
+    <ul class='order-summary'>
+      <li class='order-summary__item'>
+        <div class='order-summary__title'>Оrder price</div>
+        <div class='order-summary__text--price'>$0</div>
+      </li>
+      <li class='order-summary__item'>
+        <div class='order-summary__title'>Discount for promo code</div>
+        <div class='order-summary__text--promo'>No</div>
+      </li>
+      <li class='order-summary__item'>
+        <div class='order-summary__title'>Additional services</div>
+        <div class='order-summary__text--services'></div>
+      </li>
+      <li class='order-summary__item'>
+        <div class='order-summary__title'>Delivery <span>(Oct 02 at 14:35)</span></div>
+        <div class='order-summary__text--delivery'>$0</div>
+      </li>
+      <li class='order-summary__total'>
+        <div class='order-summary__title'>Total</div>
+        <div class='order-summary__amount'>$0</div>
+      </li>
+    </ul>
+    <button class='order-btn' type='submit'>choose a payment method</button>
+  </div>
+</form>

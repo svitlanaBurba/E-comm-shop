@@ -1,14 +1,16 @@
-import { fetchDeliveryCost } from '../api/fetchDeliveryCost';
-import { formatPrice, getElement, getElements, getStoragePromoDiscount, hideElements, unHideElements } from '../utils';
+
+import { formatPrice, getElement, getElements, hideElements, unHideElements } from '../utils';
 import renderCartItem from './renderCartItem';
 import { renderCartPageItem } from './renderCartPageItem';
+import renderOrderItem from './renderOrderItem';
+import { getCartTotals } from './utils';
 
 const cartUserMenuCount = getElement('.header__user-menu-count--cart');
 const cartOrderTotals = getElements('.order-summary__text--price');
 const cartOrderPromo = getElements('.order-summary__text--promo');
 const cartOrderServices = getElements('.order-summary__text--services');
 const cartOrderDelivery = getElements('.order-summary__text--delivery');
-const cartTotals = getElements('.order-summary__amount');
+const cartGrandTotals = getElements('.order-summary__amount');
 
 // render all Cart items items from the Local Storage
 export const renderCart = cart => {
@@ -18,27 +20,28 @@ export const renderCart = cart => {
   cart.forEach(cartItem => {
     renderCartItem(cartItem);
     renderCartPageItem(cartItem);
+    renderOrderItem(cartItem);
   });
 
   renderCartTotal(cart);
   renderCartItemCount(cart);
 };
 
+
+
+
 // render Cart Total
 export const renderCartTotal = cart => {
-  const promoDiscount = getStoragePromoDiscount().discount;
+  const totals = getCartTotals(cart);
 
-  const productsCost = cart.reduce((acc, { price, amount }) => (acc += price * amount), 0);
-  const discount = promoDiscount !== 0 ? -1 * productsCost * promoDiscount : 0; // discount is negative!
-  const servicesCost = cart.reduce((total, item) => total + (item.additionalServicesCost || 0), 0);
-  const deliveryCost = fetchDeliveryCost(productsCost + discount + servicesCost);
-  const total = productsCost + discount + servicesCost + deliveryCost; // discount is negative, so adding it
-
-  cartOrderTotals.forEach(el => (el.textContent = formatPrice(productsCost)));
-  cartOrderPromo.forEach(el => (el.textContent = formatPrice(discount)));
-  cartOrderServices.forEach(el => (el.textContent = formatPrice(servicesCost)));
-  cartOrderDelivery.forEach(el => (el.textContent = formatPrice(deliveryCost)));
-  cartTotals.forEach(el => (el.textContent = formatPrice(total)));
+  
+  cartOrderTotals.forEach(el => (el.textContent = totals.productsCostFormatted));
+  console.log(cartOrderTotals,totals.productsCostFormatted);
+  console.log(cartOrderTotals.textContent);
+  cartOrderPromo.forEach(el => (el.textContent = totals.discountCostFormatted));
+  cartOrderServices.forEach(el => (el.textContent = totals.servicesCostFormatted));
+  cartOrderDelivery.forEach(el => (el.textContent = totals.deliveryCostFormatted));
+  cartGrandTotals.forEach(el => (el.textContent = totals.totalCostFormatted));
 };
 
 // render items count in user-menu
@@ -57,13 +60,14 @@ export const updateCartItemOnPage = (cart, productId) => {
   renderCartTotal(cart);
   renderCartItemCount(cart);
 
+  // look for product cards that are already on pages
+  const itemContainers = getElements(`.cart-item[data-id='${cartItem.id}']`);
+
   // if there is no such productId in cart anymore - then remove it from pages
   if (!cartItem) {
-    document.querySelectorAll(`.cart-item[data-id='${productId}']`).forEach(itemContainer => itemContainer.remove());
+    itemContainers.forEach(itemContainer => itemContainer.remove());
     return;
   }
-
-  const itemContainers = getElements(`.cart-item[data-id='${cartItem.id}']`);
 
   // if this cartItem is not represented on pages yet (just added) - add it to pages
   if (itemContainers.length === 0) {
