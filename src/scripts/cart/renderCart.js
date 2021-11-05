@@ -1,4 +1,3 @@
-
 import { formatPrice, getElement, getElements, hideElements, unHideElements } from '../utils';
 import renderCartItem from './renderCartItem';
 import { renderCartPageItem } from './renderCartPageItem';
@@ -6,11 +5,6 @@ import renderOrderItem from './renderOrderItem';
 import { getCartTotals } from './utils';
 
 const cartUserMenuCount = getElement('.header__user-menu-count--cart');
-const cartOrderTotals = getElements('.order-summary__text--price');
-const cartOrderPromo = getElements('.order-summary__text--promo');
-const cartOrderServices = getElements('.order-summary__text--services');
-const cartOrderDelivery = getElements('.order-summary__text--delivery');
-const cartGrandTotals = getElements('.order-summary__amount');
 
 // render all Cart items items from the Local Storage
 export const renderCart = cart => {
@@ -27,17 +21,18 @@ export const renderCart = cart => {
   renderCartItemCount(cart);
 };
 
-
-
-
 // render Cart Total
 export const renderCartTotal = cart => {
   const totals = getCartTotals(cart);
 
-  
+  const cartOrderTotals = getElements('.order-summary__text--price');
+  const cartOrderPromo = getElements('.order-summary__text--promo');
+  const cartOrderServices = getElements('.order-summary__text--services');
+  const cartOrderDelivery = getElements('.order-summary__text--delivery');
+  const cartGrandTotals = getElements('.order-summary__amount');
+
   cartOrderTotals.forEach(el => (el.textContent = totals.productsCostFormatted));
-  console.log(cartOrderTotals,totals.productsCostFormatted);
-  console.log(cartOrderTotals.textContent);
+
   cartOrderPromo.forEach(el => (el.textContent = totals.discountCostFormatted));
   cartOrderServices.forEach(el => (el.textContent = totals.servicesCostFormatted));
   cartOrderDelivery.forEach(el => (el.textContent = totals.deliveryCostFormatted));
