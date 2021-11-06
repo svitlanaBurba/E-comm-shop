@@ -50,12 +50,13 @@ export const initStoreSelection = onStoreChoosen => {
 // this handles a 'Pick store' button
 export const showStoreSelection = async () => {
   modalShow();
+  storeAddressInput.focus();
   // if this is a first load of a form - fetch and display stores for a deafult location
   // after the first load form will always display something, so no need to fetch data and display
   if (!stores || stores.length === 0) {
     stores = await fetchStoresByLocation(defaultLocation.lat, defaultLocation.lng, deafultDistance);
     displayStoresOnMap();
-  } 
+  }
 };
 
 // standard initMap from Google samples
@@ -120,7 +121,7 @@ const displaySelectedStore = storeId => {
     .forEach(item => item.classList.remove('store-selected'));
   storeListContainer.querySelectorAll(`.pickup-store-list-item[data-store-id='${storeId}']`).forEach(item => {
     item.classList.add('store-selected');
-    item.focus();
+    //item.focus();
   });
 
   // cemter map on the selected store and zoom in
@@ -135,7 +136,7 @@ function initStoreAddressAutocomplete() {
     fields: ['address_components', 'geometry'],
     types: ['address'],
   });
-  storeAddressInput.focus();
+
 
   // when user selects some location - process it
   autocomplete.addListener('place_changed', processStoreAddressAutocomplete);

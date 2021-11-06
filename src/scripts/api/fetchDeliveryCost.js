@@ -13,9 +13,12 @@ export const fetchDetailedDeliveryCost = async (orderPrice, cart) => {
     if (orderPrice > 100 && orderPrice <= 1000) normalPrice = 5;
     // calculate express price
     let expressPrice = normalPrice * expressPriceRatio;
+    // pickup price - always zero
+    let pickupDelivery = 0;
 
     return {
         expressDelivery: expressPrice,
-        normalDelivery: normalPrice
+        standardDelivery: normalPrice,
+        pickupDelivery: pickupDelivery,
     };
 }

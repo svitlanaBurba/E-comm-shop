@@ -67,9 +67,9 @@
             id='atHomeDelivery'
             value='atHomeDelivery'
             class='payment-method__radio-input collapser-input collapsible-section-btn'
-            {{#if isAtHomeSelected}}checked{{/if}}
+            {{#if flags.isAtHomeSelected}}checked{{/if}}
           />
-          <label class='payment-method__radio-label' for='atHomeDelivery'> At Home Delivery </label>
+          <label class='payment-method__radio-label' for='atHomeDelivery'> At Home Delivery - {{deliveryCost.homeDeliveryCostRange}}</label>
         </div>
 
         <div class='delivery-form__block collapsible-section' role='group' aria-labelledby='address__details'>
@@ -80,10 +80,11 @@
               id='atHomeDeliveryTypeStandard'
               value='atHomeDeliveryTypeStandard'
               class='payment-method__radio-input'  
+              {{#if flags.isAtHomeStandardSelected}}checked{{/if}}
               required            
             />
             <label class='payment-method__radio-label--secondary' for='atHomeDeliveryTypeStandard'>
-              <span style="width:150px">Standard Delivery (3-7 business days)</span><span>{{deliveryCost.normalDelivery}}</span>
+              <span style="width:300px">Standard Delivery (3-7 business days)</span><span>{{deliveryCost.standardDeliveryFormatted}}</span>
             </label>
             <input
               type='radio'
@@ -91,10 +92,11 @@
               id='atHomeDeliveryTypeExpress'
               value='atHomeDeliveryTypeExpress'
               class='payment-method__radio-input'
+              {{#if flags.isAtHomeExpressSelected}}checked{{/if}}
               required
             />
             <label class='payment-method__radio-label--secondary' for='atHomeDeliveryTypeExpress'>
-              Express Delivery
+              <span style="width:300px">Express Delivery</span><span>{{deliveryCost.expressDeliveryFormatted}}</span>
             </label>
           </div>
           <label class='delivery-form__input-wrapper--address'>
@@ -179,32 +181,8 @@
               required
             />
           </label>
-
-          <label class='delivery-form__input-wrapper'>
-            <input type='date' class='delivery-form__input' min='2021-09-29' max='2022-09-29' required />
-          </label>
-          <label class='delivery-form__input-wrapper'>
-            <input type='time' class='delivery-form__input' name='time' placeholder='Delivery time' />
-          </label>
         </div>
       </div>
-      <!-- 
-                  <div class="payment-method">
-                    <div class="payment-method__radio-wrapper">
-                      <input
-                        type="radio"
-                        required
-                        name="deliveryType"
-                        id="standardDelivery"
-                        value="standardDelivery"
-                        class="payment-method__radio-input"
-                      />
-                      <label class="payment-method__radio-label" for="standardDelivery">
-                        standart delivery (UPC)
-                      </label>
-                    </div>
-                  </div> -->
-
       <div class='payment-method'>
         <div class='payment-method__radio-wrapper'>
           <input
@@ -214,14 +192,13 @@
             id='pickupDelivery'
             value='pickupDelivery'
             class='payment-method__radio-input collapsible-section-btn'
-            {{#if isPickupSelected}}checked{{/if}}
+            {{#if flags.isPickupSelected}}checked{{/if}}
           />
-          <label class='payment-method__radio-label' for='pickupDelivery'> Pickup in the store </label>
-          <input type='hidden' id='pickupStoreData' />
+          <label class='payment-method__radio-label' for='pickupDelivery'> Pickup in the store - {{deliveryCost.pickupDeliveryFormatted}}</label>
         </div>
         <div class='delivery-form__block collapsible-section delivery-form__pickup-delivery__store-selector__container'>
           <button class='pickup-btn' type='button' data-id=''>pickup store</button>
-          <div class='delivery-form__pickup-store_address'>{{#if isPickupSelected}}{{pickupStore.name}}: {{pickupStore.address}}, {{pickupStore.city}},{{pickupStore.city}}{{/if}}</div>
+          <div class='delivery-form__pickup-store_address'>{{#if flags.isPickupSelected}}{{pickupStore.name}}: {{pickupStore.address}}, {{pickupStore.city}},{{pickupStore.city}}{{/if}}</div>
         </div>
       </div>
     </div>

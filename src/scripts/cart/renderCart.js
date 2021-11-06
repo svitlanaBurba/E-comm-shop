@@ -17,13 +17,12 @@ export const renderCart = cart => {
     renderOrderItem(cartItem);
   });
 
-  renderCartTotal(cart);
+  renderCartTotal(getCartTotals(cart));
   renderCartItemCount(cart);
 };
 
 // render Cart Total
-export const renderCartTotal = cart => {
-  const totals = getCartTotals(cart);
+export const renderCartTotal = cartTotals => {
 
   const cartOrderTotals = getElements('.order-summary__text--price');
   const cartOrderPromo = getElements('.order-summary__text--promo');
@@ -31,12 +30,12 @@ export const renderCartTotal = cart => {
   const cartOrderDelivery = getElements('.order-summary__text--delivery');
   const cartGrandTotals = getElements('.order-summary__amount');
 
-  cartOrderTotals.forEach(el => (el.textContent = totals.productsCostFormatted));
+  cartOrderTotals.forEach(el => (el.textContent = cartTotals.productsCostFormatted));
 
-  cartOrderPromo.forEach(el => (el.textContent = totals.discountCostFormatted));
-  cartOrderServices.forEach(el => (el.textContent = totals.servicesCostFormatted));
-  cartOrderDelivery.forEach(el => (el.textContent = totals.deliveryCostFormatted));
-  cartGrandTotals.forEach(el => (el.textContent = totals.totalCostFormatted));
+  cartOrderPromo.forEach(el => (el.textContent = cartTotals.discountCostFormatted));
+  cartOrderServices.forEach(el => (el.textContent = cartTotals.servicesCostFormatted));
+  cartOrderDelivery.forEach(el => (el.textContent = cartTotals.deliveryCostFormatted));
+  cartGrandTotals.forEach(el => (el.textContent = cartTotals.totalCostFormatted));
 };
 
 // render items count in user-menu
@@ -52,7 +51,7 @@ export const updateCartItemOnPage = (cart, productId) => {
   const cartItem = cart.find(item => item.id === productId);
 
   // update totals before updating the items data
-  renderCartTotal(cart);
+  renderCartTotal(getCartTotals(cart));
   renderCartItemCount(cart);
 
   // look for product cards that are already on pages

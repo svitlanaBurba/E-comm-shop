@@ -282,8 +282,25 @@
 
 .cart-addinfo-btn,
 .cart-addinfo-btn--options,
-.cart-addinfo-btn--credit,
+.cart-addinfo-btn--credit
+{
+  height: 40px;
+    padding: 8px 20px;
+    border: 1px solid #EC9DAB;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 170%;
+    text-transform: uppercase;
+    color: #EC9DAB;
+    transition-property: background-color, color, border;
 
+    &:hover {
+      background-color: $main-color;
+      color: #ffffff;
+    }
+}
 
 //MODAL
 .modal-overlay {
