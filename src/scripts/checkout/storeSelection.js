@@ -55,10 +55,7 @@ export const showStoreSelection = async () => {
   if (!stores || stores.length === 0) {
     stores = await fetchStoresByLocation(defaultLocation.lat, defaultLocation.lng, deafultDistance);
     displayStoresOnMap();
-  }
-  console.log(stores);
-
-  
+  } 
 };
 
 // standard initMap from Google samples

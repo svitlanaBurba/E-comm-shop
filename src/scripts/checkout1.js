@@ -202,7 +202,6 @@ const onDeliveryFormSubmit = (form,e) => {
   if (order.deliveryData) formData.pickupStore = order.deliveryData.pickupStore;
   order.deliveryData = formData;
   saveOrder(order);
-  console.log(order);
   location.href = 'checkout2.html';
 };
 
