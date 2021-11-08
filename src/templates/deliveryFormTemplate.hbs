@@ -198,7 +198,7 @@
         </div>
         <div class='delivery-form__block collapsible-section delivery-form__pickup-delivery__store-selector__container'>
           <button class='pickup-btn' type='button' data-id=''>pickup store</button>
-          <div class='delivery-form__pickup-store_address'>{{#if flags.isPickupSelected}}{{pickupStore.name}}: {{pickupStore.address}}, {{pickupStore.city}},{{pickupStore.city}}{{/if}}</div>
+          <input id='pickupStore' class='delivery-form__pickup-store_address' readonly required value='{{#if flags.isPickupSelected}}{{pickupStore.name}}: {{pickupStore.address}}, {{pickupStore.city}}{{/if}}'>
         </div>
       </div>
     </div>

@@ -94,9 +94,10 @@ const onStoreSelected = store => {
   order.deliveryData.pickupStore = store;
   saveOrder(order);
 
+  // populate address of the selected store on the page
   document.querySelector(
     '.delivery-form__pickup-store_address',
-  ).innerHTML = `${store.name}: ${store.address}, ${store.city}, ${store.state}`;
+  ).value = `${store.name}: ${store.address}, ${store.city}, ${store.state}`;
 };
 
 const onDeliveryFormSubmit = (form, e) => {

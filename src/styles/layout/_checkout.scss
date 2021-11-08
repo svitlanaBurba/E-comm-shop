@@ -456,10 +456,14 @@
 }
 
 .delivery-form__pickup-store_address {
-  margin: 20px 10px;
+  margin: 10px 10px;
+  width:500px;
+  height: 40px;
   font-family: 'Sulphur Point', sans-serif;
   font-weight: 700;
   font-size: 18px;
+  border:none;
+  outline: none;
 }
 
 .pickup-btn {

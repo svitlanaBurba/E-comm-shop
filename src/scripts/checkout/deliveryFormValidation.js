@@ -30,6 +30,9 @@ export const initDeliveryFormValidation = onFormSubmit => {
           required: true,
           emailValidator: true,
         },
+        pickupStore: {
+          required:true,
+        }
       },
       messages: {
         userLastName: {
