@@ -137,7 +137,7 @@
   text-transform: capitalize;
   color: $titles-color;
 }
-.comments-title{
+.comments-title {
   margin-top: 30px;
 }
 
@@ -155,7 +155,7 @@
   }
 }
 
-.delivery-form__block.collapsible-section{
+.delivery-form__block.collapsible-section {
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -254,8 +254,8 @@
 
 .payment-method__radio-input {
   visibility: hidden;
-  &-secondary{
-    margin-left:20px;
+  &-secondary {
+    margin-left: 20px;
   }
 }
 .payment-method__radio-input:checked + .payment-method__radio-label::after {
@@ -367,7 +367,7 @@
   display: flex;
   flex-direction: column;
   padding: 2px;
-  height: 100%;
+  height: 70vh;
   width: 250px;
 }
 
@@ -388,7 +388,6 @@
     outline: none;
     border-bottom: 1px solid $main-color;
   }
-   
 }
 
 .pickup-store-list-container {
@@ -421,8 +420,8 @@
     border-width: 2px;
   }
 }
-.pickup-store-list-item-id{
-  width:50px;  
+.pickup-store-list-item-id {
+  width: 50px;
 }
 
 .pickup-store-details {
@@ -430,9 +429,8 @@
   border-style: solid;
   border-width: 1px;
   height: 180px;
-  margin:10px 1px;
+  margin: 10px 1px;
   padding: 4px;
-
 }
 
 .pickup-store-details-address {
@@ -441,7 +439,6 @@
 .pickup-store-details-workhours {
   font-size: 10px;
 }
-
 
 .delivery-form__home-delivery__sub-type__container {
   margin-left: 50px;
@@ -453,19 +450,19 @@
   font-size: 12px;
 }
 
-.delivery-form__pickup-delivery__store-selector__container{
-  height:80px;
+.delivery-form__pickup-delivery__store-selector__container {
+  height: 80px;
   border-bottom: 1px solid rgba(17, 17, 17, 0.1);
 }
 
 .delivery-form__pickup-store_address {
-margin: 20px 10px;
-font-family: "Sulphur Point", sans-serif;
-font-weight: 700;
-font-size: 18px;
+  margin: 20px 10px;
+  font-family: 'Sulphur Point', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
 }
 
-.pickup-btn{
+.pickup-btn {
   position: relative;
   margin: 10px 10px 10px 50px;
   height: 40px;
@@ -487,14 +484,14 @@ font-size: 18px;
   }
 }
 
-.checkout-submit__wrapper{
+.checkout-submit__wrapper {
   display: flex;
   @media (max-width: 991px) {
     display: block;
   }
 }
 
-.checkout-submit__message{
+.checkout-submit__message {
   flex: 1 1 auto;
   margin-right: 60px;
   @media (max-width: 991px) {
@@ -507,37 +504,33 @@ font-size: 18px;
   opacity: 40%;
 }
 
+.checkout__thank-you {
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 30px;
+}
 
-
-.checkout__thank-you{
-
-      text-align: center;
-      margin-right: auto;
-      margin-left: auto;
-      margin-bottom: 30px;
- 
-    }
-
-  .pickup-store-choose{
-    height: 40px;
-    margin-bottom: 10px;
-  }
-
-.pickup-store-choose-btn{
+.pickup-store-choose {
   height: 40px;
-    padding: 8px 20px;
-    border: 1px solid #EC9DAB;
-    background: transparent;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 170%;
-    text-transform: uppercase;
-    color: #EC9DAB;
-    transition-property: background-color, color, border;
+  margin-bottom: 10px;
+}
 
-    &:hover {
-      background-color: $main-color;
-      color: #ffffff;
-    }
+.pickup-store-choose-btn {
+  height: 40px;
+  padding: 8px 20px;
+  border: 1px solid #ec9dab;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 170%;
+  text-transform: uppercase;
+  color: #ec9dab;
+  transition-property: background-color, color, border;
+
+  &:hover {
+    background-color: $main-color;
+    color: #ffffff;
+  }
 }

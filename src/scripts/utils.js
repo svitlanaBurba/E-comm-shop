@@ -80,7 +80,6 @@ export const generateOrderId = () => {
 };
 
 export const getFormData = form => {
-
   if (!form || form.tagName.toLowerCase() !== 'form') return;
 
   const formData = new FormData(form);
@@ -88,6 +87,14 @@ export const getFormData = form => {
   const formObject = Object.fromEntries(formData.entries());
   //forming Json for form data object
   return formObject;
+};
+
+export const formatDate = date => {
+  // if date is not a Date object yet (so it is int) - convert it
+  const dateToConvert = typeof date === 'object' ? date : new Date(date);
+
+  const format = { weekday: 'short', day: 'numeric', month: 'short' };
+  return dateToConvert.toLocaleDateString('en-US', format);
 };
 
 export {

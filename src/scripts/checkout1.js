@@ -13,7 +13,7 @@ import './formValidators/inListValidator';
 // import custom validator for names
 import './formValidators/nameValidator';
 import './formValidators/phoneNumberValidator';
-import { formatPrice, getStorageItem } from './utils';
+import { formatDate, formatPrice, getStorageItem } from './utils';
 
 let cart;
 let form;
@@ -30,7 +30,7 @@ const onCheckout1Load = async () => {
   // calculate cart totals and save on the order (delivery cost is preliminary now)
   order.totals = getCartTotals(cart);
   // calculate delivery costs
-  order.deliveryData.deliveryCost = await getDeliveryCosts(cart);
+  order.deliveryData.deliveryCost = await getDeliveryCosts(order);
   recalculateOrderTotals(order);
 
   // render and init form
@@ -46,14 +46,13 @@ const onCheckout1Load = async () => {
 
 const setupDeliveryDataForm = deliveryData => {
   // add additional boolean flags for handlebars rendering
-  if (deliveryData) 
+  if (deliveryData)
     deliveryData.flags = {
       isPickupSelected: deliveryData.deliveryType === 'pickupDelivery' && deliveryData.pickupStore,
       isAtHomeSelected: deliveryData.deliveryType === 'atHomeDelivery',
       isAtHomeStandardSelected: deliveryData.atHomeDeliveryType === 'atHomeDeliveryTypeStandard',
       isAtHomeExpressSelected: deliveryData.atHomeDeliveryType === 'atHomeDeliveryTypeExpress',
-    }
-  
+    };
 
   // render
   document.getElementById('delivery-form-container').innerHTML = deliveryFormTemplate(deliveryData);
@@ -109,11 +108,9 @@ const onDeliveryFormSubmit = (form, e) => {
   location.href = 'checkout2.html';
 };
 
-const getDeliveryCosts = async cart => {
-  // calculate cart totals - we need total cost of products to request detailed delivery costs
-  const cartTotals = getCartTotals(cart);
+const getDeliveryCosts = async order => {
   // request delivery costs for all available delivery types
-  let deliveryCost = await fetchDetailedDeliveryCost(cartTotals.productsCost);
+  let deliveryCost = await fetchDetailedDeliveryCost(order.totals.productsCost);
 
   // let's add formatted prices for handlebars
   deliveryCost.standardDeliveryFormatted = formatPrice(deliveryCost.standardDelivery, 'Free!');
@@ -125,6 +122,11 @@ const getDeliveryCosts = async cart => {
     '-' +
     formatPrice(Math.max(deliveryCost.standardDelivery, deliveryCost.expressDelivery));
 
+  // now let's add formatted dates
+  deliveryCost.standardDeliveryDateFormatted = formatDate(deliveryCost.standardDeliveryDate);
+  deliveryCost.expressDeliveryDateFormatted = formatDate(deliveryCost.expressDeliveryDate);
+  deliveryCost.DeliveryDateFormatted = formatDate(deliveryCost.expressDeliveryDate);
+
   return deliveryCost;
 };
 
@@ -132,29 +134,35 @@ const recalculateOrderTotals = order => {
   // we need to update order totals with selected delivery cost and calculate total price of the order
   order.totals.deliveryCost = undefined; // drop delivery cost - we will calculate it now (and if delivery method is not selected t will be empty)
   order.totals.totalCost = undefined;
+  order.totals.deliveryDate = undefined;
 
   // identify selected cost
   if (order.deliveryData.deliveryType === 'atHomeDelivery') {
-
-    if (order.deliveryData.atHomeDeliveryType === 'atHomeDeliveryTypeExpress')
+    if (order.deliveryData.atHomeDeliveryType === 'atHomeDeliveryTypeExpress') {
       order.totals.deliveryCost = order.deliveryData.deliveryCost.expressDelivery;
-    if (order.deliveryData.atHomeDeliveryType === 'atHomeDeliveryTypeStandard')
+      order.totals.deliveryDate = order.deliveryData.deliveryCost.expressDeliveryDate;
+    } else if (order.deliveryData.atHomeDeliveryType === 'atHomeDeliveryTypeStandard') {
       order.totals.deliveryCost = order.deliveryData.deliveryCost.standardDelivery;
-  }
-
-  if (order.deliveryData.deliveryType === 'pickupDelivery')
+      order.totals.deliveryDate = order.deliveryData.deliveryCost.standardDeliveryDate;
+    }
+  } else if (order.deliveryData.deliveryType === 'pickupDelivery') {
     order.totals.deliveryCost = order.deliveryData.deliveryCost.pickupDelivery;
+    order.totals.deliveryDate = order.deliveryData.deliveryCost.pickupDeliveryDate;
+  }
 
   // calculate total cost
   if (order.totals.deliveryCost !== undefined) {
     order.totals.totalCost =
       order.totals.productsCost + order.totals.discount + order.totals.servicesCost + order.totals.deliveryCost;
-
-    }
+  }
 
   // let's add formatted prices for handlebars
   order.totals.deliveryCostFormatted = formatPrice(order.totals.deliveryCost, undefined, '-');
   order.totals.totalCostFormatted = formatPrice(order.totals.totalCost, undefined, '-');
+
+  order.totals.deliveryDateFormatted = !order.totals.deliveryDate
+    ? undefined
+    : '('+formatDate(order.totals.deliveryDate)+')';
 };
 
 export default onCheckout1Load;

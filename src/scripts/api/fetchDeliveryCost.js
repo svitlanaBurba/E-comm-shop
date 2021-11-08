@@ -5,20 +5,29 @@ export const fetchDeliveryCost = (orderPrice) => {
 }
 
 export const fetchDetailedDeliveryCost = async (orderPrice, cart) => {
-    let normalPrice = 10;
+    let standardPrice = 10;
     const expressPriceRatio = 1.5;
     
     // calculate base price
-    if (orderPrice > 0 && orderPrice <= 100) normalPrice = 10;
-    if (orderPrice > 100 && orderPrice <= 1000) normalPrice = 5;
+    if (orderPrice > 0 && orderPrice <= 100) standardPrice = 10;
+    if (orderPrice > 100 && orderPrice <= 1000) standardPrice = 5;
     // calculate express price
-    let expressPrice = normalPrice * expressPriceRatio;
+    let expressPrice = standardPrice * expressPriceRatio;
     // pickup price - always zero
-    let pickupDelivery = 0;
+    let pickupDelivery = orderPrice > 20 ? 0 : 1 ;
+
+    // calculate delivery dates - vey simplified for now
+    const today = new Date();
+    let expressDate = (new Date(today)).setDate(today.getDate() + 1); // express is always tomorrow
+    let standardDate = (new Date(today)).setDate(today.getDate() + 4); // standard is always 4 days
+    let pickupDate = (new Date(today)).setDate(today.getDate() + 2); // pickup is always 2 days
 
     return {
         expressDelivery: expressPrice,
-        standardDelivery: normalPrice,
+        standardDelivery: standardPrice,
         pickupDelivery: pickupDelivery,
+        expressDeliveryDate: expressDate,
+        standardDeliveryDate: standardDate,
+        pickupDeliveryDate: pickupDate,
     };
 }

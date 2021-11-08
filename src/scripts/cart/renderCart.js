@@ -28,13 +28,14 @@ export const renderCartTotal = cartTotals => {
   const cartOrderPromo = getElements('.order-summary__text--promo');
   const cartOrderServices = getElements('.order-summary__text--services');
   const cartOrderDelivery = getElements('.order-summary__text--delivery');
+  const cartOrderDeliveryDate = getElements('.order-summary__text--delivery-date');
   const cartGrandTotals = getElements('.order-summary__amount');
 
   cartOrderTotals.forEach(el => (el.textContent = cartTotals.productsCostFormatted));
-
   cartOrderPromo.forEach(el => (el.textContent = cartTotals.discountCostFormatted));
   cartOrderServices.forEach(el => (el.textContent = cartTotals.servicesCostFormatted));
   cartOrderDelivery.forEach(el => (el.textContent = cartTotals.deliveryCostFormatted));
+  cartOrderDeliveryDate.forEach(el => (el.textContent = cartTotals.deliveryDateFormatted));
   cartGrandTotals.forEach(el => (el.textContent = cartTotals.totalCostFormatted));
 };
 

@@ -84,7 +84,7 @@
               required            
             />
             <label class='payment-method__radio-label--secondary' for='atHomeDeliveryTypeStandard'>
-              <span style="width:300px">Standard Delivery (3-7 business days)</span><span>{{deliveryCost.standardDeliveryFormatted}}</span>
+              <span style="width:150px">Standard Delivery </span><span style="width:110px">on {{deliveryCost.standardDeliveryDateFormatted}} </span><span> = {{deliveryCost.standardDeliveryFormatted}}</span>
             </label>
             <input
               type='radio'
@@ -96,7 +96,7 @@
               required
             />
             <label class='payment-method__radio-label--secondary' for='atHomeDeliveryTypeExpress'>
-              <span style="width:300px">Express Delivery</span><span>{{deliveryCost.expressDeliveryFormatted}}</span>
+              <span style="width:150px">Express Delivery </span><span style="width:110px">on {{deliveryCost.expressDeliveryDateFormatted}} </span><span> = {{deliveryCost.expressDeliveryFormatted}}</span>
             </label>
           </div>
           <label class='delivery-form__input-wrapper--address'>
@@ -263,7 +263,7 @@
         <div class='order-summary__text--services'></div>
       </li>
       <li class='order-summary__item'>
-        <div class='order-summary__title'>Delivery <span>(Oct 02 at 14:35)</span></div>
+        <div class='order-summary__title'>Delivery <span class='order-summary__text--delivery-date'></span></div>
         <div class='order-summary__text--delivery'>$0</div>
       </li>
       <li class='order-summary__total'>

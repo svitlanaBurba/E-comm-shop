@@ -11,28 +11,25 @@ let order = {};
 let paymentForm;
 
 const onCheckout2Load = async () => {
+  order = await fetchOpenOrder();
+  setupCart();
+  addFormInputMasks();
+  addFormInputValidation();
 
-    order = await fetchOpenOrder();
-    setupCart();
-    addFormInputMasks();
-    addFormInputValidation();
-    
-    paymentForm = document.getElementById('payment-form');
-    paymentForm.addEventListener("submit", handlePaymentFormSubmit);
-    paymentForm.addEventListener('change', handlePaymentFormChange);
-
+  paymentForm = document.getElementById('payment-form');
+  //paymentForm.addEventListener("submit", handlePaymentFormSubmit);
+  paymentForm.addEventListener('change', handlePaymentFormChange);
 };
 
 const handlePaymentFormChange = () => {
-
   const formData = getFormData(paymentForm);
 
   if (!formData) return;
   order.paymentData = formData;
   saveOrder(order);
-}
+};
 
-const handlePaymentFormSubmit = (e) => {
+const handlePaymentFormSubmit = (form, e) => {
   e.preventDefault();
 
   // at last step we need to:
@@ -44,13 +41,12 @@ const handlePaymentFormSubmit = (e) => {
   // 3. set order status as confirmed
   order.status = 'confirmed';
   // 4. clean up the cart
-  setStorageItem('cart',[])
+  setStorageItem('cart', []);
   // save order
   saveOrder(order);
   // go to confirmation
-  window.location.href='checkout3.html';
-}
-
+  window.location.href = 'checkout3.html';
+};
 
 const addFormInputMasks = () => {
   $(document).ready(function () {
@@ -76,11 +72,25 @@ const addFormInputValidation = () => {
     messages: {
       cardNumber: {
         minlength: 'Card number should have 16 digits',
-        required: 'Please provide a card number'
-      }
-    }
+        required: 'Please provide a card number',
+      },
+    },
+    rules: {
+      cardNumber: {
+        required: '#visaMastercard:checked',
+      },
+      cardDetailsExpirationYear: {
+        required: '#visaMastercard:checked',
+      },
+      cardDetailsExpirationMonth: {
+        required: '#visaMastercard:checked',
+      },
+      cardDetailsCVV: {
+        required: '#visaMastercard:checked',
+      },
+    },
+    submitHandler: handlePaymentFormSubmit,
   });
 };
-
 
 export default onCheckout2Load;
