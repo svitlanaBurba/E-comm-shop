@@ -9,10 +9,7 @@
   margin-top: 165px;
   background-size: cover;
   background-position: center;
-  background-image: linear-gradient(
-      rgba(152, 152, 156, 0.4),
-      rgba(152, 152, 156, 0.4)
-    ),
+  background-image: linear-gradient(rgba(152, 152, 156, 0.4), rgba(152, 152, 156, 0.4)),
     url('../assets/hero/wedding_landing1.jpg');
 }
 
@@ -140,6 +137,9 @@
   text-transform: capitalize;
   color: $titles-color;
 }
+.comments-title {
+  margin-top: 30px;
+}
 
 .delivery-form__block {
   display: flex;
@@ -155,6 +155,11 @@
   }
 }
 
+.delivery-form__block.collapsible-section {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .delivery-form__input-wrapper {
   flex-basis: calc(100% / 2 - 30px);
   margin-left: 30px;
@@ -164,7 +169,6 @@
     @extend .delivery-form__input-wrapper;
     flex: 0 1 100%;
   }
-
 }
 
 .delivery-form__input {
@@ -228,15 +232,12 @@
 .delivery-form__checkbox-wrapper .delivery-form__checkbox {
   display: none;
 }
-.delivery-form__checkbox-wrapper
-  .delivery-form__checkbox:checked
-  + .delivery-form__checkbox-label::before {
+.delivery-form__checkbox-wrapper .delivery-form__checkbox:checked + .delivery-form__checkbox-label::before {
   background-image: url(../assets/icons/check-mark.svg);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
-
 
 // DELIVERY FORM BLOCK
 .payment-method {
@@ -246,13 +247,16 @@
 .payment-method__radio-wrapper {
   display: flex;
   align-items: center;
-  min-height: 100px;
+  min-height: 50px;
   border-top: 1px solid rgba(17, 17, 17, 0.1);
   border-bottom: 1px solid rgba(17, 17, 17, 0.1);
 }
 
 .payment-method__radio-input {
   visibility: hidden;
+  &-secondary {
+    margin-left: 20px;
+  }
 }
 .payment-method__radio-input:checked + .payment-method__radio-label::after {
   transform: translateY(-50%) scale(1);
@@ -295,6 +299,11 @@
     border-radius: 50%;
     background: $titles-color;
     left: 4px;
+  }
+
+  &--secondary {
+    @extend .payment-method__radio-label;
+    font-size: 16px;
   }
 }
 
@@ -348,4 +357,184 @@
 
 .card-details__input-wrapper {
   flex: 0 1 calc(100% / 3 - 30px);
+}
+
+.pickup-store-map {
+  flex: 1;
+  height: 100%;
+}
+.pickup-store-selection-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+  height: 70vh;
+  width: 250px;
+}
+
+.pickup-store-address-lookup {
+  display: flex;
+  align-items: center;
+  border: 0;
+  border-bottom: 1px solid rgba(85, 85, 85, 0.2);
+  min-height: 40px;
+  width: 100%;
+  background: transparent;
+  font-size: 14px;
+  line-height: 1.7;
+  color: $grey-color;
+  margin-bottom: 5px;
+
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid $main-color;
+  }
+}
+
+.pickup-store-list-container {
+  display: flex;
+  height: 100%;
+  overflow: auto;
+  justify-content: center;
+  overflow-x: hidden;
+  margin-top: 5px;
+}
+.pickup-store-list {
+  padding: 1px;
+  width: 100%;
+}
+.pickup-store-list-item {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  text-align: left;
+  border-color: lightgrey;
+  border-style: solid;
+  border-width: 1px;
+  margin: 1px;
+  font-size: 14px;
+  cursor: pointer;
+  &:hover {
+    border-color: pink;
+  }
+  &.store-selected {
+    border-width: 2px;
+  }
+}
+.pickup-store-list-item-id {
+  width: 50px;
+}
+
+.pickup-store-details {
+  border-color: lightgrey;
+  border-style: solid;
+  border-width: 1px;
+  height: 180px;
+  margin: 10px 1px;
+  padding: 4px;
+}
+
+.pickup-store-details-address {
+  font-size: 12px;
+}
+.pickup-store-details-workhours {
+  font-size: 10px;
+}
+
+.delivery-form__home-delivery__sub-type__container {
+  margin-left: 50px;
+  font-size: 12px;
+}
+
+.delivery-form__home__sub-type__container {
+  margin-left: 50px;
+  font-size: 12px;
+}
+
+.delivery-form__pickup-delivery__store-selector__container {
+  height: 80px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.1);
+}
+
+.delivery-form__pickup-store_address {
+  margin: 10px 10px;
+  width:500px;
+  height: 40px;
+  font-family: 'Sulphur Point', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  border:none;
+  outline: none;
+}
+
+.pickup-btn {
+  position: relative;
+  margin: 10px 10px 10px 50px;
+  height: 40px;
+  padding: 8px 20px;
+  border: 1px solid $main-color;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 170%;
+  text-transform: uppercase;
+  color: $main-color;
+  transition-property: color, border, background-color;
+  transition-timing-function: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    background-color: $main-color;
+    color: #ffffff;
+  }
+}
+
+.checkout-submit__wrapper {
+  display: flex;
+  @media (max-width: 991px) {
+    display: block;
+  }
+}
+
+.checkout-submit__message {
+  flex: 1 1 auto;
+  margin-right: 60px;
+  @media (max-width: 991px) {
+    margin-right: 0;
+    margin-bottom: 40px;
+  }
+}
+
+.checkout-opacity {
+  opacity: 40%;
+}
+
+.checkout__thank-you {
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 30px;
+}
+
+.pickup-store-choose {
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+.pickup-store-choose-btn {
+  height: 40px;
+  padding: 8px 20px;
+  border: 1px solid #ec9dab;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 170%;
+  text-transform: uppercase;
+  color: #ec9dab;
+  transition-property: background-color, color, border;
+
+  &:hover {
+    background-color: $main-color;
+    color: #ffffff;
+  }
 }

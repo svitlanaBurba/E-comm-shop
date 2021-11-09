@@ -3,15 +3,49 @@ import 'jquery-mask-plugin';
 import 'jquery-validation';
 // import custom validator for names
 import './formValidators/nameValidator';
-import setupPaymentFormSubmit from './formHandlers/handlePaymentFormSubmit';
+import { setupCart } from './cart/setupCart';
+import { fetchOpenOrder, saveOrder } from './api/fetchOrder';
+import { getFormData, getStorageItem, setStorageItem } from './utils';
 
+let order = {};
+let paymentForm;
 
-const onCheckout2Load = () => {
-  $(document).ready(function () {
-    addFormInputMasks();
-    addFormInputValidation();
-    setupPaymentFormSubmit();
-   });
+const onCheckout2Load = async () => {
+  order = await fetchOpenOrder();
+  setupCart();
+  addFormInputMasks();
+  addFormInputValidation();
+
+  paymentForm = document.getElementById('payment-form');
+  //paymentForm.addEventListener("submit", handlePaymentFormSubmit);
+  paymentForm.addEventListener('change', handlePaymentFormChange);
+};
+
+const handlePaymentFormChange = () => {
+  const formData = getFormData(paymentForm);
+
+  if (!formData) return;
+  order.paymentData = formData;
+  saveOrder(order);
+};
+
+const handlePaymentFormSubmit = (form, e) => {
+  e.preventDefault();
+
+  // at last step we need to:
+  // 1. save latest payment data on the order
+  const formData = getFormData(paymentForm);
+  order.paymentData = formData;
+  // 2. save cart on the order
+  order.cart = getStorageItem('cart');
+  // 3. set order status as confirmed
+  order.status = 'confirmed';
+  // 4. clean up the cart
+  setStorageItem('cart', []);
+  // save order
+  saveOrder(order);
+  // go to confirmation
+  window.location.href = 'checkout3.html';
 };
 
 const addFormInputMasks = () => {
@@ -38,11 +72,25 @@ const addFormInputValidation = () => {
     messages: {
       cardNumber: {
         minlength: 'Card number should have 16 digits',
-        required: 'Please provide a card number'
-      }
-    }
+        required: 'Please provide a card number',
+      },
+    },
+    rules: {
+      cardNumber: {
+        required: '#visaMastercard:checked',
+      },
+      cardDetailsExpirationYear: {
+        required: '#visaMastercard:checked',
+      },
+      cardDetailsExpirationMonth: {
+        required: '#visaMastercard:checked',
+      },
+      cardDetailsCVV: {
+        required: '#visaMastercard:checked',
+      },
+    },
+    submitHandler: handlePaymentFormSubmit,
   });
 };
-
 
 export default onCheckout2Load;

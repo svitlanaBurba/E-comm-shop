@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head data-page="checkout1">
+  <head data-page="checkout3">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -131,7 +131,7 @@
                 <div class="order-summary__text--promo">No</div>
               </li>
               <li class="order-summary__item">
-                <div class="order-summary__title">Delivery 123<span class='order-summary__text--delivery-date'></span></div>
+                <div class="order-summary__title">Delivery <span class='order-summary__text--delivery-date'></span></div>
                 <div class="order-summary__text--delivery">$0</div>
               </li>
               <li class="order-summary__total">
@@ -174,7 +174,7 @@
                   <use href="./assets/sprite.svg#icon-twirl-right"></use>
                 </svg>
               </li>
-              <li class="checkout-steps__item checkout-opacity">
+              <li class="checkout-steps__item">
                 <svg class="checkout-icon" width="40" height="40">
                   <use href="./assets/sprite.svg#icon-payment"></use>
                 </svg>
@@ -183,7 +183,7 @@
                   <use href="./assets/sprite.svg#icon-twirl-right"></use>
                 </svg>
               </li>
-              <li class="checkout-steps__item checkout-opacity">
+              <li class="checkout-steps__item">
                 <svg class="checkout-icon" width="40" height="40">
                   <use href="./assets/sprite.svg#icon-final-step"></use>
                 </svg>
@@ -193,22 +193,35 @@
                 </svg>
               </li>
             </ul>
-            <a href="index.html" class="checkout-back"><span class="arrow-icon">&#8592;</span> back</a>
+            <a href="checkout2.html" class="checkout-back"><span class="arrow-icon">&#8592;</span> back</a>
 
-            <!-- FORM BLOCK -->
-            <div id="delivery-form-container"></div>
+            <div class="checkout-submit__wrapper">
+              <!-- THANK YOU FOR YOUR PURCHASE BLOCK -->
+
+              <div class="checkout-submit__message">
+                <div class="checkout__thank-you">
+                    <div class="section__accent-title--left">
+                      <svg class="section__rings" width="30" height="20">
+                        <use href="assets/sprite.svg#icon-rings"></use>
+                      </svg>
+                      excellent
+                    </div>
+                    <h2 class="section__title">
+                        Thank you for your purchase!
+                    </h2>
+                    <p class="section__text">
+                        You can track your order in your Profile.
+                    </p>
+                  </div>
+
+              </div>
+
+              <!-- THANK YOU FOR YOUR PURCHASE BLOCK -->
+
+              <!-- ORDER BLOCK -->
+            </div>
           </div>
-          <!-- --------------CHECKOUT DELIVERY FORM  -------------->
         </section>
-
-        <!-- -------------- MODAL  -------------->
-        <div class="modal-overlay--checkout">
-          <div class="modal-window--checkout">
-            <button class="close-btn"><i class="fas fa-times"></i></button>
-            <div class="modal-container--checkout"></div>
-          </div>
-        </div>
-        <!-- -------------- MODAL  -------------->
       </main>
       <!-- -------------- FOOTER  -------------->
       <footer class="footer">

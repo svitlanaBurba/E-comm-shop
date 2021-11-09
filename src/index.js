@@ -5,6 +5,7 @@ import './styles/styles.scss';
 
 import onCheckout1Load from './scripts/checkout1';
 import onCheckout2Load from './scripts/checkout2';
+import onCheckout3Load from './scripts/checkout3';
 import onShopLoad from './scripts/shop';
 import onProductLoad from './scripts/product';
 import onCartLoad from "./scripts/cart";
@@ -28,12 +29,16 @@ if (page === 'cart') {
   onCartLoad();
 }
 
+if (page === 'checkout1') {
+  onCheckout1Load();
+}
+
 if (page === 'checkout2') {
   onCheckout2Load();
 }
 
-if (page === 'checkout1') {
-  onCheckout1Load();
+if (page === 'checkout3') {
+  onCheckout3Load();
 }
 
 if (page === 'index') {

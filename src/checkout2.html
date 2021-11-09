@@ -152,7 +152,7 @@
           </li>
           <li class="order-summary__item">
             <div class="order-summary__title">
-              Delivery <span>(Oct 02 at 14:35)</span>
+              Delivery <span class='order-summary__text--delivery-date'></span>
             </div>
             <div class="order-summary__text--delivery">$0</div>
           </li>
@@ -214,7 +214,7 @@
                 <use href="./assets/sprite.svg#icon-twirl-right"></use>
               </svg>
            </li>
-           <li class="checkout-steps__item">
+           <li class="checkout-steps__item checkout-opacity">
             <svg class="checkout-icon" width="40" height="40">
                 <use href="./assets/sprite.svg#icon-final-step"></use>
               </svg>
@@ -296,7 +296,7 @@
            <!-- ORDER BLOCK -->
            <div class="order">
                  <h2 class="order__title">your order</h2>
-                 <ul class="order__product-list cart__product-list">
+                 <ul class="checkout-order__product-list cart__product-list">
                      
                  </ul>
 
@@ -312,8 +312,12 @@
                     <div class="order-summary__text--promo">No</div>
                   </li>
                   <li class="order-summary__item">
+                    <div class="order-summary__title">Additional services</div>
+                    <div class="order-summary__text--services"></div>
+                  </li>
+                  <li class="order-summary__item">
                     <div class="order-summary__title">
-                      Delivery <span>(Oct 02 at 14:35)</span>
+                      Delivery <span class='order-summary__text--delivery-date'></span>
                     </div>
                     <div class="order-summary__text--delivery">$0</div>
                   </li>
