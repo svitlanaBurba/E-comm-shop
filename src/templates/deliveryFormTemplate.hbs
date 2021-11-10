@@ -69,7 +69,7 @@
             class='payment-method__radio-input collapser-input collapsible-section-btn'
             {{#if flags.isAtHomeSelected}}checked{{/if}}
           />
-          <label class='payment-method__radio-label' for='atHomeDelivery'> At Home Delivery - {{deliveryCost.homeDeliveryCostRange}}</label>
+          <label class='payment-method__radio-label' for='atHomeDelivery'> At Home Delivery - {{formatPriceRange deliveryCost.standardDelivery deliveryCost.expressDelivery}}</label>
         </div>
 
         <div class='delivery-form__block collapsible-section' role='group' aria-labelledby='address__details'>
@@ -84,7 +84,7 @@
               required            
             />
             <label class='payment-method__radio-label--secondary' for='atHomeDeliveryTypeStandard'>
-              <span style="width:150px">Standard Delivery </span><span style="width:110px">on {{deliveryCost.standardDeliveryDateFormatted}} </span><span> = {{deliveryCost.standardDeliveryFormatted}}</span>
+              <span style="width:150px">Standard Delivery </span><span style="width:110px">on {{formatDate deliveryCost.standardDeliveryDate}} </span><span> = {{formatPrice deliveryCost.standardDelivery}}</span>
             </label>
             <input
               type='radio'
@@ -96,7 +96,7 @@
               required
             />
             <label class='payment-method__radio-label--secondary' for='atHomeDeliveryTypeExpress'>
-              <span style="width:150px">Express Delivery </span><span style="width:110px">on {{deliveryCost.expressDeliveryDateFormatted}} </span><span> = {{deliveryCost.expressDeliveryFormatted}}</span>
+              <span style="width:150px">Express Delivery </span><span style="width:110px">on {{formatDate deliveryCost.expressDeliveryDate}} </span><span> = {{deliveryCost.expressDelivery}}</span>
             </label>
           </div>
           <label class='delivery-form__input-wrapper--address'>
@@ -194,7 +194,7 @@
             class='payment-method__radio-input collapsible-section-btn'
             {{#if flags.isPickupSelected}}checked{{/if}}
           />
-          <label class='payment-method__radio-label' for='pickupDelivery'> Pickup in the store - {{deliveryCost.pickupDeliveryFormatted}}</label>
+          <label class='payment-method__radio-label' for='pickupDelivery'> Pickup in the store - {{formatPrice deliveryCost.pickupDelivery 'Free!'}}</label>
         </div>
         <div class='delivery-form__block collapsible-section delivery-form__pickup-delivery__store-selector__container'>
           <button class='pickup-btn' type='button' data-id=''>pickup store</button>

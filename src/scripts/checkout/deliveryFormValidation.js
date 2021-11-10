@@ -43,6 +43,7 @@ export const initDeliveryFormValidation = onFormSubmit => {
         },
       },
       submitHandler: onFormSubmit,
+ 
     });
   };
   

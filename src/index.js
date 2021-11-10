@@ -1,5 +1,5 @@
-import "core-js/stable";
-import "regenerator-runtime/runtime";
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 
 import './styles/styles.scss';
 
@@ -8,14 +8,16 @@ import onCheckout2Load from './scripts/checkout2';
 import onCheckout3Load from './scripts/checkout3';
 import onShopLoad from './scripts/shop';
 import onProductLoad from './scripts/product';
-import onCartLoad from "./scripts/cart";
+import onCartLoad from './scripts/cart';
 import onMainLoad from './scripts/main';
-import mobileMenu from "./scripts/header/mobileMenu";
-import initHeader from "./scripts/header/initHeader";
-import { cleanLocalStorageIfTooOld } from "./scripts/utils";
+import mobileMenu from './scripts/header/mobileMenu';
+import initHeader from './scripts/header/initHeader';
+import { cleanLocalStorageIfTooOld } from './scripts/utils';
+import { registerHandlebarsHelpers } from './templates/helpers';
 
 cleanLocalStorageIfTooOld();
-const page = document.getElementsByTagName("head")[0].dataset['page'];
+registerHandlebarsHelpers();
+const page = document.getElementsByTagName('head')[0].dataset['page'];
 
 if (page === 'shop') {
   onShopLoad();
@@ -42,12 +44,10 @@ if (page === 'checkout3') {
 }
 
 if (page === 'index') {
-
   window.addEventListener('DOMContentLoaded', onMainLoad);
-
 }
 
-window.addEventListener('DOMContentLoaded', () =>{
+window.addEventListener('DOMContentLoaded', () => {
   mobileMenu();
   initHeader();
 });

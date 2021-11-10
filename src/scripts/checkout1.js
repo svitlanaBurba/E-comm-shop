@@ -1,4 +1,3 @@
-import deliveryFormTemplate from '../templates/deliveryFormTemplate.hbs';
 import { fetchDetailedDeliveryCost } from './api/fetchDeliveryCost';
 import { fetchOpenOrder, saveOrder } from './api/fetchOrder';
 import { renderCart, renderCartTotal } from './cart/renderCart';
@@ -7,37 +6,38 @@ import { addFormInputMasks, initDeliveryFormValidation } from './checkout/delive
 import { initCollapsibleSections } from './checkout/deliveryMethodShow';
 import { initAddressAutocomplete } from './checkout/initAddressAutocomplete';
 import { initStoreSelection as setupStoreSelection, showStoreSelection } from './checkout/storeSelection';
-import handleDeliveryFormSubmit from './formHandlers/handleDeliveryFormSubmit';
+import { getFormData, getStorageItem } from './utils';
+import deliveryFormTemplate from '../templates/deliveryFormTemplate.hbs';
+// import custom validator for names
 import './formValidators/emailValidator';
 import './formValidators/inListValidator';
-// import custom validator for names
 import './formValidators/nameValidator';
 import './formValidators/phoneNumberValidator';
-import { formatDate, formatPrice, getStorageItem } from './utils';
 
 let cart;
-let form;
 let order = {};
+let form;
 
 window.initMap = function () {};
 
 const onCheckout1Load = async () => {
   // fetch order data
   order = await fetchOpenOrder();
-  if (!order.deliveryData) order.deliveryData = {};
-  // add get cart data
+  // fetch cart data
   cart = getStorageItem('cart');
   // calculate cart totals and save on the order (delivery cost is preliminary now)
+  // need to do this every time because cart could have changed
   order.totals = getCartTotals(cart);
-  // calculate delivery costs
-  order.deliveryData.deliveryCost = await getDeliveryCosts(order);
+  // calculate detailed delivery costs
+  order.deliveryData.deliveryCost = await fetchDetailedDeliveryCost(order.totals.productsCost);
+  // calculate order total cost with detailed delivery data
   recalculateOrderTotals(order);
 
-  // render and init form
+  // render and init delivery data form
   setupDeliveryDataForm(order.deliveryData);
-
   // render cart
   renderCart(cart);
+  // render order summary (totals)
   renderCartTotal(order.totals);
 
   // setup modal window for pickup store selection (will remain hidden)
@@ -54,7 +54,7 @@ const setupDeliveryDataForm = deliveryData => {
       isAtHomeExpressSelected: deliveryData.atHomeDeliveryType === 'atHomeDeliveryTypeExpress',
     };
 
-  // render
+  // render form with handlebars
   document.getElementById('delivery-form-container').innerHTML = deliveryFormTemplate(deliveryData);
   form = document.getElementById('delivery-form');
   // add masks and validation etc
@@ -64,14 +64,15 @@ const setupDeliveryDataForm = deliveryData => {
   initCollapsibleSections(document.querySelector('.delivery-methods'));
 
   // add listeners for controls
-  form.addEventListener('change', saveFormDataToOrder);
+  form.addEventListener('change', processDeliveryFormChange);
   document.querySelector('.pickup-btn').addEventListener('click', showStoreSelection);
 };
 
-const saveFormDataToOrder = e => {
+// this processes every user change in form inputs including text and radio
+const processDeliveryFormChange = e => {
   const changedElement = e.target;
-  const formData = handleDeliveryFormSubmit(form);
-  // form does not have pickupStore info and we are going to oberwrite order.deliveryData with formData
+  const formData = getFormData(form);
+  // form does not have pickupStore info and we are going to overwrite order.deliveryData with formData
   // so if order already has some deliveryData - take pickupStore info from it and save to formData
   // same for delivery cost
   if (order.deliveryData) {
@@ -90,10 +91,11 @@ const saveFormDataToOrder = e => {
   saveOrder(order);
 };
 
+// handles store selection (from the modal window) results
 const onStoreSelected = store => {
+  // save selected store on the order and save the order
   order.deliveryData.pickupStore = store;
   saveOrder(order);
-
   // populate address of the selected store on the page
   document.querySelector(
     '.delivery-form__pickup-store_address',
@@ -102,33 +104,11 @@ const onStoreSelected = store => {
 
 const onDeliveryFormSubmit = (form, e) => {
   e.preventDefault();
-  const formData = handleDeliveryFormSubmit(e.target);
+  const formData = getFormData(e.target);
   if (order.deliveryData) formData.pickupStore = order.deliveryData.pickupStore;
   order.deliveryData = formData;
   saveOrder(order);
   location.href = 'checkout2.html';
-};
-
-const getDeliveryCosts = async order => {
-  // request delivery costs for all available delivery types
-  let deliveryCost = await fetchDetailedDeliveryCost(order.totals.productsCost);
-
-  // let's add formatted prices for handlebars
-  deliveryCost.standardDeliveryFormatted = formatPrice(deliveryCost.standardDelivery, 'Free!');
-  deliveryCost.expressDeliveryFormatted = formatPrice(deliveryCost.expressDelivery, 'Free!');
-  deliveryCost.pickupDeliveryFormatted = formatPrice(deliveryCost.pickupDelivery, 'Free!');
-
-  deliveryCost.homeDeliveryCostRange =
-    formatPrice(Math.min(deliveryCost.standardDelivery, deliveryCost.expressDelivery)) +
-    '-' +
-    formatPrice(Math.max(deliveryCost.standardDelivery, deliveryCost.expressDelivery));
-
-  // now let's add formatted dates
-  deliveryCost.standardDeliveryDateFormatted = formatDate(deliveryCost.standardDeliveryDate);
-  deliveryCost.expressDeliveryDateFormatted = formatDate(deliveryCost.expressDeliveryDate);
-  deliveryCost.DeliveryDateFormatted = formatDate(deliveryCost.expressDeliveryDate);
-
-  return deliveryCost;
 };
 
 const recalculateOrderTotals = order => {
@@ -137,7 +117,7 @@ const recalculateOrderTotals = order => {
   order.totals.totalCost = undefined;
   order.totals.deliveryDate = undefined;
 
-  // identify selected cost
+  // identify selected delivery cost and set it's value in order.totals.deliveryCost
   if (order.deliveryData.deliveryType === 'atHomeDelivery') {
     if (order.deliveryData.atHomeDeliveryType === 'atHomeDeliveryTypeExpress') {
       order.totals.deliveryCost = order.deliveryData.deliveryCost.expressDelivery;
@@ -150,20 +130,11 @@ const recalculateOrderTotals = order => {
     order.totals.deliveryCost = order.deliveryData.deliveryCost.pickupDelivery;
     order.totals.deliveryDate = order.deliveryData.deliveryCost.pickupDeliveryDate;
   }
-
   // calculate total cost
   if (order.totals.deliveryCost !== undefined) {
     order.totals.totalCost =
       order.totals.productsCost + order.totals.discount + order.totals.servicesCost + order.totals.deliveryCost;
   }
-
-  // let's add formatted prices for handlebars
-  order.totals.deliveryCostFormatted = formatPrice(order.totals.deliveryCost, undefined, '-');
-  order.totals.totalCostFormatted = formatPrice(order.totals.totalCost, undefined, '-');
-
-  order.totals.deliveryDateFormatted = !order.totals.deliveryDate
-    ? undefined
-    : '('+formatDate(order.totals.deliveryDate)+')';
 };
 
 export default onCheckout1Load;
