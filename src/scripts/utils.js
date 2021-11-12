@@ -89,13 +89,20 @@ export const getFormData = form => {
   return formObject;
 };
 
-export const formatDate = date => {
+export const formatDate = (date, textInUndefined) => {
+  if (!date) return textInUndefined;
   // if date is not a Date object yet (so it is int) - convert it
   const dateToConvert = typeof date === 'object' ? date : new Date(date);
 
   const format = { weekday: 'short', day: 'numeric', month: 'short' };
   return dateToConvert.toLocaleDateString('en-US', format);
 };
+
+export const formatPriceRange = (price1, price2) => {
+  return `${formatPrice(price1)} - ${formatPrice(price2)}`;
+};
+
+
 
 export {
   getElement,

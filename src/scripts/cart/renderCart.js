@@ -1,10 +1,10 @@
-import { formatPrice, getElement, getElements, hideElements, unHideElements } from '../utils';
+import { formatDate, formatPrice, hideElements, unHideElements } from '../utils';
 import renderCartItem from './renderCartItem';
 import { renderCartPageItem } from './renderCartPageItem';
 import renderOrderItem from './renderOrderItem';
 import { getCartTotals } from './utils';
 
-const cartUserMenuCount = getElement('.header__user-menu-count--cart');
+
 
 // render all Cart items items from the Local Storage
 export const renderCart = cart => {
@@ -18,32 +18,27 @@ export const renderCart = cart => {
   });
 
   renderCartTotal(getCartTotals(cart));
-  renderCartItemCount(cart);
 };
 
-// render Cart Total
+// (re)render Cart Total
 export const renderCartTotal = cartTotals => {
+  const cartOrderTotals = document.querySelectorAll('.order-summary__text--price');
+  const cartOrderPromo = document.querySelectorAll('.order-summary__text--promo');
+  const cartOrderServices = document.querySelectorAll('.order-summary__text--services');
+  const cartOrderDelivery = document.querySelectorAll('.order-summary__text--delivery');
+  const cartOrderDeliveryDate = document.querySelectorAll('.order-summary__text--delivery-date');
+  const cartGrandTotals = document.querySelectorAll('.order-summary__amount');
+  const cartUserMenuCount = document.querySelectorAll('.header__user-menu-count--cart');
 
-  const cartOrderTotals = getElements('.order-summary__text--price');
-  const cartOrderPromo = getElements('.order-summary__text--promo');
-  const cartOrderServices = getElements('.order-summary__text--services');
-  const cartOrderDelivery = getElements('.order-summary__text--delivery');
-  const cartOrderDeliveryDate = getElements('.order-summary__text--delivery-date');
-  const cartGrandTotals = getElements('.order-summary__amount');
-
-  cartOrderTotals.forEach(el => (el.textContent = cartTotals.productsCostFormatted));
-  cartOrderPromo.forEach(el => (el.textContent = cartTotals.discountCostFormatted));
-  cartOrderServices.forEach(el => (el.textContent = cartTotals.servicesCostFormatted));
-  cartOrderDelivery.forEach(el => (el.textContent = cartTotals.deliveryCostFormatted));
-  cartOrderDeliveryDate.forEach(el => (el.textContent = cartTotals.deliveryDateFormatted));
-  cartGrandTotals.forEach(el => (el.textContent = cartTotals.totalCostFormatted));
+  cartOrderTotals.forEach(el => (el.textContent = formatPrice(cartTotals.productsCost)));
+  cartOrderPromo.forEach(el => (el.textContent = formatPrice(cartTotals.discount)));
+  cartOrderServices.forEach(el => (el.textContent = formatPrice(cartTotals.servicesCost)));
+  cartOrderDelivery.forEach(el => (el.textContent = formatPrice(cartTotals.deliveryCost,undefined,'-')));
+  cartOrderDeliveryDate.forEach(el => (el.textContent = formatDate(cartTotals.deliveryDate,'')));
+  cartGrandTotals.forEach(el => (el.textContent = formatPrice(cartTotals.totalCost,undefined,'-')));
+  cartUserMenuCount.forEach(el => (el.textContent = cartTotals.totalItemCount));
 };
 
-// render items count in user-menu
-export const renderCartItemCount = cart => {
-  const totalAmount = cart.reduce((acc, cartItem) => (acc += cartItem.amount), 0);
-  cartUserMenuCount.textContent = totalAmount;
-};
 
 // updating cartItem elements (amount etc) on page and sidebar after change of amount or adding additional services
 // we use this as an alternative to re-rendering the whole cart or cartItem
@@ -53,10 +48,9 @@ export const updateCartItemOnPage = (cart, productId) => {
 
   // update totals before updating the items data
   renderCartTotal(getCartTotals(cart));
-  renderCartItemCount(cart);
 
   // look for product cards that are already on pages
-  const itemContainers = getElements(`.cart-item[data-id='${cartItem.id}']`);
+  const itemContainers = document.querySelectorAll(`.cart-item[data-id='${productId}']`);
 
   // if there is no such productId in cart anymore - then remove it from pages
   if (!cartItem) {

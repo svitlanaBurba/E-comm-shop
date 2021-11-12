@@ -58,7 +58,7 @@
                     </svg>
                   </button>
                   <span class="product-page__item-amount" data-id="{{id}}"  data-stock="{{stock}}">
-                      {{#if stockIsOut}}0{{else}}1{{/if}}
+                      {{#ifEquals stock 0}}0{{else}}1{{/ifEquals}}
 
                   </span>
                   <button class="product-page__increase-btn" data-id="{{id}}"  data-stock="{{stock}}">
@@ -73,7 +73,7 @@
                              
                 <div class="stock-message">
                   {{#if stockIsLow}}Only {{stock}} item(s) left{{/if}}
-                  {{#if stockIsOut}}Item is out of stock{{/if}}
+                  {{#ifEquals stock 0}}Item is out of stock{{/ifEquals}}
                 </div>
                 </div>
                 <div class="product-page__cart-buttons">

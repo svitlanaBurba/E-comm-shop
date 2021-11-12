@@ -2,6 +2,7 @@ import fetchProductById from '../api/fetchProductById.js';
 import { getElements, getStorageItem, setStorageItem } from '../utils';
 import { renderCart, renderCartTotal, updateCartItemOnPage } from './renderCart.js';
 import { openCart } from './toggleCart';
+import { getCartTotals } from './utils.js';
 
 const cartLists = getElements('.cart__product-list');
 let cart = getStorageItem('cart');
@@ -131,7 +132,7 @@ const calculateCartItemAdditionalServicesCost = cartItem => {
 };
 
 export const onPromoApplied = () => {
-  renderCartTotal(cart);
+  renderCartTotal(getCartTotals(cart));
 };
 
 export const setupCart = () => {

@@ -2,6 +2,7 @@ const promocodes = {
     promo10: 0.1,
     promo20: 0.2,
     promo30: 0.3,
+    joolie2020: 0.3,
 };
   
 export const validatePromoCode = (code) => {

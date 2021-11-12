@@ -23,7 +23,7 @@ const getCartItem = ({
   cartItem.classList.add('cart-item');
   cartItem.setAttribute('data-id', id);
   cartItem.innerHTML = `
-  <a class="cart-page__product-link" href="#">
+  <a class="cart-page__product-link" href="product.html?id=${id}">
   <img
     class="cart-page__product-photo"
     src="${image}"

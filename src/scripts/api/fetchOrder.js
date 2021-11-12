@@ -14,6 +14,8 @@ export const fetchOpenOrder = () => {
     orders.push(openOrder);
     setStorageItem('orders', orders);
   }
+  // order should always have deliveryData object (could be empty) so that we can safely work with it's properties
+  if (!openOrder.deliveryData) openOrder.deliveryData = {};
 
   return openOrder;
 };
