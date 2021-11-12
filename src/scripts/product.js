@@ -64,7 +64,6 @@ const setupProductDetailsSection = (product) => {
       : (product.avgRating = "No reviews yet");
   
   product.stockIsLow = product.stock > 0 && product.stock < 5;
-  product.stockIsOut = product.stock === 0;
 
   document.querySelector(".product-container").innerHTML =
     singleProductTemplate(product);
